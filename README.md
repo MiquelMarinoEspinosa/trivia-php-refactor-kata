@@ -46,3 +46,7 @@ make install
         - `56.25%` -> `66.67%` -> `70.83%`
     - For now the strategy will continue being the same up until the code coverage does not increase more
     - At that point, the not covered code will be analyzed to figure it out which is the best way to cover it
+
+- Extend the test to a fourth roll
+    - At this point the coverage for the first time decreases from `70.83%` -> `66.67%`
+    - Time to analyze the not covered code from the previous iteration to find another strategy to add more coverage than just adding random roll 
