@@ -76,3 +76,10 @@ make install
         - Same coverage `98.96%`
     - Add test when 2 players have been added, the game is playable
         - Same coverage `98.96%`
+- Extend approval test the test to a sexth roll
+    - still `science` question :/
+    - Same coverage though `98.96%`
+    - Let's try adding a seventh roll
+    - `Pop` question in the result. It looks promising ^^
+    - Fixing the test copying the result and checking the coverage right away O.O
+        - `100.00%` coverage |:D
