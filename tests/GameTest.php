@@ -24,6 +24,9 @@ final class GameTest extends TestCase
         $aGame->wrongAnswer();
 
         $aGame->roll(2);
+        $aGame->wrongAnswer();
+
+        $aGame->roll(3);
         $aGame->wasCorrectlyAnswered();
 
         $output = ob_get_clean();

@@ -16,5 +16,12 @@ They have rolled a 2
 Pat's new location is 2
 The category is Sports
 Sports Question 0
+Question was incorrectly answered
+Pat was sent to the penalty box
+Sue is the current player
+They have rolled a 3
+Sue's new location is 3
+The category is Rock
+Rock Question 0
 Answer was corrent!!!!
-Pat now has 1 Gold Coins.
+Sue now has 1 Gold Coins.

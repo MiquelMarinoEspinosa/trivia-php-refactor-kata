@@ -37,6 +37,12 @@ make install
     - We should be catious because most of the coverage can be accidental coverage which would not protect us from applying breaking changes through the refactor process
     - Nevertheless the goal now would be to try to cover 100% the `Game` code. Then, the coverage will be examine introducing breaking changes to the code and in case the test do not cover them, the test will be extended to cover them
     - Also might be that the `approval tests` either cannot cover everything or it were complicated to cover an specific case. Then applying a single unit test would be considered for this specific cases
-- Extend the test for a second roll
+- Extend the test to a second roll
     - The coverage increases from `56.25%` -> `66.67%`
-    - At this point, we have all the needed inspiration from `GameRunner.php`. The file can be removed.
+    - At this point, we have all the needed inspiration from `GameRunner.php`. The file can be removed
+- Extend the test to a third roll
+    - Coverage increased from `66.67%` -> `70.83%`
+    - It has been noticed that for every roll the coverage increases lesser than the previous roll
+        - `56.25%` -> `66.67%` -> `70.83%`
+    - For now the strategy will continue being the same up until the code coverage does not increase more
+    - At that point, the not covered code will be analyzed to figure it out which is the best way to cover it
