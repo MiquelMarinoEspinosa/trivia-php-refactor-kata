@@ -4,9 +4,52 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c5f8d0f407e1c05d881a26890f51d69e",
+    "content-hash": "422d949872972d37c389696f43fad7cb",
     "packages": [],
     "packages-dev": [
+        {
+            "name": "approvals/approval-tests",
+            "version": "dev-Main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/approvals/ApprovalTests.php.git",
+                "reference": "7283b9597f42f9514559515bf563cbf071f8404f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/approvals/ApprovalTests.php/zipball/7283b9597f42f9514559515bf563cbf071f8404f",
+                "reference": "7283b9597f42f9514559515bf563cbf071f8404f",
+                "shasum": ""
+            },
+            "require": {
+                "phpunit/phpunit": ">=5.4.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ApprovalTests\\": "src/",
+                    "ApprovalTests\\Tests\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Llewellyn Falco",
+                    "email": "llewellyn.falco@gmail.com"
+                }
+            ],
+            "description": "Approval Testing for your legacy projects.",
+            "homepage": "https://github.com/approvals/ApprovalTests.php",
+            "support": {
+                "issues": "https://github.com/approvals/ApprovalTests.php/issues",
+                "source": "https://github.com/approvals/ApprovalTests.php/tree/Main"
+            },
+            "time": "2022-02-24T18:20:39+00:00"
+        },
         {
             "name": "myclabs/deep-copy",
             "version": "1.13.0",
@@ -1588,10 +1631,14 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": {
+        "approvals/approval-tests": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": {},
+    "platform": {
+        "php": "^8.0"
+    },
     "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }
