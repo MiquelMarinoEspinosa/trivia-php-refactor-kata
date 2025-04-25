@@ -26,3 +26,13 @@ make install
 - implements approval tests using [GameRunner.php](src/GameRunner.php)
 - Unfortunatelly [GameRunner.php](src/GameRunner.php) uses random values to execute the [Game](src/Game.php) genrating this way random response
 - Commiting the results anyway and fix this problem in the next iterations
+- Execute [Game](src/Game.php) with stable parameters inspired by [GameRunner.php](src/GameRunner.php)
+    - In case that the [approvals](tests/approvals) are create using `docker`, 2 commans are necessary to be executed from the host to edit the files via IDE - change user for the local machine user name
+        - ```
+            sudo chown -R `USER`:`USER` tests/approvals
+            sudo chmod 666 tests/approvals/*
+          ```
+    - First execution with a `Game` with `3 users` and just one roll with `1` as result
+    - At this point the test cover the `56.25%` of the `Game` class!
+    - We should be catious because most of the coverage can be accidental coverage which would not protect us from applying breaking changes through the refactor process
+    - Nevertheless the goal now would be to try to cover 100% the `Game` code. Then, the coverage will be examine introducing breaking changes to the code and in case the test do not cover them, the test will be extended to cover them
