@@ -1,4 +1,7 @@
 <?php
+
+namespace Game;
+
 function echoln($string) {
   echo $string."\n";
 }
