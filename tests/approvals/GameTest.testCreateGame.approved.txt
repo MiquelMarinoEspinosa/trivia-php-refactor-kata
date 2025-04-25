@@ -9,5 +9,12 @@ They have rolled a 1
 Chet's new location is 1
 The category is Science
 Science Question 0
+Question was incorrectly answered
+Chet was sent to the penalty box
+Pat is the current player
+They have rolled a 2
+Pat's new location is 2
+The category is Sports
+Sports Question 0
 Answer was corrent!!!!
-Chet now has 1 Gold Coins.
+Pat now has 1 Gold Coins.

@@ -14,8 +14,6 @@ final class GameTest extends TestCase
     {
         ob_start();
 
-        //$argv = ["", "30"];
-        //include(__DIR__ . '/../src/GameRunner.php');
         $aGame = new Game();
   
         $aGame->add("Chet");
@@ -23,6 +21,9 @@ final class GameTest extends TestCase
         $aGame->add("Sue");
 
         $aGame->roll(1);
+        $aGame->wrongAnswer();
+
+        $aGame->roll(2);
         $aGame->wasCorrectlyAnswered();
 
         $output = ob_get_clean();
