@@ -86,6 +86,8 @@ make install
 - Considerations
     - Notice that just with a few unit tests have been able to covered the 100% of a very coupled code
     - The approval test process has facilitated achieving this goal since it was trial and error, copying the values to the `approve` file making the testing process really easy
+    - Coverage evolution in `7` iterations
+        - `0%` -> `56.25%` -> `66.67%` -> `70.83%` -> `78.12%` -> `97.92%` -> `98.96%` -> `100.00%`
     - Some could argue that this can be a little bit `black box testing` which does not help to understand the code. That is true in a sense. However, at this point the main goal is to cover the code to be able to apply a safe refactor. This strategy facilitates the process of covering the code. During the refactor process, there will be the chance to understand the code
     - Once the refactor has finished, the `approval tests` can either be removed or stay. They could be replaced by `unit tests` wich will help to understand the code
     - Now is time to introduce breaking changes to validate the correctness of the coverage as well as to evaluate how robust the current tests are
