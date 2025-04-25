@@ -25,3 +25,6 @@ The category is Rock
 Rock Question 0
 Answer was corrent!!!!
 Sue now has 1 Gold Coins.
+Chet is the current player
+They have rolled a 4
+Chet is not getting out of the penalty box

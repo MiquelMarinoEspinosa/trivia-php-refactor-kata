@@ -49,4 +49,8 @@ make install
 
 - Extend the test to a fourth roll
     - At this point the coverage for the first time decreases from `70.83%` -> `66.67%`
-    - Time to analyze the not covered code from the previous iteration to find another strategy to add more coverage than just adding random roll 
+    - Time to analyze the not covered code from the previous iteration to find another strategy to add more coverage than just adding random roll
+- The missing coverage is related mainly to the `$this->inPenaltyBox[$this->currentPlayer]` condition which never is met. Also there is a method name `isPlayable` which is never called either in the `Game` or in the `GameRunner`
+    - Curiously with the 4 `roll` this condition should be met. Checking right now event though it has been observed that the coverage decreases
+    - Coverage increased from `70.83%` -> `78.12%`!
+        - The trick was to add 2 `wasCorrectlyAnswered` instead of 1
