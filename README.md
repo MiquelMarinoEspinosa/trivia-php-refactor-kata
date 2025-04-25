@@ -27,7 +27,7 @@ make install
 - Unfortunatelly [GameRunner.php](src/GameRunner.php) uses random values to execute the [Game](src/Game.php) genrating this way random response
 - Commiting the results anyway and fix this problem in the next iterations
 - Execute [Game](src/Game.php) with stable parameters inspired by [GameRunner.php](src/GameRunner.php)
-    - In case that the [approvals](tests/approvals) are create using `docker`, 2 commans are necessary to be executed from the host to edit the files via IDE - change user for the local machine user name
+    - In case that the [approvals](tests/approvals) are create using `docker`, 2 commans are necessary to be executed from the host to edit the files via IDE - change user for the local machine `USER` name
         - ```
             sudo chown -R `USER`:`USER` tests/approvals
             sudo chmod 666 tests/approvals/*
