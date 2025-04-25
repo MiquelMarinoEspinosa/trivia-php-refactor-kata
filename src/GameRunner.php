@@ -2,7 +2,7 @@
 
 namespace Game;
 
-include __DIR__.'/Game.php';
+use Game\Game;
 
 $notAWinner;
 
