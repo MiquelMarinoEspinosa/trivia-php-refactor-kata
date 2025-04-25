@@ -29,8 +29,8 @@ make install
 - Execute [Game](src/Game.php) with stable parameters inspired by [GameRunner.php](src/GameRunner.php)
     - In case that the [approvals](tests/approvals) are create using `docker`, 2 commans are necessary to be executed from the host to edit the files via IDE - change user for the local machine `USER` name
         - ```
-            sudo chown -R `USER`:`USER` tests/approvals
-            sudo chmod 666 tests/approvals/*
+          sudo chown -R `USER`:`USER` tests/approvals
+          sudo chmod 666 tests/approvals/*
           ```
     - First execution with a `Game` with `3 users` and just one roll with `1` as result
     - At this point the test cover the `56.25%` of the `Game` class!
