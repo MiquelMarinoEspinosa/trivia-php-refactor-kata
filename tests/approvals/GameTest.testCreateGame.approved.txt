@@ -28,3 +28,11 @@ Sue now has 1 Gold Coins.
 Chet is the current player
 They have rolled a 4
 Chet is not getting out of the penalty box
+Pat is the current player
+They have rolled a 5
+Pat is getting out of the penalty box
+Pat's new location is 7
+The category is Rock
+Rock Question 1
+Answer was correct!!!!
+Pat now has 1 Gold Coins.

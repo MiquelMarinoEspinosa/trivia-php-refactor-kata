@@ -50,7 +50,15 @@ make install
 - Extend the test to a fourth roll
     - At this point the coverage for the first time decreases from `70.83%` -> `66.67%`
     - Time to analyze the not covered code from the previous iteration to find another strategy to add more coverage than just adding random roll
-- The missing coverage is related mainly to the `$this->inPenaltyBox[$this->currentPlayer]` condition which never is met. Also there is a method name `isPlayable` which is never called either in the `Game` or in the `GameRunner`
+    - The missing coverage is related mainly to the `$this->inPenaltyBox[$this->currentPlayer]` condition which never is met. Also there is a method name `isPlayable` which is never called either in the `Game` or in the `GameRunner`
     - Curiously with the 4 `roll` this condition should be met. Checking right now event though it has been observed that the coverage decreases
     - Coverage increased from `70.83%` -> `78.12%`!
         - The trick was to add 2 `wasCorrectlyAnswered` instead of 1
+- Extend the test to a fifth roll
+    - start with a correct answer
+    - Promising because the result has `Pat is getting out of the penalty box`. Let's check the coverage ^^
+    - Yay! coverage extended from `78.12%` -> `97.92%`
+    - As expected the message was related with the not covered penalty related code
+    - This has been the code coverage evolution so far
+        - `0%` -> `56.25%` -> `66.67%` -> `70.83%` -> `78.12%` -> `97.92%`
+    - Next iteration take a look into the yet not covered code 
