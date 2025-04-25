@@ -61,4 +61,18 @@ make install
     - As expected the message was related with the not covered penalty related code
     - This has been the code coverage evolution so far
         - `0%` -> `56.25%` -> `66.67%` -> `70.83%` -> `78.12%` -> `97.92%`
-    - Next iteration take a look into the yet not covered code 
+    - Next iteration take a look into the yet not covered code
+- Code not covered yet
+    - `isPlayable` method might be removed in this small context. However, let's asume that the code is integrated in a bigger context. Therefore, the method can be called by other client classes
+        - This case can be easily covered with some specific unit tests for this method 
+    - There is another line of code at `askQuestion()` regarding this condition `if ($this->currentCategory() == "Pop"`
+        - It is posible that with some few more iterations on the `roll` test, the line can eventually be covered. Let's see ^^
+- Let's add coverage to the `isPlayable` method first which seems the easiest code to cover
+    - Add test when 0 players have been added, the game is not playable
+        - Coverage increased from `97.92%` -> `98.96%`
+        - The rest of the tests for `isPlayable` will not increase the coverage. Therefore, it will cover more business logic and they are easy to be added
+    - Add test when 1 players have been added, the game is not playable
+        - These unit tests would not check the output since it is already checked on the approval tests and also because it is not their goal. Nevertheless, in case of considering the check essential, easily could this test turned into approval tests
+        - Same coverage `98.96%`
+    - Add test when 2 players have been added, the game is playable
+        - Same coverage `98.96%`

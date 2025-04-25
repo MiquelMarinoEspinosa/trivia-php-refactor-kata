@@ -39,4 +39,28 @@ final class GameTest extends TestCase
 
         Approvals::verifyString($output);
     }
+
+    public function testShouldTheGameBeNotPlayableWhenZeroPlayersHaveBeenAdded(): void 
+    {
+        $aGame = new Game();
+        
+        self::assertFalse($aGame->isPlayable());
+    }
+
+    public function testShouldTheGameBeNotPlayableWhenOnePlayersHaveBeenAdded(): void 
+    {
+        $aGame = new Game();
+        $aGame->add("Chet");
+
+        self::assertFalse($aGame->isPlayable());
+    }
+
+    public function testShouldTheGameBePlayableWhenTwoPlayersHaveBeenAdded(): void 
+    {
+        $aGame = new Game();
+        $aGame->add("Chet");
+        $aGame->add("Pat");
+        
+        self::assertTrue($aGame->isPlayable());
+    }
 }
