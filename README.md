@@ -101,6 +101,7 @@ make install
             - For these cases will be added the extra brackets to analyze the coverage and cover the code which is not covered yet 
         - There are other cases which needed to be analyzed in a deeper way
             - 
+            
             ```
                 else {
 	                $this->currentPlayer++;
@@ -110,6 +111,7 @@ make install
             ```
 
             - 
+            
             ```
                 function didPlayerWin() {
 		            return !($this->purses[$this->currentPlayer] == 6);
