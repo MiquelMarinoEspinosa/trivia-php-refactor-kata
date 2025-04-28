@@ -113,4 +113,4 @@ make install
 		            return !($this->purses[$this->currentPlayer] == 6);
 	            }
             ```
-        - It might be that all cases just need some more extra rolls to be executed
+        - It might be that all cases just need some more extra rolls to be executed and cover them with those missing rolls
