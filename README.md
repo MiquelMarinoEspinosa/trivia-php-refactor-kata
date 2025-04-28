@@ -92,3 +92,24 @@ make install
     - Once the refactor has finished, the `approval tests` can either be removed or stay. They could be replaced by `unit tests` wich will help to understand the code
     - Now is time to introduce breaking changes to validate the correctness of the coverage as well as to evaluate how robust the current tests are
 - Next iteration: change the code to provoke breaking changes to see whether the current tests cover this breaking changes
+- Current code coverage analysis
+    - The majority of the code is well covered by the current test. However, have been found some code that even changed the test has not detected the changes
+        - Some of the code is because is implemented with a conditional without brackets. Nevertheless, the coverage indicates that the code is covered by the unit tests. Here there are the found samples
+            - `if ($this->places[$this->currentPlayer] > 11) $this->places[$this->currentPlayer] = $this->places[$this->currentPlayer] - 12;`
+            - `if ($this->places[$this->currentPlayer] == 0) return "Pop";`
+            - `if ($this->currentPlayer == count($this->players)) $this->currentPlayer = 1`
+            - For these cases will be added the extra brackets to analyze the coverage and cover the code which is not covered yet 
+        - There are other cases which needed to be analyzed in a deeper way
+            - ```
+                else {
+	                $this->currentPlayer++;
+	                if ($this->currentPlayer == count($this->players)) $this->currentPlayer = 0;
+	                return false;
+                }
+            ```
+            - ```
+                function didPlayerWin() {
+		            return !($this->purses[$this->currentPlayer] == 6);
+	            }
+            ```
+        - It might be that all cases just need some more extra rolls to be executed
