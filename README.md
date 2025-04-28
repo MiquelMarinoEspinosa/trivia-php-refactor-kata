@@ -107,6 +107,7 @@ make install
 	                return false;
                 }
             ```
+
             - ```
                 function didPlayerWin() {
 		            return !($this->purses[$this->currentPlayer] == 6);
