@@ -114,3 +114,12 @@ make install
 	            }
             ```
         - It might be that all cases just need some more extra rolls to be executed and cover them with those missing rolls
+- add brackets to all `if` conditions and cover the ones that are not covered yet
+    - add brackets to `if` conditions
+        - The coverage has been reduced from `100.00%` to `90.99%` as expected ^^
+        - Some conditions are related to the number of player. More specifically `num players > 11`
+        - Let's add up to `11` rolls
+            - Currently there are `7` rolls. Therefore, `5` extra rolls should be added
+            - Adding extra rolls increased the coverage from `90.99%` -> `97.30%`
+            - A commit will be done at this point
+            - Another strategy that would worth exploring is adding more than `3` players to the game

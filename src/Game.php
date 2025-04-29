@@ -73,7 +73,9 @@ class Game {
 
 				echoln($this->players[$this->currentPlayer] . " is getting out of the penalty box");
 			$this->places[$this->currentPlayer] = $this->places[$this->currentPlayer] + $roll;
-				if ($this->places[$this->currentPlayer] > 11) $this->places[$this->currentPlayer] = $this->places[$this->currentPlayer] - 12;
+				if ($this->places[$this->currentPlayer] > 11) {
+					$this->places[$this->currentPlayer] = $this->places[$this->currentPlayer] - 12;
+				}
 
 				echoln($this->players[$this->currentPlayer]
 						. "'s new location is "
@@ -88,7 +90,9 @@ class Game {
 		} else {
 
 		$this->places[$this->currentPlayer] = $this->places[$this->currentPlayer] + $roll;
-			if ($this->places[$this->currentPlayer] > 11) $this->places[$this->currentPlayer] = $this->places[$this->currentPlayer] - 12;
+			if ($this->places[$this->currentPlayer] > 11) {
+				$this->places[$this->currentPlayer] = $this->places[$this->currentPlayer] - 12;
+			}
 
 			echoln($this->players[$this->currentPlayer]
 					. "'s new location is "
@@ -100,27 +104,49 @@ class Game {
 	}
 
 	function  askQuestion() {
-		if ($this->currentCategory() == "Pop")
+		if ($this->currentCategory() == "Pop") {
 			echoln(array_shift($this->popQuestions));
-		if ($this->currentCategory() == "Science")
+		}
+		if ($this->currentCategory() == "Science") {
 			echoln(array_shift($this->scienceQuestions));
-		if ($this->currentCategory() == "Sports")
+		}
+		if ($this->currentCategory() == "Sports") {
 			echoln(array_shift($this->sportsQuestions));
-		if ($this->currentCategory() == "Rock")
+		}
+		if ($this->currentCategory() == "Rock") {
 			echoln(array_shift($this->rockQuestions));
+		}
 	}
 
 
 	function currentCategory() {
-		if ($this->places[$this->currentPlayer] == 0) return "Pop";
-		if ($this->places[$this->currentPlayer] == 4) return "Pop";
-		if ($this->places[$this->currentPlayer] == 8) return "Pop";
-		if ($this->places[$this->currentPlayer] == 1) return "Science";
-		if ($this->places[$this->currentPlayer] == 5) return "Science";
-		if ($this->places[$this->currentPlayer] == 9) return "Science";
-		if ($this->places[$this->currentPlayer] == 2) return "Sports";
-		if ($this->places[$this->currentPlayer] == 6) return "Sports";
-		if ($this->places[$this->currentPlayer] == 10) return "Sports";
+		if ($this->places[$this->currentPlayer] == 0) {
+			return "Pop";
+		}
+		if ($this->places[$this->currentPlayer] == 4) {
+			return "Pop";
+		}
+		if ($this->places[$this->currentPlayer] == 8) {
+			return "Pop";
+		}
+		if ($this->places[$this->currentPlayer] == 1) {
+			return "Science";	
+		}
+		if ($this->places[$this->currentPlayer] == 5) {
+			return "Science";
+		}
+		if ($this->places[$this->currentPlayer] == 9) {
+			return "Science";
+		}
+		if ($this->places[$this->currentPlayer] == 2) {
+			return "Sports";
+		}
+		if ($this->places[$this->currentPlayer] == 6) {
+			return "Sports";
+		}
+		if ($this->places[$this->currentPlayer] == 10) {
+			return "Sports";
+		}
 		return "Rock";
 	}
 
@@ -136,12 +162,16 @@ class Game {
 
 				$winner = $this->didPlayerWin();
 				$this->currentPlayer++;
-				if ($this->currentPlayer == count($this->players)) $this->currentPlayer = 0;
+				if ($this->currentPlayer == count($this->players)) {
+					$this->currentPlayer = 0;
+				}
 
 				return $winner;
 			} else {
 				$this->currentPlayer++;
-				if ($this->currentPlayer == count($this->players)) $this->currentPlayer = 0;
+				if ($this->currentPlayer == count($this->players)) {
+					$this->currentPlayer = 0;
+				}
 				return true;
 			}
 
@@ -158,7 +188,9 @@ class Game {
 
 			$winner = $this->didPlayerWin();
 			$this->currentPlayer++;
-			if ($this->currentPlayer == count($this->players)) $this->currentPlayer = 0;
+			if ($this->currentPlayer == count($this->players)) {
+				$this->currentPlayer = 0;
+			}
 
 			return $winner;
 		}
@@ -170,7 +202,9 @@ class Game {
 	$this->inPenaltyBox[$this->currentPlayer] = true;
 
 		$this->currentPlayer++;
-		if ($this->currentPlayer == count($this->players)) $this->currentPlayer = 0;
+		if ($this->currentPlayer == count($this->players)) {
+			$this->currentPlayer = 0;
+		}
 		return true;
 	}
 
