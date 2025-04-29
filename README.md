@@ -194,3 +194,8 @@ make install
         - 39/3 = 13
         - 39 - 13 = 26
         - Still `100%` coverage with `26` rolls
+    - Presumably, it is very probable that at least `12` rolls by player would be needed to cover the logic 
+        - That makes `24` rolls per game 
+        - Currently, there are `26` rolls
+        - Let's remove the last `2` rolls and check the coverage
+            - Still `100%` coverage

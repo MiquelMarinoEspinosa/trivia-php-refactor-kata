@@ -159,19 +159,3 @@ Player2 now has 7 Gold Coins.
 Player1 is the current player
 They have rolled a 2
 Player1 is not getting out of the penalty box
-Player2 is the current player
-They have rolled a 1
-Player2 is getting out of the penalty box
-Player2's new location is 2
-The category is Sports
-Sports Question 6
-Answer was correct!!!!
-Player2 now has 8 Gold Coins.
-Player1 is the current player
-They have rolled a 5
-Player1 is getting out of the penalty box
-Player1's new location is 3
-The category is Rock
-Rock Question 1
-Answer was correct!!!!
-Player1 now has 8 Gold Coins.

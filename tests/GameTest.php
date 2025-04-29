@@ -88,12 +88,6 @@ final class GameTest extends TestCase
         $aGame->roll(2);
         $aGame->wasCorrectlyAnswered();
 
-        $aGame->roll(1);
-        $aGame->wasCorrectlyAnswered();
-
-        $aGame->roll(5);
-        $aGame->wasCorrectlyAnswered();
-
         $output = ob_get_clean();
 
         Approvals::verifyString($output);
