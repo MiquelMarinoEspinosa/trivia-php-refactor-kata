@@ -140,19 +140,3 @@ Player1 was sent to the penalty box
 Player2 is the current player
 They have rolled a 6
 Player2 is not getting out of the penalty box
-Player1 is the current player
-They have rolled a 3
-Player1 is getting out of the penalty box
-Player1's new location is 10
-The category is Sports
-Sports Question 5
-Answer was correct!!!!
-Player1 now has 7 Gold Coins.
-Player2 is the current player
-They have rolled a 5
-Player2 is getting out of the penalty box
-Player2's new location is 1
-The category is Science
-Science Question 5
-Answer was correct!!!!
-Player2 now has 7 Gold Coins.

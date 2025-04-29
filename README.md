@@ -201,3 +201,18 @@ make install
             - Still `100%` coverage
         - It has been found that instead of having `24` rolls, there were `23` rolls being the first player turn. There fore this roll should be able to be removed and keep the 100% coverage. Let's remove it then
             - Still `100%` coverage with `22` rolls
+- At this point having the approval test `2 players` and `22 rolls` with the `100%` coverage, let's try to blindly optimize the `approval tests` removing every `2 rolls` starting from the final ones
+    - At each removal, the code coverage will be checked
+    - Once has been detected that the coverage has been reduced, the optimization will stop at that point
+    - Rolls removing process
+        - Let's remove the last 2 `rolls` down to `20` rolls in total
+            - Coverage still 100%
+        - Next 2 last `rolls` to remove down to `18` rolls total
+            - Code coverage reduced to `98.20%`
+            - Placing back the last 2 rolls
+            - Code coverage back to `100%`
+    - The full optimizaton reduce the game `approval test` complexity from
+        - `3` players to `2` players -> 1/3 less
+        - From `39` rolls down to `20` roll -> almost < 1/2
+- Even though the `approval test` could be more optimised, that would require some level of code analyze, something that has been done to reach the 100% coverage or more trial and test. However, at this point, it could be considered that the `approval test` is optimized enough as long as it covers the breaking changes
+    - It should not be forgotten that the it takes `128 ms` to be executed and test consits of around `70` lines, which are understandable enough
