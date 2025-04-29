@@ -173,3 +173,13 @@ make install
     - Analyze introduce breaking changes to the code to confirm that the code coverage prevents from breaking changes during the refactor process
     - Analyze whether the test can be simplified reducing number of players from `3` down to `2`
         - If so, re-check the coverage introducing breaking changes 
+- Introduce breaking changes to check the current code coverage
+    - Almost all and more than the previous code coverage breaking changes have been detected by the current unit test configuration
+        - `didPlayerWin` method breaking changes have been no detected
+            - It is used internally at the and not called by the test yet
+            - In further iterations call to the method can be added to check the value of the method an be covered by the main approval test
+        - Some returns of some function which seems to be used for internal uses
+            - It should be considered that may be the values would not be used in future iterations since this kind of design couple the client code with the server unless is expected the client to do nay kind of action depending on the result value
+                - `add`
+                - `wasCorrectlyAnswered`
+                - `wrongAnswered` 
