@@ -190,3 +190,7 @@ make install
     - The coverage will be re-checked to confirm that covers the breaking changes code
     - Reduce players to `2` without changing the current amount of `rolls`
         - Still `100%` coverage
+    - Since it is one player missing, let's try reducing `1/3` of the rolls and check whether still there are `100%` coverage
+        - 39/3 = 13
+        - 39 - 13 = 26
+        - Still `100%` coverage with `26` rolls
