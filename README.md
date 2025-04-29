@@ -227,4 +227,19 @@ make install
         - Neither code has been added nor change at `Game` to cover this breaking change
             - Currently the test access directly to the `Game` fields breaking encapsulation
             - In further iterations during the refactor process some encapsulation can be added to this fields which would make sense to expose to know the current number of questions by category from the client
-    
+    - Remove initialization arrays not covered
+    - `$this->places[$this->currentPlayer] > 10` instead of `$this->places[$this->currentPlayer] > 11` not covered
+        - it catches `$this->places[$this->currentPlayer] > 12` though
+        - also it catches `$this->places[$this->currentPlayer] > 9` 
+        - removing `$winner = $this->didPlayerWin();` raises just a `warning`
+        - removing `return $winner` does not catch
+        - removing `return true;`
+            - They are related to not use returned value
+            - Let's add their assertions to the `wasCorrectlyAnswered` and `wrongAnswer` at the `approval test` once it has finished all the rest of the checks 
+        - returning allways `true` at `didPlayerWin` method not catched
+- Next steps
+    - Cover the return results for `wasCorrectlyAnswered` and `wrongAnswer`
+        - implicitly should cover the `didPlayerWin`
+    - Think why `$this->places[$this->currentPlayer] > 10` instead of `$this->places[$this->currentPlayer] > 11` is not covered
+        - Even though the risk can be taken on not covere it since the rest of value ranges are covered
+    - Try [mutation testing](https://infection.github.io/)
