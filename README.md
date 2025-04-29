@@ -123,3 +123,16 @@ make install
             - Adding extra rolls increased the coverage from `90.99%` -> `97.30%`
             - A commit will be done at this point
             - Another strategy that would worth exploring is adding more than `3` players to the game
+- Adding more player to the `Game` at the `GameTest`
+    - up to `6`. Current `3`
+        - Less coverage `97.30%` -> `95.50%`
+    - add more rolls to the game
+        - `5` more
+            - current `18`
+            - Now `23`
+        - A little bit more coverage
+            - `95.50%` -> `96.40%`
+    - The number of players does not seem to be a decisive factor in increasing the coverage. Let's stay on increasing/changing the rolls
+- Remove number of players down to `3` again keeping the `23` rolls 
+    - Coverage increased from `96.40%` -> `98.20%` ^^
+    - Let's do a commit to have a safe point to return
