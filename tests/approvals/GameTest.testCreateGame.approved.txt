@@ -132,16 +132,16 @@ Player3 is getting out of the penalty box
 Player3's new location is 5
 The category is Science
 Science Question 4
-Question was incorrectly answered
-Player3 was sent to the penalty box
+Answer was correct!!!!
+Player3 now has 3 Gold Coins.
 Player1 is the current player
 They have rolled a 5
 Player1 is getting out of the penalty box
 Player1's new location is 6
 The category is Sports
 Sports Question 3
-Question was incorrectly answered
-Player1 was sent to the penalty box
+Answer was correct!!!!
+Player1 now has 3 Gold Coins.
 Player2 is the current player
 They have rolled a 2
 Player2 is not getting out of the penalty box

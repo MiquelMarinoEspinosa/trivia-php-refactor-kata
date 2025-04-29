@@ -81,10 +81,10 @@ final class GameTest extends TestCase
         $aGame->wasCorrectlyAnswered();
 
         $aGame->roll(3);
-        $aGame->wrongAnswer();
+        $aGame->wasCorrectlyAnswered();
 
         $aGame->roll(5);
-        $aGame->wrongAnswer();
+        $aGame->wasCorrectlyAnswered();
 
         $aGame->roll(2);
         $aGame->wasCorrectlyAnswered();

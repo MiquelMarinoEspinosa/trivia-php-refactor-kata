@@ -135,4 +135,9 @@ make install
     - The number of players does not seem to be a decisive factor in increasing the coverage. Let's stay on increasing/changing the rolls
 - Remove number of players down to `3` again keeping the `23` rolls 
     - Coverage increased from `96.40%` -> `98.20%` ^^
-    - Let's do a commit to have a safe point to return
+    - Let's do a commit & push to have a safe point to return
+- Change the last rolls configuration
+    - Let's configure the last `5` rolls as `wrongAnswer`
+        - Same coverage
+    - Let's configure the last `5` rolls as `wasCorrectlyAnswered`
+        - Yay! Increasing coverage from `98.20%` -> `99.10%`
