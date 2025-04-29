@@ -216,3 +216,15 @@ make install
         - From `39` rolls down to `20` roll -> almost < 1/2
 - Even though the `approval test` could be more optimised, that would require some level of code analyze, something that has been done to reach the 100% coverage or more trial and test. However, at this point, it could be considered that the `approval test` is optimized enough as long as it covers the breaking changes
     - It should not be forgotten that the it takes `128 ms` to be executed and test consits of around `70` lines, which are understandable enough
+- Introduce breaking changes to check whether are caught by the tests
+    - It has been found that the game generates `50` questions for each category and when the value is changed, the current test do not catch the breaking change
+        - With already `20` rolls in the `approval test`, the maximum category number is `4`
+        - Therefore, it would require a lot of rolls with `2` players to reach the `50th` category questions, overcomplicating the `approval test`
+        - Not confirmed yet, but it might be that the current tests cover the rest of the logic as well as its posible breaking changes
+        - Some could argue that this breaking change it is not needed to be covered because it is just a matter of being catious. I would disagree. As long as it can easily be covered by unit test, even though they can be coupled somehow with the code, I would rather at this initial point before starting the refactor to be as much backed by the tests as I could be 
+        - Let's use first the strategy of adding extra tests to check the number of category question when the `game` is first initialized to confirm that each category has initially got `50` number of questions
+            - Breacking change captured with the new unit test
+        - Neither code has been added nor change at `Game` to cover this breaking change
+            - Currently the test access directly to the `Game` fields breaking encapsulation
+            - In further iterations during the refactor process some encapsulation can be added to this fields which would make sense to expose to know the current number of questions by category from the client
+    

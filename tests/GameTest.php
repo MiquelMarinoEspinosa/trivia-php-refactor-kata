@@ -119,4 +119,14 @@ final class GameTest extends TestCase
         
         self::assertTrue($aGame->isPlayable());
     }
+
+    public function testShouldTheGameHasGotFiftyQuestionsForEachCategory(): void
+    {
+        $aGame = new Game();
+
+        self::assertSame(50, count($aGame->popQuestions));
+        self::assertSame(50, count($aGame->scienceQuestions));
+        self::assertSame(50, count($aGame->sportsQuestions));
+        self::assertSame(50, count($aGame->rockQuestions));
+    }
 }
