@@ -186,3 +186,7 @@ make install
 - Refactor `GameTest`
     - Change `testCreateGame` name for `testPlayGame`
     - Capture string outputs to reduce the output noise tests for the `add` test methods
+- Refactor `GameTest` reducing number of players of the approval test down to `2` to simplify the test and also to reduce the current `39` rolls to an smaller number
+    - The coverage will be re-checked to confirm that covers the breaking changes code
+    - Reduce players to `2` without changing the current amount of `rolls`
+        - Still `100%` coverage

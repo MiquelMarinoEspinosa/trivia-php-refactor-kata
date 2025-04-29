@@ -18,7 +18,6 @@ final class GameTest extends TestCase
   
         $aGame->add("Player1");
         $aGame->add("Player2");
-        $aGame->add("Player3");
 
         $aGame->roll(1);
         $aGame->wrongAnswer();
