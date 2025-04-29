@@ -183,3 +183,6 @@ make install
                 - `add`
                 - `wasCorrectlyAnswered`
                 - `wrongAnswered` 
+- Refactor `GameTest`
+    - Change `testCreateGame` name for `testPlayGame`
+    - Capture string outputs to reduce the output noise tests for the `add` test methods

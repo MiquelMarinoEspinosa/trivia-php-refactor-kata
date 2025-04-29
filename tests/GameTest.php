@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 final class GameTest extends TestCase
 {
-    public function testCreateGame(): void
+    public function testPlayGame(): void
     {
         ob_start();
 
@@ -141,24 +141,36 @@ final class GameTest extends TestCase
 
     public function testShouldTheGameBeNotPlayableWhenZeroPlayersHaveBeenAdded(): void 
     {
+        ob_start();
+
         $aGame = new Game();
         
+        ob_get_clean();
+
         self::assertFalse($aGame->isPlayable());
     }
 
     public function testShouldTheGameBeNotPlayableWhenOnePlayersHaveBeenAdded(): void 
     {
+        ob_start();
+
         $aGame = new Game();
         $aGame->add("Chet");
+
+        ob_get_clean();
 
         self::assertFalse($aGame->isPlayable());
     }
 
     public function testShouldTheGameBePlayableWhenTwoPlayersHaveBeenAdded(): void 
     {
+        ob_start();
+
         $aGame = new Game();
         $aGame->add("Chet");
         $aGame->add("Pat");
+
+        ob_get_clean();
         
         self::assertTrue($aGame->isPlayable());
     }
