@@ -141,3 +141,35 @@ make install
         - Same coverage
     - Let's configure the last `5` rolls as `wasCorrectlyAnswered`
         - Yay! Increasing coverage from `98.20%` -> `99.10%`
+- At this point there is just one line not covered related to the question turn. Without overthink too much, it should be easily covered with some extra rolls
+    - Add `5` more extra rolls up to `28`
+    - Yet the same coverage
+    - Adding `3` more rolls up to `31`
+    - Adding `3` more rolls up to `34`
+    - Yet the same coverage
+    - At this point and since it is just one line of code to be covered, it would be a better strategy to debug the `places` variable that the logic depends on to see how to reach the code missing to be covered
+        - Since the game is very verbose on its current status, analysing the output from the `approval test` coulld also help to figure out how to cover the pending line
+    - Rollback last changes
+        - `99.10%` coverage
+- Analyze the `places` status evolution
+    - The idea is that at some point `$this->places[$this->currentPlayer]` should be `0` to cover the missing line at `currentCategory` method
+    - Using the output
+        - According to the [GameTest.testCreateGame.approved.txt](tests/approvals/GameTest.testCreateGame.approved.txt), the player 2 is close to have its places to `0` value
+            - This is the message related to the player 2 places
+                `Player2's new location is 8`
+            - In case `Player2` get more than `11`, there is a logic at `roll` method which substract `12 places` for an specific player
+            - Also according to the output, the last player who played was `Player2`
+            - Therfore, adjusting the next `rolls` conditions after the places message could help us to create the conditions to cover the code
+            - Change next rolls
+                - Avoid `Player2` ending up at the penalty box changing its both previous and next rolls as correctly answered
+            - It has been identified that the analysis was not fully right. The analysis should have been focused on the `Gold Coins` message
+            - Nevertheless, the `Player2` is the one that is closer with currently `8 Gold Coins` according to the `Game` output
+            - Since each roll with valid answer gives an extra coin to the player, `4` more rolls for `Player2` should cover the line
+            - Since there are `3 Players`, the number of total `rolls` to be added should be `11`
+                - `23` current rolls + `11` new rolls = `34` total rolls
+            - Finally, is has been needed `39` rolls,`16` new rolls, to reach the `100%` coverage
+            - Commit and push at this point to have a safe return point
+- Next steps
+    - Analyze introduce breaking changes to the code to confirm that the code coverage prevents from breaking changes during the refactor process
+    - Analyze whether the test can be simplified reducing number of players from `3` down to `2`
+        - If so, re-check the coverage introducing breaking changes 

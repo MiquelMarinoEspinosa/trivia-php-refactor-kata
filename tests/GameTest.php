@@ -24,7 +24,7 @@ final class GameTest extends TestCase
         $aGame->wrongAnswer();
 
         $aGame->roll(2);
-        $aGame->wrongAnswer();
+        $aGame->wasCorrectlyAnswered();
 
         $aGame->roll(3);
         $aGame->wasCorrectlyAnswered();
@@ -51,7 +51,7 @@ final class GameTest extends TestCase
         $aGame->wasCorrectlyAnswered();
 
         $aGame->roll(3);
-        $aGame->wrongAnswer();
+        $aGame->wasCorrectlyAnswered();
 
         $aGame->roll(2);
         $aGame->wrongAnswer();
@@ -60,7 +60,7 @@ final class GameTest extends TestCase
         $aGame->wasCorrectlyAnswered();
 
         $aGame->roll(5);
-        $aGame->wrongAnswer();
+        $aGame->wasCorrectlyAnswered();
 
         $aGame->roll(6);
         $aGame->wasCorrectlyAnswered();
@@ -69,7 +69,7 @@ final class GameTest extends TestCase
         $aGame->wrongAnswer();
 
         $aGame->roll(5);
-        $aGame->wrongAnswer();
+        $aGame->wasCorrectlyAnswered();
 
         $aGame->roll(2);
         $aGame->wasCorrectlyAnswered();
@@ -84,6 +84,51 @@ final class GameTest extends TestCase
         $aGame->wasCorrectlyAnswered();
 
         $aGame->roll(5);
+        $aGame->wasCorrectlyAnswered();
+
+        $aGame->roll(2);
+        $aGame->wasCorrectlyAnswered();
+
+        $aGame->roll(1);
+        $aGame->wasCorrectlyAnswered();
+
+        $aGame->roll(5);
+        $aGame->wasCorrectlyAnswered();
+
+        $aGame->roll(6);
+        $aGame->wasCorrectlyAnswered();
+
+        $aGame->roll(3);
+        $aGame->wrongAnswer();
+
+        $aGame->roll(5);
+        $aGame->wasCorrectlyAnswered();
+
+        $aGame->roll(2);
+        $aGame->wasCorrectlyAnswered();
+
+        $aGame->roll(5);
+        $aGame->wrongAnswer();
+
+        $aGame->roll(6);
+        $aGame->wasCorrectlyAnswered();
+
+        $aGame->roll(3);
+        $aGame->wasCorrectlyAnswered();
+
+        $aGame->roll(5);
+        $aGame->wasCorrectlyAnswered();
+
+        $aGame->roll(2);
+        $aGame->wasCorrectlyAnswered();
+
+        $aGame->roll(2);
+        $aGame->wasCorrectlyAnswered();
+
+        $aGame->roll(5);
+        $aGame->wasCorrectlyAnswered();
+
+        $aGame->roll(2);
         $aGame->wasCorrectlyAnswered();
 
         $aGame->roll(2);
