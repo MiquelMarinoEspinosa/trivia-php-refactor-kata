@@ -156,6 +156,3 @@ The category is Science
 Science Question 5
 Answer was correct!!!!
 Player2 now has 7 Gold Coins.
-Player1 is the current player
-They have rolled a 2
-Player1 is not getting out of the penalty box

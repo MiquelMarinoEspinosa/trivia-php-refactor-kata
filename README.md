@@ -199,3 +199,5 @@ make install
         - Currently, there are `26` rolls
         - Let's remove the last `2` rolls and check the coverage
             - Still `100%` coverage
+        - It has been found that instead of having `24` rolls, there were `23` rolls being the first player turn. There fore this roll should be able to be removed and keep the 100% coverage. Let's remove it then
+            - Still `100%` coverage with `22` rolls
