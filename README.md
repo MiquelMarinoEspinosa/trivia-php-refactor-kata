@@ -264,4 +264,51 @@ make install
                     - At this point, the current situation makes me wonder that this logic cannot fully tested as the rest of the logic without `unit tests`
                         - Through the refactor process the program structure might change, splitting the code in a sense that the small units can be more thorough unit tested, enhancing the code coverage robustness
                         - It would require a some effort to know how to cover this code with `approval tests` being against of the principle on try to cover as much as it can to be safe to refactor even though not all breaking changes are fully covered
-                        - Therefore, this logic will not fully tested at this stage of the process 
+                        - Therefore, this logic will not fully tested at this stage of the process
+- Try [mutation testing](https://infection.github.io/)
+    - [Infection installation](https://infection.github.io/guide/installation.html)
+    - Installation
+        - [Composer global installation guide](https://infection.github.io/guide/installation.html#Composer)
+        - Once composer install has finished, execute the following commands
+            ```
+                make shell
+                export PATH=~/.composer/vendor/bin:$PATH
+            ```
+    - Usage
+        - [Usage documentation](https://infection.github.io/guide/usage.html#Running-Infection)
+        - Execute the following commands
+            ```
+                make shell
+                infection
+            ```
+        - An error appeared which says
+            ```
+               The file "/tmp/infection/phpunitConfiguration.initial.infection.xml" does not pass the XSD schema  
+               validation.                                                                                       
+                [Error] Element 'source': This element is not expected.                                            
+                in /app/ (line 6, col 0)  
+            ```
+            - It is related to the new [phpunit.xml](phpunit.xml) configuration of the new `phpunit` library version
+                - Removing the `source` node at [phpunit.xml](phpunit.xml) allow executing the `infection` program
+                - The output has been added at [infection.mutationTesting.result.beforeRefactor.txt](./tests/infection/infection.mutationTesting.result.beforeRefactor.txt) file
+    - Conclusion
+        - The experience has been very good. Great tool to use!
+        - Details
+            - Some breaking changes introduced by the tool were already detected on the previous stage of introducing manual breaking changes to evaluate the coverage
+                - changing greater than at `$this->places[$this->currentPlayer] >= 11`
+            - Other were not found such as
+                - `return false;` at `add` method
+                    - This can easily be covered with extra assertions at the current automated tests
+                - `$this->currentPlayer--;` at the `wasCorrectlyAnswered` else branch
+                    - It might be that this case can be covered adding more players
+                    - There is no intention now to cover this logic
+                - change methods visibility to `protected`
+                    - since a lot of methods are just called internally, it makes sense that this changes has not been covered
+        - The most important indicator to take into account is the [Mutation Score Indicator MSI](https://infection.github.io/guide/index.html#Mutation-Score-Indicator-MSI)
+            - It is `95%` in the current code
+            - That means that the difference between the current code coverage - `100%` - and the MSI - `95%` - it is low and the tests effectivelly covers the code
+                - From `182` mutants, there were `9` not detected and just `1` error :D
+            - This provides extra trust on the current code coverage
+- Next step
+    - Cover the `add` method with extra assertions to kill another mutant
+    - Start the refactor code process ^-^
