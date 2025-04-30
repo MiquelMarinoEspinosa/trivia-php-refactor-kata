@@ -316,7 +316,7 @@ make install
     - One less scaped mutant
 - Debug why `$this->currentPlayer--;` at the `wasCorrectlyAnswered` else branch mutant is not killed
     - As it was commented, the reason is because the `Game` has just `2` players
-        - ```
+        ```
             $this->currentPlayer++;
 			if ($this->currentPlayer == count($this->players)) {
 				$this->currentPlayer = 0;
