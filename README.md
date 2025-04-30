@@ -334,3 +334,6 @@ make install
     - Execute `infection` mutation testing
         - One mutant more captured
         - `MSI` increased from `95%` -> `96%` :D
+- At this point of the process, the code has been covered with `unit tests`. Therefore, we are ready to start with the refactor
+    - A new branch called `refactor` will be created
+    - The refactor decisions will be documented in the next section of this [README.md](./README.md) file just as it was documented the test process
