@@ -241,7 +241,7 @@ make install
     - Cover the return results for `wasCorrectlyAnswered` and `wrongAnswer`
         - implicitly should cover the `didPlayerWin`
     - Think why `$this->places[$this->currentPlayer] > 10` instead of `$this->places[$this->currentPlayer] > 11` is not covered
-        - Even though the risk can be taken on not covere it since the rest of value ranges are covered
+        - Even though the risk can be taken on not covered it since the rest of value ranges are covered
     - Try [mutation testing](https://infection.github.io/)
 - Cover the return results for `wasCorrectlyAnswered` and `wrongAnswer`
     - Apply breaking changes to `wasCorrectlyAnswered`, `wrongAnswer` and `didPlayerWin`
@@ -251,3 +251,17 @@ make install
 - Array initializations
     - Since the array initializations values are always override and they are not use for the first computational values, they could even be removed in further iterations
     - In this firsts iterations, the array initializations will be kept before starting the refactor
+- Check why `$this->places[$this->currentPlayer] > 10` instead of `$this->places[$this->currentPlayer] > 11` is not covered
+    - Output analysis
+        - Looking for `Gold Coins` messages at [GameTest.testPlayGame.approved.txt](tests/approvals/GameTest.testPlayGame.approved.txt)
+        - Not much information from the previous search
+        - Looking for `new location is 0` messages which indicate that the player's places have been reset
+            - There are `3` messages
+                - One is related to a player getting out of penalty box
+                - The other `2` related to normal rolls with `6` value one and `2` value the other
+                - Let's debug the player's places before reset them as well as they rolls
+                    - At the first debug, it has been found that the `roll` has value `6`, the current player `places` is `12` meaning that the previous `places` where `6`
+                    - At this point, the current situation makes me wonder that this logic cannot fully tested as the rest of the logic without `unit tests`
+                        - Through the refactor process the program structure might change, splitting the code in a sense that the small units can be more thorough unit tested, enhancing the code coverage robustness
+                        - It would require a some effort to know how to cover this code with `approval tests` being against of the principle on try to cover as much as it can to be safe to refactor even though not all breaking changes are fully covered
+                        - Therefore, this logic will not fully tested at this stage of the process 
