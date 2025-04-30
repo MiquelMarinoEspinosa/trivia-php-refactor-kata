@@ -243,3 +243,11 @@ make install
     - Think why `$this->places[$this->currentPlayer] > 10` instead of `$this->places[$this->currentPlayer] > 11` is not covered
         - Even though the risk can be taken on not covere it since the rest of value ranges are covered
     - Try [mutation testing](https://infection.github.io/)
+- Cover the return results for `wasCorrectlyAnswered` and `wrongAnswer`
+    - Apply breaking changes to `wasCorrectlyAnswered`, `wrongAnswer` and `didPlayerWin`
+        - There is just a breaking change at `wasCorrectlyAnswered` at the `else` condition branch when changing `return $winner;` for just `return true;` which was no catch
+        - The rest of breaking changes which were not caught before, now they are covered by the new assertions at the `approval test`
+        - This aspect is considered good enough covered to move on
+- Array initializations
+    - Since the array initializations values are always override and they are not use for the first computational values, they could even be removed in further iterations
+    - In this firsts iterations, the array initializations will be kept before starting the refactor

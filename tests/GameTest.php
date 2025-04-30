@@ -20,64 +20,64 @@ final class GameTest extends TestCase
         $aGame->add("Player2");
 
         $aGame->roll(1);
-        $aGame->wrongAnswer();
+        self::assertTrue($aGame->wrongAnswer());
 
         $aGame->roll(2);
-        $aGame->wasCorrectlyAnswered();
+        self::assertTrue($aGame->wasCorrectlyAnswered());
 
         $aGame->roll(3);
-        $aGame->wasCorrectlyAnswered();
+        self::assertTrue($aGame->wasCorrectlyAnswered());
 
         $aGame->roll(4);
-        $aGame->wasCorrectlyAnswered();
+        self::assertTrue($aGame->wasCorrectlyAnswered());
 
         $aGame->roll(5);
-        $aGame->wasCorrectlyAnswered();
+        self::assertTrue($aGame->wasCorrectlyAnswered());
 
         $aGame->roll(6);
-        $aGame->wasCorrectlyAnswered();
+        self::assertTrue($aGame->wasCorrectlyAnswered());
 
         $aGame->roll(3);
-        $aGame->wasCorrectlyAnswered();
+        self::assertTrue($aGame->wasCorrectlyAnswered());
 
         $aGame->roll(6);
-        $aGame->wasCorrectlyAnswered();
+        self::assertTrue($aGame->wasCorrectlyAnswered());
         
         $aGame->roll(5);
-        $aGame->wrongAnswer();
+        self::assertTrue($aGame->wrongAnswer());
 
         $aGame->roll(4);
-        $aGame->wasCorrectlyAnswered();
+        self::assertTrue($aGame->wasCorrectlyAnswered());
 
         $aGame->roll(3);
-        $aGame->wasCorrectlyAnswered();
+        self::assertTrue($aGame->wasCorrectlyAnswered());
 
         $aGame->roll(2);
-        $aGame->wrongAnswer();
+        self::assertTrue($aGame->wrongAnswer());
 
         $aGame->roll(1);
-        $aGame->wasCorrectlyAnswered();
+        self::assertTrue($aGame->wasCorrectlyAnswered());
 
         $aGame->roll(5);
-        $aGame->wasCorrectlyAnswered();
+        self::assertFalse($aGame->wasCorrectlyAnswered());
 
         $aGame->roll(6);
-        $aGame->wasCorrectlyAnswered();
+        self::assertTrue($aGame->wasCorrectlyAnswered());
 
         $aGame->roll(3);
-        $aGame->wrongAnswer();
+        self::assertTrue($aGame->wrongAnswer());
 
         $aGame->roll(5);
-        $aGame->wasCorrectlyAnswered();
+        self::assertFalse($aGame->wasCorrectlyAnswered());
 
         $aGame->roll(2);
-        $aGame->wasCorrectlyAnswered();
+        self::assertTrue($aGame->wasCorrectlyAnswered());
 
         $aGame->roll(5);
-        $aGame->wrongAnswer();
+        self::assertTrue($aGame->wrongAnswer());
 
         $aGame->roll(6);
-        $aGame->wasCorrectlyAnswered();
+        self::assertTrue($aGame->wasCorrectlyAnswered());
 
         $output = ob_get_clean();
 
