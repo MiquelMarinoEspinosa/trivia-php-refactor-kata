@@ -309,6 +309,8 @@ make install
             - That means that the difference between the current code coverage - `100%` - and the MSI - `95%` - it is low and the tests effectivelly covers the code
                 - From `182` mutants, there were `9` not detected and just `1` error :D
             - This provides extra trust on the current code coverage
-- Next step
+- Next steps
     - Cover the `add` method with extra assertions to kill another mutant
     - Start the refactor code process ^-^
+- Cover the `add` method with extra assertions to kill another mutant
+    - One less scaped mutant

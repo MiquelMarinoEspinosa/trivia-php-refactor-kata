@@ -16,8 +16,8 @@ final class GameTest extends TestCase
 
         $aGame = new Game();
   
-        $aGame->add("Player1");
-        $aGame->add("Player2");
+        self::assertTrue($aGame->add("Player1"));
+        self::assertTrue($aGame->add("Player2"));
 
         $aGame->roll(1);
         self::assertTrue($aGame->wrongAnswer());
@@ -100,7 +100,7 @@ final class GameTest extends TestCase
         ob_start();
 
         $aGame = new Game();
-        $aGame->add("Chet");
+        self::assertTrue($aGame->add("Player1"));
 
         ob_get_clean();
 
@@ -112,8 +112,8 @@ final class GameTest extends TestCase
         ob_start();
 
         $aGame = new Game();
-        $aGame->add("Chet");
-        $aGame->add("Pat");
+        self::assertTrue($aGame->add("Player1"));
+        self::assertTrue($aGame->add("Player2"));
 
         ob_get_clean();
         

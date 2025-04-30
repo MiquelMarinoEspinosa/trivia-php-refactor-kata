@@ -1,5 +1,3 @@
-Infection - PHP Mutation Testing Framework version 0.29.14
-
 
     ____      ____          __  _
    /  _/___  / __/__  _____/ /_(_)___  ____
@@ -23,7 +21,7 @@ Generate mutants...
 
 .: killed, M: escaped, U: uncovered, E: fatal error, X: syntax error, T: timed out, S: skipped, I: ignored
 
-............E.................M...............M..M   ( 50 / 192)
+............E.................M..................M   ( 50 / 192)
 ...................M.....................M........   (100 / 192)
 .................M.........................M......   (150 / 192)
 .....................M...................M           (192 / 192)
@@ -44,20 +42,7 @@ Escaped mutants:
      }
 
 
-2) /app/src/Game.php:59    [M] TrueValue
-
-@@ @@
-         $this->inPenaltyBox[$this->howManyPlayers()] = false;
-         echoln($playerName . " was added");
-         echoln("They are player number " . count($this->players));
--        return true;
-+        return false;
-     }
-     function howManyPlayers()
-     {
-
-
-3) /app/src/Game.php:62    [M] PublicVisibility
+2) /app/src/Game.php:62    [M] PublicVisibility
 
 @@ @@
          echoln("They are player number " . count($this->players));
@@ -70,7 +55,7 @@ Escaped mutants:
      }
 
 
-4) /app/src/Game.php:76    [M] GreaterThan
+3) /app/src/Game.php:76    [M] GreaterThan
 
 @@ @@
                  $this->isGettingOutOfPenaltyBox = true;
@@ -83,7 +68,7 @@ Escaped mutants:
                  echoln($this->players[$this->currentPlayer] . "'s new location is " . $this->places[$this->currentPlayer]);
 
 
-5) /app/src/Game.php:93    [M] GreaterThan
+4) /app/src/Game.php:93    [M] GreaterThan
 
 @@ @@
              }
@@ -96,7 +81,7 @@ Escaped mutants:
              echoln($this->players[$this->currentPlayer] . "'s new location is " . $this->places[$this->currentPlayer]);
 
 
-6) /app/src/Game.php:106    [M] PublicVisibility
+5) /app/src/Game.php:106    [M] PublicVisibility
 
 @@ @@
              $this->askQuestion();
@@ -109,7 +94,7 @@ Escaped mutants:
              echoln(array_shift($this->popQuestions));
 
 
-7) /app/src/Game.php:122    [M] PublicVisibility
+6) /app/src/Game.php:122    [M] PublicVisibility
 
 @@ @@
              echoln(array_shift($this->rockQuestions));
@@ -122,7 +107,7 @@ Escaped mutants:
              return "Pop";
 
 
-8) /app/src/Game.php:190    [M] Increment
+7) /app/src/Game.php:190    [M] Increment
 
 @@ @@
              $this->purses[$this->currentPlayer]++;
@@ -135,7 +120,7 @@ Escaped mutants:
              }
 
 
-9) /app/src/Game.php:212    [M] PublicVisibility
+8) /app/src/Game.php:212    [M] PublicVisibility
 
 @@ @@
          }
@@ -151,10 +136,10 @@ Escaped mutants:
 
 
 192 mutations were generated:
-     182 mutants were killed
+     183 mutants were killed
        0 mutants were configured to be ignored
        0 mutants were not covered by tests
-       9 covered mutants were not detected
+       8 covered mutants were not detected
        1 errors were encountered
        0 syntax errors were encountered
        0 time outs were encountered
