@@ -314,3 +314,23 @@ make install
     - Start the refactor code process ^-^
 - Cover the `add` method with extra assertions to kill another mutant
     - One less scaped mutant
+- Debug why `$this->currentPlayer--;` at the `wasCorrectlyAnswered` else branch mutant is not killed
+    - As it was commented, the reason is because the `Game` has just `2` players
+        - ```
+            $this->currentPlayer++;
+			if ($this->currentPlayer == count($this->players)) {
+				$this->currentPlayer = 0;
+			}
+        ```
+    - When the `currentPlayer` is `1` and it is decremented its value, it has exactly the same value that when reach the maximum number of players, which is `0`
+    - Adding an extra player should solve catch this mutation
+    - Presumabily would imply adding extra rolls to keep the `100%` coverage
+    - If so, it would worth it to add an extra small `approval test` to cover this logic
+    - Adding a third player to the current `approval test`
+        - Decreases the coverage from `100%` -> `96.40%` :/
+    - Let's add an extra approval test with 3 `players` and just a few `rolls`. Let's start with `3` rolls for instance
+    - Introduce the mutan breaking change
+        - Manual breaking change covered :)
+    - Execute `infection` mutation testing
+        - One mutant more captured
+        - `MSI` increased from `95%` -> `96%` :D

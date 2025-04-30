@@ -1,0 +1,27 @@
+Player1 was added
+They are player number 1
+Player2 was added
+They are player number 2
+Player3 was added
+They are player number 3
+Player1 is the current player
+They have rolled a 1
+Player1's new location is 1
+The category is Science
+Science Question 0
+Question was incorrectly answered
+Player1 was sent to the penalty box
+Player2 is the current player
+They have rolled a 2
+Player2's new location is 2
+The category is Sports
+Sports Question 0
+Answer was corrent!!!!
+Player2 now has 1 Gold Coins.
+Player3 is the current player
+They have rolled a 3
+Player3's new location is 3
+The category is Rock
+Rock Question 0
+Answer was corrent!!!!
+Player3 now has 1 Gold Coins.

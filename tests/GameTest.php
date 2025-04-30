@@ -84,6 +84,30 @@ final class GameTest extends TestCase
         Approvals::verifyString($output);
     }
 
+    public function testGivenThreePlayersWhenPlayGameItIsRightPlayerTurn(): void
+    {
+        ob_start();
+
+        $aGame = new Game();
+  
+        self::assertTrue($aGame->add("Player1"));
+        self::assertTrue($aGame->add("Player2"));
+        self::assertTrue($aGame->add("Player3"));
+
+        $aGame->roll(1);
+        self::assertTrue($aGame->wrongAnswer());
+
+        $aGame->roll(2);
+        self::assertTrue($aGame->wasCorrectlyAnswered());
+
+        $aGame->roll(3);
+        self::assertTrue($aGame->wasCorrectlyAnswered());
+
+        $output = ob_get_clean();
+
+        Approvals::verifyString($output);
+    }
+
     public function testShouldTheGameBeNotPlayableWhenZeroPlayersHaveBeenAdded(): void 
     {
         ob_start();

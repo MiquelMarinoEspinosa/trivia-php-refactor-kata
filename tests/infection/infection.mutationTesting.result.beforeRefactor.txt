@@ -24,7 +24,7 @@ Generate mutants...
 ............E.................M..................M   ( 50 / 192)
 ...................M.....................M........   (100 / 192)
 .................M.........................M......   (150 / 192)
-.....................M...................M           (192 / 192)
+.........................................M           (192 / 192)
 Escaped mutants:
 ================
 
@@ -107,20 +107,7 @@ Escaped mutants:
              return "Pop";
 
 
-7) /app/src/Game.php:190    [M] Increment
-
-@@ @@
-             $this->purses[$this->currentPlayer]++;
-             echoln($this->players[$this->currentPlayer] . " now has " . $this->purses[$this->currentPlayer] . " Gold Coins.");
-             $winner = $this->didPlayerWin();
--            $this->currentPlayer++;
-+            $this->currentPlayer--;
-             if ($this->currentPlayer == count($this->players)) {
-                 $this->currentPlayer = 0;
-             }
-
-
-8) /app/src/Game.php:212    [M] PublicVisibility
+7) /app/src/Game.php:212    [M] PublicVisibility
 
 @@ @@
          }
@@ -136,19 +123,19 @@ Escaped mutants:
 
 
 192 mutations were generated:
-     183 mutants were killed
+     184 mutants were killed
        0 mutants were configured to be ignored
        0 mutants were not covered by tests
-       8 covered mutants were not detected
+       7 covered mutants were not detected
        1 errors were encountered
        0 syntax errors were encountered
        0 time outs were encountered
        0 mutants required more time than configured
 
 Metrics:
-         Mutation Score Indicator (MSI): 95%
+         Mutation Score Indicator (MSI): 96%
          Mutation Code Coverage: 100%
-         Covered Code MSI: 95%
+         Covered Code MSI: 96%
 
 Please note that some mutants will inevitably be harmless (i.e. false positives).
 
