@@ -18,8 +18,8 @@ final class Game
     private bool $isGettingOutOfPenaltyBox;
 
     public function __construct()
-    {
-		$this->currentPlayer = 0;
+	{
+        $this->currentPlayer = 0;
 		$this->players = [];
 		$this->places = [0];
 		$this->purses  = [0];
