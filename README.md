@@ -414,3 +414,4 @@ make install
         - Save `currentPlayer` value into a `temp` variable for printing porpuses and `slide` variables grouping them at the `presentation` logic
         - Add parameter to ask `didPlayerWin` by player
         - Slide `business` logic at top of the method
+        - Save `currentPlayer` at the beggining of the execution

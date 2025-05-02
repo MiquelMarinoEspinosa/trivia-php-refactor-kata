@@ -61,6 +61,8 @@ final class Game
 
     public function wasCorrectlyAnswered(): bool
     {
+        $currentPlayer = $this->currentPlayer;
+
         if ($this->inPenaltyBox[$this->currentPlayer]) {
             if (!$this->isGettingOutOfPenaltyBox) {
                 $this->currentPlayer++;
@@ -72,8 +74,6 @@ final class Game
         }
 
         $this->purses[$this->currentPlayer]++;
-        
-        $currentPlayer = $this->currentPlayer;
 
         $this->currentPlayer++;
         if ($this->currentPlayer == count($this->players)) {
