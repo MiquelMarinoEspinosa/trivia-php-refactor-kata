@@ -160,7 +160,11 @@ final class Game
 
     private function isCurrentPlayerGettingOutOfPenaltyBox(): bool
     {
-        return ($this->inPenaltyBox[$this->currentPlayer] && $this->isGettingOutOfPenaltyBox === false) === false;
+        if (!$this->inPenaltyBox[$this->currentPlayer]) {
+            return true;
+        }
+
+        return $this->isGettingOutOfPenaltyBox === true;
     }
 
     private function printPostRollMessage(): void

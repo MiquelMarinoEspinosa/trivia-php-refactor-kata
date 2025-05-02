@@ -400,3 +400,4 @@ make install
         - Extract the last `roll` presentation message into a new method called `printPostRollMessage`
         - Extract `roll` `business logic` into a new method called `processRoll`
         - There are duplication code related to the penalty box condition which would like to be remove extrating it into a new method and use it as a `query`
+            - Now the method is returning `false` for a certain condition making difficult to read. The condition will be turn into positive return in case the user is getting out of penalty box
