@@ -38,17 +38,17 @@ class Game
         }
     }
 
-    private function createRockQuestion($index)
+    private function createRockQuestion(int $index): string
     {
         return "Rock Question " . $index;
     }
 
-    public function isPlayable()
+    public function isPlayable(): bool
     {
         return ($this->howManyPlayers() >= 2);
     }
 
-    public function add($playerName)
+    public function add(string $playerName): bool
     {
         array_push($this->players, $playerName);
         $this->places[$this->howManyPlayers()] = 0;
@@ -60,12 +60,12 @@ class Game
         return true;
     }
 
-    private function howManyPlayers()
+    private function howManyPlayers(): int
     {
         return count($this->players);
     }
 
-    public function roll($roll)
+    public function roll(int $roll): void
     {
         $this->echoln($this->players[$this->currentPlayer] . " is the current player");
         $this->echoln("They have rolled a " . $roll);
@@ -104,7 +104,7 @@ class Game
 
     }
 
-    private function askQuestion()
+    private function askQuestion(): void
     {
         if ($this->currentCategory() == "Pop") {
             $this->echoln(array_shift($this->popQuestions));
@@ -121,7 +121,7 @@ class Game
     }
 
 
-    private function currentCategory()
+    private function currentCategory(): string
     {
         if ($this->places[$this->currentPlayer] == 0) {
             return "Pop";
@@ -153,7 +153,7 @@ class Game
         return "Rock";
     }
 
-    public function wasCorrectlyAnswered()
+    public function wasCorrectlyAnswered(): bool
     {
         if ($this->inPenaltyBox[$this->currentPlayer]) {
             if ($this->isGettingOutOfPenaltyBox) {
@@ -196,7 +196,7 @@ class Game
         }
     }
 
-    public function wrongAnswer()
+    public function wrongAnswer(): bool
     {
         $this->echoln("Question was incorrectly answered");
         $this->echoln($this->players[$this->currentPlayer] . " was sent to the penalty box");
@@ -209,7 +209,7 @@ class Game
         return true;
     }
 
-    private function didPlayerWin()
+    private function didPlayerWin(): bool
     {
         return !($this->purses[$this->currentPlayer] == 6);
     }
