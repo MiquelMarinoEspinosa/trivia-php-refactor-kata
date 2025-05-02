@@ -411,3 +411,4 @@ make install
         - This way some duplication can be removed once the typo has been fixed
         - Remove `answer was correct` duplication logic for a branch of the `if` condition and the `else` branch
             - As a rule of thumb, the `else` branches can be replaced by `safe guard early returns` making the code more readable and easier to understand :)
+        - Save `currentPlayer` value into a `temp` variable for printing porpuses and `slide` variables grouping them at the `presentation` logic

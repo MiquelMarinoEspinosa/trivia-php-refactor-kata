@@ -71,11 +71,12 @@ final class Game
             }
         }
 
+        $currentPlayer = $this->currentPlayer;
         $this->echoln("Answer was correct!!!!");
         $this->purses[$this->currentPlayer]++;
-        $this->echoln($this->players[$this->currentPlayer]
+        $this->echoln($this->players[$currentPlayer]
                 . " now has "
-                .$this->purses[$this->currentPlayer]
+                . $this->purses[$currentPlayer]
                 . " Gold Coins.");
 
         $winner = $this->didPlayerWin();
