@@ -24,6 +24,7 @@ final class Game
         $this->places = [0];
         $this->purses  = [0];
         $this->inPenaltyBox  = [0];
+        $this->isGettingOutOfPenaltyBox = true;
         
         $this->popQuestions = [];
         $this->scienceQuestions = [];
@@ -63,22 +64,10 @@ final class Game
     {
         $player = $this->currentPlayer;
 
-        if ($this->isCurrentPlayerGettingOutOfPenaltyBox() === false) {
-            $this->currentPlayer++;
-            if ($this->currentPlayer == count($this->players)) {
-                $this->currentPlayer = 0;
-            }
-        }
+        $this->processCorrectAnswer();
 
         if ($this->isCurrentPlayerGettingOutOfPenaltyBox() === false) {
             return true;
-        }
-
-        $this->purses[$this->currentPlayer]++;
-
-        $this->currentPlayer++;
-        if ($this->currentPlayer == count($this->players)) {
-            $this->currentPlayer = 0;
         }
         
         return $this->printAnswerCorrect($player);
@@ -158,17 +147,6 @@ final class Game
         $this->askQuestion();
     }
 
-    private function printAnswerCorrect(string $player): bool
-    {
-        $this->echoln("Answer was correct!!!!");
-        $this->echoln($this->players[$player]
-                . " now has "
-                . $this->purses[$player]
-                . " Gold Coins.");
-
-        return $this->didPlayerWin($player);
-    }
-
     private function printPenaltyBoxMessage(int $roll): void 
     {
         if (!$this->inPenaltyBox[$this->currentPlayer]) {
@@ -185,6 +163,38 @@ final class Game
         }
 
         return " is not getting out of the penalty box";
+    }
+
+    private function processCorrectAnswer(): void
+    {
+        if ($this->isCurrentPlayerGettingOutOfPenaltyBox() === false) {
+            $this->currentPlayer++;
+            if ($this->currentPlayer == count($this->players)) {
+                $this->currentPlayer = 0;
+            }
+        }
+
+        if ($this->isCurrentPlayerGettingOutOfPenaltyBox() === false) {
+            return;
+        }
+
+        $this->purses[$this->currentPlayer]++;
+
+        $this->currentPlayer++;
+        if ($this->currentPlayer == count($this->players)) {
+            $this->currentPlayer = 0;
+        }
+    }
+
+    private function printAnswerCorrect(string $player): bool
+    {
+        $this->echoln("Answer was correct!!!!");
+        $this->echoln($this->players[$player]
+                . " now has "
+                . $this->purses[$player]
+                . " Gold Coins.");
+
+        return $this->didPlayerWin($player);
     }
 
     private function askQuestion(): void

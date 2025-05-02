@@ -422,3 +422,4 @@ make install
         - Duplicate penalty box condition to apply early return to avoid printing answer correct and simplify condition
         - Extract condition into a new method called `isCurrentPlayerInPenaltyBox`
             - Since the condition logic looked similar to the one implemented at `isCurrentPlayerGettingOutOfPenaltyBox` it has been tried to use the result method in this condition, at it worked! ^^
+        - Extract the `business` logic into a new method called `processCorrectAnswer`
