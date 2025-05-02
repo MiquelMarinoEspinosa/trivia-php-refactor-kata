@@ -10,6 +10,8 @@ use PHPUnit\Framework\TestCase;
 
 final class GameTest extends TestCase
 {
+    private const int INITAL_NUMBER_QUESTIONS = 50;
+
     private Game $aGame;
 
     protected function setUp(): void
@@ -141,9 +143,21 @@ final class GameTest extends TestCase
 
     public function testShouldTheGameHasGotFiftyQuestionsForEachCategory(): void
     {
-        self::assertSame(50, count($this->aGame->popQuestions));
-        self::assertSame(50, count($this->aGame->scienceQuestions));
-        self::assertSame(50, count($this->aGame->sportsQuestions));
-        self::assertSame(50, count($this->aGame->rockQuestions));
+        self::assertSame(
+            self::INITAL_NUMBER_QUESTIONS,
+            count($this->aGame->popQuestions)
+        );
+        self::assertSame(
+            self::INITAL_NUMBER_QUESTIONS,
+            count($this->aGame->scienceQuestions)
+        );
+        self::assertSame(
+            self::INITAL_NUMBER_QUESTIONS,
+            count($this->aGame->sportsQuestions)
+        );
+        self::assertSame(
+            self::INITAL_NUMBER_QUESTIONS,
+            count($this->aGame->rockQuestions)
+        );
     }
 }
