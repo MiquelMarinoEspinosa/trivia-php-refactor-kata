@@ -10,74 +10,79 @@ use PHPUnit\Framework\TestCase;
 
 final class GameTest extends TestCase
 {
+    private Game $aGame;
+
+    protected function setUp(): void
+    {
+        $this->aGame = new Game();
+    }
+
     public function testPlayGame(): void
     {
         ob_start();
-
-        $aGame = new Game();
   
-        self::assertTrue($aGame->add("Player1"));
-        self::assertTrue($aGame->add("Player2"));
+        self::assertTrue($this->aGame->add("Player1"));
+        self::assertTrue($this->aGame->add("Player2"));
 
-        $aGame->roll(1);
-        self::assertTrue($aGame->wrongAnswer());
+        $this->aGame->roll(1);
+        self::assertTrue($this->aGame->wrongAnswer());
 
-        $aGame->roll(2);
-        self::assertTrue($aGame->wasCorrectlyAnswered());
+        $this->aGame->roll(2);
+        self::assertTrue($this->aGame->wasCorrectlyAnswered());
 
-        $aGame->roll(3);
-        self::assertTrue($aGame->wasCorrectlyAnswered());
+        $this->aGame->roll(3);
+        self::assertTrue($this->aGame->wasCorrectlyAnswered());
 
-        $aGame->roll(4);
-        self::assertTrue($aGame->wasCorrectlyAnswered());
+        $this->aGame->roll(4);
+        self::assertTrue($this->aGame->wasCorrectlyAnswered());
 
-        $aGame->roll(5);
-        self::assertTrue($aGame->wasCorrectlyAnswered());
+        $this->aGame->roll(5);
+        self::assertTrue($this->aGame->wasCorrectlyAnswered());
 
-        $aGame->roll(6);
-        self::assertTrue($aGame->wasCorrectlyAnswered());
+        $this->aGame->roll(6);
+        self::assertTrue($this->aGame->wasCorrectlyAnswered());
 
-        $aGame->roll(3);
-        self::assertTrue($aGame->wasCorrectlyAnswered());
+        $this->aGame->roll(3);
+        self::assertTrue($this->aGame->wasCorrectlyAnswered());
 
-        $aGame->roll(6);
-        self::assertTrue($aGame->wasCorrectlyAnswered());
+        $this->aGame->roll(6);
+        self::assertTrue($this->aGame->wasCorrectlyAnswered());
         
-        $aGame->roll(5);
-        self::assertTrue($aGame->wrongAnswer());
+        $this->aGame->roll(5);
+        self::assertTrue($this->aGame->wrongAnswer());
 
-        $aGame->roll(4);
-        self::assertTrue($aGame->wasCorrectlyAnswered());
+        $this->aGame->roll(4);
+        self::assertTrue($this->aGame->wasCorrectlyAnswered());
 
-        $aGame->roll(3);
-        self::assertTrue($aGame->wasCorrectlyAnswered());
+        $this->aGame->roll(3);
+        self::assertTrue($this->aGame->wasCorrectlyAnswered());
 
-        $aGame->roll(2);
-        self::assertTrue($aGame->wrongAnswer());
+        $this->aGame->roll(2);
+        self::assertTrue($this->aGame->wrongAnswer());
 
-        $aGame->roll(1);
-        self::assertTrue($aGame->wasCorrectlyAnswered());
+        $this->aGame->roll(1);
+        self::assertTrue($this->aGame->wasCorrectlyAnswered());
 
-        $aGame->roll(5);
-        self::assertFalse($aGame->wasCorrectlyAnswered());
+        $this->aGame->roll(5);
+        self::assertFalse($this->aGame->wasCorrectlyAnswered());
 
-        $aGame->roll(6);
-        self::assertTrue($aGame->wasCorrectlyAnswered());
+        $this->aGame->roll(6);
+        self::assertTrue($this->aGame->wasCorrectlyAnswered());
 
-        $aGame->roll(3);
-        self::assertTrue($aGame->wrongAnswer());
+        $this->aGame->roll(3);
+        self::assertTrue($this->aGame->wrongAnswer());
 
-        $aGame->roll(5);
-        self::assertFalse($aGame->wasCorrectlyAnswered());
+        $this->aGame->roll(5);
+        self::assertFalse($this->aGame->wasCorrectlyAnswered());
 
-        $aGame->roll(2);
-        self::assertTrue($aGame->wasCorrectlyAnswered());
+        $this->aGame->roll(2);
+        self::assertTrue($this->aGame->wasCorrectlyAnswered());
 
-        $aGame->roll(5);
-        self::assertTrue($aGame->wrongAnswer());
+        $this->aGame->roll(5);
+        self::assertTrue($this->aGame->wrongAnswer());
 
-        $aGame->roll(6);
-        self::assertTrue($aGame->wasCorrectlyAnswered());
+        $this->aGame->roll(6);
+        self::assertTrue($this->aGame->wasCorrectlyAnswered());
 
         $output = ob_get_clean();
 
@@ -87,21 +92,19 @@ final class GameTest extends TestCase
     public function testGivenThreePlayersWhenPlayGameItIsRightPlayerTurn(): void
     {
         ob_start();
-
-        $aGame = new Game();
   
-        self::assertTrue($aGame->add("Player1"));
-        self::assertTrue($aGame->add("Player2"));
-        self::assertTrue($aGame->add("Player3"));
+        self::assertTrue($this->aGame->add("Player1"));
+        self::assertTrue($this->aGame->add("Player2"));
+        self::assertTrue($this->aGame->add("Player3"));
 
-        $aGame->roll(1);
-        self::assertTrue($aGame->wrongAnswer());
+        $this->aGame->roll(1);
+        self::assertTrue($this->aGame->wrongAnswer());
 
-        $aGame->roll(2);
-        self::assertTrue($aGame->wasCorrectlyAnswered());
+        $this->aGame->roll(2);
+        self::assertTrue($this->aGame->wasCorrectlyAnswered());
 
-        $aGame->roll(3);
-        self::assertTrue($aGame->wasCorrectlyAnswered());
+        $this->aGame->roll(3);
+        self::assertTrue($this->aGame->wasCorrectlyAnswered());
 
         $output = ob_get_clean();
 
@@ -110,47 +113,37 @@ final class GameTest extends TestCase
 
     public function testShouldTheGameBeNotPlayableWhenZeroPlayersHaveBeenAdded(): void 
     {
-        ob_start();
-
-        $aGame = new Game();
-        
-        ob_get_clean();
-
-        self::assertFalse($aGame->isPlayable());
+        self::assertFalse($this->aGame->isPlayable());
     }
 
     public function testShouldTheGameBeNotPlayableWhenOnePlayersHaveBeenAdded(): void 
     {
         ob_start();
 
-        $aGame = new Game();
-        self::assertTrue($aGame->add("Player1"));
+        self::assertTrue($this->aGame->add("Player1"));
 
         ob_get_clean();
 
-        self::assertFalse($aGame->isPlayable());
+        self::assertFalse($this->aGame->isPlayable());
     }
 
     public function testShouldTheGameBePlayableWhenTwoPlayersHaveBeenAdded(): void 
     {
         ob_start();
 
-        $aGame = new Game();
-        self::assertTrue($aGame->add("Player1"));
-        self::assertTrue($aGame->add("Player2"));
+        self::assertTrue($this->aGame->add("Player1"));
+        self::assertTrue($this->aGame->add("Player2"));
 
         ob_get_clean();
         
-        self::assertTrue($aGame->isPlayable());
+        self::assertTrue($this->aGame->isPlayable());
     }
 
     public function testShouldTheGameHasGotFiftyQuestionsForEachCategory(): void
     {
-        $aGame = new Game();
-
-        self::assertSame(50, count($aGame->popQuestions));
-        self::assertSame(50, count($aGame->scienceQuestions));
-        self::assertSame(50, count($aGame->sportsQuestions));
-        self::assertSame(50, count($aGame->rockQuestions));
+        self::assertSame(50, count($this->aGame->popQuestions));
+        self::assertSame(50, count($this->aGame->scienceQuestions));
+        self::assertSame(50, count($this->aGame->sportsQuestions));
+        self::assertSame(50, count($this->aGame->rockQuestions));
     }
 }
