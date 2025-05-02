@@ -368,15 +368,15 @@ make install
     ```
     - The IDE force to add `type hinting` to these fields. In the next iteration, type hinting will be added to the rest of the fields
     - In further iterations a more elegant solution might be found. For now, it is ok
-    - Refactor test class introducing `setUp` method to instantiate at each test the `Game` class
-    - Refactor test class extract number questions into constant
-    - Add `type hint` to the `fields` at `Game` class
-    - Add `type hint` to the `parameters` and `return` to the `Game` `methods`
-    - Initialize `currentPlayer` field at `__construct` method
-    - Change `array` initialization to `[]` syntax
-    - Make `Game` class final
-    - Sort method to have `public` method first and `private` methods last
-    - At this point, I will take some time to analyze the current `Game` code structure in high level
-        - The methods `roll` and `wasCorrectlyAnswered` are the ones with more indentation levels and code paragraph
-        - During the testing phase, it has been identified some duplication code which could be remove
-        - Let's start to extract paragraph codes into methods and see whether the duplication can be remove using this technique 
+- Refactor test class introducing `setUp` method to instantiate at each test the `Game` class
+- Refactor test class extract number questions into constant
+- Add `type hint` to the `fields` at `Game` class
+- Add `type hint` to the `parameters` and `return` to the `Game` `methods`
+- Initialize `currentPlayer` field at `__construct` method
+- Change `array` initialization to `[]` syntax
+- Make `Game` class final
+- Sort method to have `public` method first and `private` methods last
+- At this point, I will take some time to analyze the current `Game` code structure in high level
+    - The methods `roll` and `wasCorrectlyAnswered` are the ones with more indentation levels and code paragraph
+    - During the testing phase, it has been identified some duplication code which could be remove
+    - Let's start to extract paragraph codes into methods and see whether the duplication can be remove using this technique 
