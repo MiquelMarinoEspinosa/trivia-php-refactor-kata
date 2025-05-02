@@ -176,7 +176,6 @@ final class Game
         }
     }
 
-
     private function currentCategory(): string
     {
         if ($this->places[$this->currentPlayer] == 0) {

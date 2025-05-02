@@ -376,3 +376,7 @@ make install
     - Change `array` initialization to `[]` syntax
     - Make `Game` class final
     - Sort method to have `public` method first and `private` methods last
+    - At this point, I will take some time to analyze the current `Game` code structure in high level
+        - The methods `roll` and `wasCorrectlyAnswered` are the ones with more indentation levels and code paragraph
+        - During the testing phase, it has been identified some duplication code which could be remove
+        - Let's start to extract paragraph codes into methods and see whether the duplication can be remove using this technique 
