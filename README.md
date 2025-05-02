@@ -425,3 +425,8 @@ make install
         - Extract the `business` logic into a new method called `processCorrectAnswer`
         - `Tell don't ask` at `answer correct` printing method
         - introduce `player` temp variable to remove conditions code duplication at `processCorrectAnswer` method
+    - Just like the `roll` method in previous iterations, the `wasCorrectlyAnswered` `business` logic has been decoupled from its `presentation` logic, ready to be move to a new class if needed
+- Next steps
+    - Decouple `wrongAnswer` `business` logic from `presentation` logic
+    - Explore other logic that should be remove
+    - Introduce an `inline anonymous class` to start to relocate the `business` to a new class
