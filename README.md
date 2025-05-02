@@ -386,4 +386,5 @@ make install
     - Extract common logic presentation for both conditional branches at `roll` method removing this way some duplicated code
     - Now I am going to proceed to `duplicate conditional` to decouple `presentation` from `business` logic at `$this->inPenaltyBox[$this->currentPlayer]` condition
     - After these refactors, I can remove some extra duplicated `business` logic which is related to upgrade the `$this->places[$this->currentPlayer]`
-    - Add a `safe guard` when player still stays at penalty box 
+    - Add a `safe guard` when player still stays at penalty box
+    - Simplify penalty box `business logic` condition to reduce nesting levels

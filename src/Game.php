@@ -64,11 +64,7 @@ final class Game
         }
 
         if ($this->inPenaltyBox[$this->currentPlayer]) {
-            if ($roll % 2 != 0) {
-                $this->isGettingOutOfPenaltyBox = true;
-            } else {
-                $this->isGettingOutOfPenaltyBox = false;
-            }
+			$this->isGettingOutOfPenaltyBox = $roll % 2 != 0;
         }
 
 		if ($this->inPenaltyBox[$this->currentPlayer] && $this->isGettingOutOfPenaltyBox === false) {
