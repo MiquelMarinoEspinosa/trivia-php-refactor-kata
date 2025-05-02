@@ -56,10 +56,6 @@ final class Game
 
         $this->processRoll($roll);
 
-        if ($this->isCurrentPlayerGettingOutOfPenaltyBox() === false) {
-            return;
-        }
-    
         $this->printPostRollMessage();
     }
 
@@ -169,6 +165,10 @@ final class Game
 
     private function printPostRollMessage(): void
     {
+        if ($this->isCurrentPlayerGettingOutOfPenaltyBox() === false) {
+            return;
+        }
+
         $this->echoln($this->players[$this->currentPlayer]
                     . "'s new location is "
                     .$this->places[$this->currentPlayer]);
