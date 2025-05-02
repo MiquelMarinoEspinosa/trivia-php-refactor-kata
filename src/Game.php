@@ -67,11 +67,7 @@ final class Game
             $this->places[$this->currentPlayer] = $this->places[$this->currentPlayer] - 12;
         }
 
-        $this->echoln($this->players[$this->currentPlayer]
-                    . "'s new location is "
-                    .$this->places[$this->currentPlayer]);
-        $this->echoln("The category is " . $this->currentCategory());
-        $this->askQuestion();
+        $this->printPostRollMessage();
     }
 
     public function wasCorrectlyAnswered(): bool
@@ -151,6 +147,15 @@ final class Game
         $this->echoln("They have rolled a " . $roll);
 
         $this->printPenaltyBoxMessage($roll);
+    }
+
+    private function printPostRollMessage(): void
+    {
+        $this->echoln($this->players[$this->currentPlayer]
+                    . "'s new location is "
+                    .$this->places[$this->currentPlayer]);
+        $this->echoln("The category is " . $this->currentCategory());
+        $this->askQuestion();
     }
 
     private function printPenaltyBoxMessage(int $roll): void 
