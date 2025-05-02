@@ -14,12 +14,12 @@ class Game
     public private(set) array $sportsQuestions;
     public private(set) array $rockQuestions;
 
-    private int $currentPlayer = 0;
+    private int $currentPlayer;
     private bool $isGettingOutOfPenaltyBox;
 
     public function __construct()
     {
-
+		$this->currentPlayer = 0;
         $this->players = array();
         $this->places = array(0);
         $this->purses  = array(0);

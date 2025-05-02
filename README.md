@@ -371,4 +371,5 @@ make install
     - Refactor test class introducing `setUp` method to instantiate at each test the `Game` class
     - Refactor test class extract number questions into constant
     - Add `type hint` to the `fields` at `Game` class
-    - Add `type hint` to the `parameters` and `return` to the `Game` `methods`  
+    - Add `type hint` to the `parameters` and `return` to the `Game` `methods`
+    - Initialize `currentPlayer` field at `__construct` method 
