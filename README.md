@@ -359,4 +359,12 @@ make install
     - Therefore, the method will be move to the `Game` class and declare it as `private`
 - There are some format to fix to improve readability. That will be done using an external tool called [PHP-CS-Fixer](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer)
     - The tool has done a good job. Just some manual fixes would be needed
-    - It has also added `public` visibility to the the `Game` fields. This change would be undone because I would like to do this one in the next iteration 
+    - It has also added `public` visibility to the the `Game` fields. This change would be undone because I would like to do this one in the next iteration
+- Add visibility to the `Game` class fields. By the default, they all should be `private`
+    - In order to check the `50` questions rightly initialized, the `questions` array must be `public`
+    - At this point, it can be used the [Asymetric Property Visibility](https://www.php.net/manual/en/language.oop5.visibility.php#language.oop5.visibility-members-aviz) introduced at the `8.4` php version. It consists in that a field can be `public` but its `setter` be `private`, not allowing its modification from outside. Here there is a sample implementation:
+    ```
+        public private(set) array $popQuestions;
+    ```
+    - The IDE force to add `type hinting` to these fields. In the next iteration, type hinting will be added to the rest of the fields
+    - In further iterations a more elegant solution might be found. For now, it is ok
