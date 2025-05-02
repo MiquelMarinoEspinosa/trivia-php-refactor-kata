@@ -66,21 +66,16 @@ final class Game
         if ($this->inPenaltyBox[$this->currentPlayer]) {
             if ($roll % 2 != 0) {
                 $this->isGettingOutOfPenaltyBox = true;
-
-                $this->places[$this->currentPlayer] = $this->places[$this->currentPlayer] + $roll;
-                if ($this->places[$this->currentPlayer] > 11) {
-                    $this->places[$this->currentPlayer] = $this->places[$this->currentPlayer] - 12;
-                }
             } else {
                 $this->isGettingOutOfPenaltyBox = false;
 				return;
             }
-        } else {
-            $this->places[$this->currentPlayer] = $this->places[$this->currentPlayer] + $roll;
-            if ($this->places[$this->currentPlayer] > 11) {
-                $this->places[$this->currentPlayer] = $this->places[$this->currentPlayer] - 12;
-            }
         }
+
+		$this->places[$this->currentPlayer] = $this->places[$this->currentPlayer] + $roll;
+		if ($this->places[$this->currentPlayer] > 11) {
+			$this->places[$this->currentPlayer] = $this->places[$this->currentPlayer] - 12;
+		}
 
 		$this->echoln($this->players[$this->currentPlayer]
                     . "'s new location is "
