@@ -64,29 +64,23 @@ final class Game
                 if ($this->places[$this->currentPlayer] > 11) {
                     $this->places[$this->currentPlayer] = $this->places[$this->currentPlayer] - 12;
                 }
-
-                $this->echoln($this->players[$this->currentPlayer]
-                        . "'s new location is "
-                        .$this->places[$this->currentPlayer]);
-                $this->echoln("The category is " . $this->currentCategory());
-                $this->askQuestion();
             } else {
                 $this->echoln($this->players[$this->currentPlayer] . " is not getting out of the penalty box");
                 $this->isGettingOutOfPenaltyBox = false;
+				return;
             }
         } else {
             $this->places[$this->currentPlayer] = $this->places[$this->currentPlayer] + $roll;
             if ($this->places[$this->currentPlayer] > 11) {
                 $this->places[$this->currentPlayer] = $this->places[$this->currentPlayer] - 12;
             }
-
-            $this->echoln($this->players[$this->currentPlayer]
-                    . "'s new location is "
-                    .$this->places[$this->currentPlayer]);
-            $this->echoln("The category is " . $this->currentCategory());
-            $this->askQuestion();
         }
 
+		$this->echoln($this->players[$this->currentPlayer]
+                    . "'s new location is "
+                    .$this->places[$this->currentPlayer]);
+		$this->echoln("The category is " . $this->currentCategory());
+		$this->askQuestion();
     }
 
 	public function wasCorrectlyAnswered(): bool

@@ -382,4 +382,5 @@ make install
     - Let's start to extract paragraph codes into methods and see whether the duplication can be remove using this technique 
 - Before extracting any method, as explained at the beggining of this section, the aim would be decoupling `presentation` from `business` logic. Now the `presentation` rely on the current `business` status and displays the current status at every action took. The idea would be try to make all the actions at once and then display the information once all the actions had happened
     - To achive that, it would be needed to save some information in temp variables or fields
-      
+- Let's start decoupling `presentation` from `business` logic at `roll` method
+    - Extract common logic presentation for both conditional branches at `roll` method removing this way some duplicated code
