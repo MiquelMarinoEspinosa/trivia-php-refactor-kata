@@ -62,44 +62,29 @@ final class Game
     public function wasCorrectlyAnswered(): bool
     {
         if ($this->inPenaltyBox[$this->currentPlayer]) {
-            if ($this->isGettingOutOfPenaltyBox) {
-                $this->echoln("Answer was correct!!!!");
-                $this->purses[$this->currentPlayer]++;
-                $this->echoln($this->players[$this->currentPlayer]
-                        . " now has "
-                        .$this->purses[$this->currentPlayer]
-                        . " Gold Coins.");
-
-                $winner = $this->didPlayerWin();
-                $this->currentPlayer++;
-                if ($this->currentPlayer == count($this->players)) {
-                    $this->currentPlayer = 0;
-                }
-
-                return $winner;
-            } else {
+            if (!$this->isGettingOutOfPenaltyBox) {
                 $this->currentPlayer++;
                 if ($this->currentPlayer == count($this->players)) {
                     $this->currentPlayer = 0;
                 }
                 return true;
             }
-        } else {
-            $this->echoln("Answer was correct!!!!");
-            $this->purses[$this->currentPlayer]++;
-            $this->echoln($this->players[$this->currentPlayer]
-                    . " now has "
-                    .$this->purses[$this->currentPlayer]
-                    . " Gold Coins.");
-
-            $winner = $this->didPlayerWin();
-            $this->currentPlayer++;
-            if ($this->currentPlayer == count($this->players)) {
-                $this->currentPlayer = 0;
-            }
-
-            return $winner;
         }
+
+        $this->echoln("Answer was correct!!!!");
+        $this->purses[$this->currentPlayer]++;
+        $this->echoln($this->players[$this->currentPlayer]
+                . " now has "
+                .$this->purses[$this->currentPlayer]
+                . " Gold Coins.");
+
+        $winner = $this->didPlayerWin();
+        $this->currentPlayer++;
+        if ($this->currentPlayer == count($this->players)) {
+            $this->currentPlayer = 0;
+        }
+
+        return $winner;
     }
 
     public function wrongAnswer(): bool
