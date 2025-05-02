@@ -65,10 +65,6 @@ final class Game
         $player = $this->currentPlayer;
 
         $this->processCorrectAnswer();
-
-        if ($this->isCurrentPlayerGettingOutOfPenaltyBox() === false) {
-            return true;
-        }
         
         return $this->printAnswerCorrect($player);
     }
@@ -188,6 +184,10 @@ final class Game
 
     private function printAnswerCorrect(string $player): bool
     {
+        if ($this->isCurrentPlayerGettingOutOfPenaltyBox() === false) {
+            return true;
+        }
+
         $this->echoln("Answer was correct!!!!");
         $this->echoln($this->players[$player]
                 . " now has "
