@@ -372,4 +372,5 @@ make install
     - Refactor test class extract number questions into constant
     - Add `type hint` to the `fields` at `Game` class
     - Add `type hint` to the `parameters` and `return` to the `Game` `methods`
-    - Initialize `currentPlayer` field at `__construct` method 
+    - Initialize `currentPlayer` field at `__construct` method
+    - Change `array` initialization to `[]` syntax 

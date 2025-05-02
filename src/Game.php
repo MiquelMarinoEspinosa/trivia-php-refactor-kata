@@ -20,15 +20,15 @@ class Game
     public function __construct()
     {
 		$this->currentPlayer = 0;
-        $this->players = array();
-        $this->places = array(0);
-        $this->purses  = array(0);
-        $this->inPenaltyBox  = array(0);
+        $this->players = [];
+        $this->places = [0];
+        $this->purses  = [0];
+        $this->inPenaltyBox  = [0];
 
-        $this->popQuestions = array();
-        $this->scienceQuestions = array();
-        $this->sportsQuestions = array();
-        $this->rockQuestions = array();
+        $this->popQuestions = [];
+        $this->scienceQuestions = [];
+        $this->sportsQuestions = [];
+        $this->rockQuestions = [];
 
         for ($i = 0; $i < 50; $i++) {
             array_push($this->popQuestions, "Pop Question " . $i);
@@ -214,7 +214,7 @@ class Game
         return !($this->purses[$this->currentPlayer] == 6);
     }
 
-    private function echoln($string)
+    private function echoln($string): void
     {
         echo $string."\n";
     }
