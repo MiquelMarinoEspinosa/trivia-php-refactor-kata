@@ -1,4 +1,4 @@
-.PHONY: coverage
+.PHONY: coverage build
 
 SH_PHP=docker exec -i -t app.php-cli
 
