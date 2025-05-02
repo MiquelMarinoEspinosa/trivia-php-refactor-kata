@@ -351,3 +351,6 @@ make install
 - At every change the `automated tests` will be executed and the coverage `scrutinized`
 - Once the refactor has been considered finished, the `mutation testing` will again be executed to analyse its output
 - That said, let's start! :D
+
+#### Refactor steps
+- Let's start adding visibility to the `Game` methods to distinguish which ones are called from outside - `public` - from which ones are internally called - `private`
