@@ -18,17 +18,17 @@ final class Game
     private bool $isGettingOutOfPenaltyBox;
 
     public function __construct()
-	{
+    {
         $this->currentPlayer = 0;
-		$this->players = [];
-		$this->places = [0];
-		$this->purses  = [0];
-		$this->inPenaltyBox  = [0];
-		
-		$this->popQuestions = [];
-		$this->scienceQuestions = [];
-		$this->sportsQuestions = [];
-		$this->rockQuestions = [];
+        $this->players = [];
+        $this->places = [0];
+        $this->purses  = [0];
+        $this->inPenaltyBox  = [0];
+        
+        $this->popQuestions = [];
+        $this->scienceQuestions = [];
+        $this->sportsQuestions = [];
+        $this->rockQuestions = [];
 
         for ($i = 0; $i < 50; $i++) {
             array_push($this->popQuestions, "Pop Question " . $i);
@@ -38,7 +38,7 @@ final class Game
         }
     }
 
-	public function add(string $playerName): bool
+    public function add(string $playerName): bool
     {
         array_push($this->players, $playerName);
         $this->places[$this->howManyPlayers()] = 0;
@@ -50,34 +50,34 @@ final class Game
         return true;
     }
 
-	public function roll(int $roll): void
+    public function roll(int $roll): void
     {
         $this->echoln($this->players[$this->currentPlayer] . " is the current player");
         $this->echoln("They have rolled a " . $roll);
 
-		$this->printPenaltyBoxMessage($roll);
+        $this->printPenaltyBoxMessage($roll);
 
         if ($this->inPenaltyBox[$this->currentPlayer]) {
-			$this->isGettingOutOfPenaltyBox = $roll % 2 != 0;
+            $this->isGettingOutOfPenaltyBox = $roll % 2 != 0;
         }
 
-		if ($this->inPenaltyBox[$this->currentPlayer] && $this->isGettingOutOfPenaltyBox === false) {
-			return;
-		}
+        if ($this->inPenaltyBox[$this->currentPlayer] && $this->isGettingOutOfPenaltyBox === false) {
+            return;
+        }
 
-		$this->places[$this->currentPlayer] = $this->places[$this->currentPlayer] + $roll;
-		if ($this->places[$this->currentPlayer] > 11) {
-			$this->places[$this->currentPlayer] = $this->places[$this->currentPlayer] - 12;
-		}
+        $this->places[$this->currentPlayer] = $this->places[$this->currentPlayer] + $roll;
+        if ($this->places[$this->currentPlayer] > 11) {
+            $this->places[$this->currentPlayer] = $this->places[$this->currentPlayer] - 12;
+        }
 
-		$this->echoln($this->players[$this->currentPlayer]
+        $this->echoln($this->players[$this->currentPlayer]
                     . "'s new location is "
                     .$this->places[$this->currentPlayer]);
-		$this->echoln("The category is " . $this->currentCategory());
-		$this->askQuestion();
+        $this->echoln("The category is " . $this->currentCategory());
+        $this->askQuestion();
     }
 
-	public function wasCorrectlyAnswered(): bool
+    public function wasCorrectlyAnswered(): bool
     {
         if ($this->inPenaltyBox[$this->currentPlayer]) {
             if ($this->isGettingOutOfPenaltyBox) {
@@ -133,7 +133,7 @@ final class Game
         return true;
     }
 
-	public function isPlayable(): bool
+    public function isPlayable(): bool
     {
         return ($this->howManyPlayers() >= 2);
     }
@@ -148,23 +148,23 @@ final class Game
         return count($this->players);
     }
 
-	private function printPenaltyBoxMessage(int $roll): void 
-	{
-		if (!$this->inPenaltyBox[$this->currentPlayer]) {
-			return;
+    private function printPenaltyBoxMessage(int $roll): void 
+    {
+        if (!$this->inPenaltyBox[$this->currentPlayer]) {
+            return;
         }
 
-		$this->echoln($this->players[$this->currentPlayer] . $this->buildPenaltyBoxMessage($roll));
-	}
+        $this->echoln($this->players[$this->currentPlayer] . $this->buildPenaltyBoxMessage($roll));
+    }
 
-	private function buildPenaltyBoxMessage(int $roll): string
-	{
-		if ($roll % 2 != 0) {
-			return " is getting out of the penalty box";
-		}
+    private function buildPenaltyBoxMessage(int $roll): string
+    {
+        if ($roll % 2 != 0) {
+            return " is getting out of the penalty box";
+        }
 
-		return " is not getting out of the penalty box";
-	}
+        return " is not getting out of the penalty box";
+    }
 
     private function askQuestion(): void
     {
