@@ -392,3 +392,5 @@ make install
         - Build the message via a `query` rather than using `variable` since I cannot inline the condition with a `ternary operator`
         - Take avantage of the method and apply `tell don't ask` principle locating the penalty box condition inside the new method as well as the echo
         - Create a new method to print the message keeping another to build the message
+    - After taking a look at the code in github, I have realized that the `Game` class is not well formatted. Let's fix that
+        - format `__construct` method
