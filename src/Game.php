@@ -2,7 +2,7 @@
 
 namespace Game;
 
-class Game
+final class Game
 {
     private array $players;
     private array $places;
