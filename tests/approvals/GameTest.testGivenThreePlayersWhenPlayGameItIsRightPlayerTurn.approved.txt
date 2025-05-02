@@ -16,12 +16,12 @@ They have rolled a 2
 Player2's new location is 2
 The category is Sports
 Sports Question 0
-Answer was corrent!!!!
+Answer was correct!!!!
 Player2 now has 1 Gold Coins.
 Player3 is the current player
 They have rolled a 3
 Player3's new location is 3
 The category is Rock
 Rock Question 0
-Answer was corrent!!!!
+Answer was correct!!!!
 Player3 now has 1 Gold Coins.

@@ -85,7 +85,7 @@ final class Game
                 return true;
             }
         } else {
-            $this->echoln("Answer was corrent!!!!");
+            $this->echoln("Answer was correct!!!!");
             $this->purses[$this->currentPlayer]++;
             $this->echoln($this->players[$this->currentPlayer]
                     . " now has "

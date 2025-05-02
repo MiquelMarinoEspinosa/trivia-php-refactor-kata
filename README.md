@@ -402,3 +402,10 @@ make install
         - There are duplication code related to the penalty box condition which would like to be remove extrating it into a new method and use it as a `query`
             - Now the method is returning `false` for a certain condition making difficult to read. The condition will be turn into positive return in case the user is getting out of penalty box
         - Add penalty box condition at `printPostRollMessage` to apply `tell don't ask` principle
+        - At this point the `roll` method `presentation` and `business` logic is decoupled enough to be able to relocate the logic even in other classes in further iterations
+        - Let's do the same with the rest of the methods
+- Decouple `wasCorrectlyAnswered` method its `business` from the `presentation` logic
+    - Fix a bug in the text displaying `corrent` instead of `correct` when the answer `wasCorrectlyAnswered`
+        - We asume that it is a typo
+        - It would require to change the test message's expectation
+        - This way some duplication can be removed once the typo has been fixed
