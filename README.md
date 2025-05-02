@@ -337,3 +337,17 @@ make install
 - At this point of the process, the code has been covered with `unit tests`. Therefore, we are ready to start with the refactor
     - A new branch called `refactor` will be created
     - The refactor decisions will be documented in the next section of this [README.md](./README.md) file just as it was documented the test process
+
+### Refactor
+#### Initial considerations
+- After having reached the 100% coverage of the code the refactor can start
+- It has been noticed among other aspects that genarally the game (`business`) logic is very coupled with (`presentation`) messages outputs. Therefore, the first refactor goal would be `decouple business from presentation logic`. To achieve this goal, very likely both logic will be placed at different `object classes`. That is a good practice to be able to modify these logics independently without the need of modifying the other logic
+- It has also been found that neither `field and method visibility`, `return and parameters type hinting` nor in general best practices of `object orientation programming` have been applied. Duing the factor this aspekt will be enhanced
+- Also a lot of `duplication code` has been found which will be remove through the refactor action 
+
+#### Refactor strategy
+- The strategy will start applying quick wins in a baby steps manner
+- The new design would slowly be introduced
+- At every change the `automated tests` will be executed and the coverage `scrutinized`
+- Once the refactor has been considered finished, the `mutation testing` will again be executed to analyse its output
+- That said, let's start! :D
