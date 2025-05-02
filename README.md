@@ -375,3 +375,4 @@ make install
     - Initialize `currentPlayer` field at `__construct` method
     - Change `array` initialization to `[]` syntax
     - Make `Game` class final
+    - Sort method to have `public` method first and `private` methods last

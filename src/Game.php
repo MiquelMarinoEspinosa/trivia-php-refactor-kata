@@ -38,17 +38,7 @@ final class Game
         }
     }
 
-    private function createRockQuestion(int $index): string
-    {
-        return "Rock Question " . $index;
-    }
-
-    public function isPlayable(): bool
-    {
-        return ($this->howManyPlayers() >= 2);
-    }
-
-    public function add(string $playerName): bool
+	public function add(string $playerName): bool
     {
         array_push($this->players, $playerName);
         $this->places[$this->howManyPlayers()] = 0;
@@ -60,12 +50,7 @@ final class Game
         return true;
     }
 
-    private function howManyPlayers(): int
-    {
-        return count($this->players);
-    }
-
-    public function roll(int $roll): void
+	public function roll(int $roll): void
     {
         $this->echoln($this->players[$this->currentPlayer] . " is the current player");
         $this->echoln("They have rolled a " . $roll);
@@ -104,56 +89,7 @@ final class Game
 
     }
 
-    private function askQuestion(): void
-    {
-        if ($this->currentCategory() == "Pop") {
-            $this->echoln(array_shift($this->popQuestions));
-        }
-        if ($this->currentCategory() == "Science") {
-            $this->echoln(array_shift($this->scienceQuestions));
-        }
-        if ($this->currentCategory() == "Sports") {
-            $this->echoln(array_shift($this->sportsQuestions));
-        }
-        if ($this->currentCategory() == "Rock") {
-            $this->echoln(array_shift($this->rockQuestions));
-        }
-    }
-
-
-    private function currentCategory(): string
-    {
-        if ($this->places[$this->currentPlayer] == 0) {
-            return "Pop";
-        }
-        if ($this->places[$this->currentPlayer] == 4) {
-            return "Pop";
-        }
-        if ($this->places[$this->currentPlayer] == 8) {
-            return "Pop";
-        }
-        if ($this->places[$this->currentPlayer] == 1) {
-            return "Science";
-        }
-        if ($this->places[$this->currentPlayer] == 5) {
-            return "Science";
-        }
-        if ($this->places[$this->currentPlayer] == 9) {
-            return "Science";
-        }
-        if ($this->places[$this->currentPlayer] == 2) {
-            return "Sports";
-        }
-        if ($this->places[$this->currentPlayer] == 6) {
-            return "Sports";
-        }
-        if ($this->places[$this->currentPlayer] == 10) {
-            return "Sports";
-        }
-        return "Rock";
-    }
-
-    public function wasCorrectlyAnswered(): bool
+	public function wasCorrectlyAnswered(): bool
     {
         if ($this->inPenaltyBox[$this->currentPlayer]) {
             if ($this->isGettingOutOfPenaltyBox) {
@@ -207,6 +143,70 @@ final class Game
             $this->currentPlayer = 0;
         }
         return true;
+    }
+
+	public function isPlayable(): bool
+    {
+        return ($this->howManyPlayers() >= 2);
+    }
+
+    private function createRockQuestion(int $index): string
+    {
+        return "Rock Question " . $index;
+    }
+
+    private function howManyPlayers(): int
+    {
+        return count($this->players);
+    }
+
+    private function askQuestion(): void
+    {
+        if ($this->currentCategory() == "Pop") {
+            $this->echoln(array_shift($this->popQuestions));
+        }
+        if ($this->currentCategory() == "Science") {
+            $this->echoln(array_shift($this->scienceQuestions));
+        }
+        if ($this->currentCategory() == "Sports") {
+            $this->echoln(array_shift($this->sportsQuestions));
+        }
+        if ($this->currentCategory() == "Rock") {
+            $this->echoln(array_shift($this->rockQuestions));
+        }
+    }
+
+
+    private function currentCategory(): string
+    {
+        if ($this->places[$this->currentPlayer] == 0) {
+            return "Pop";
+        }
+        if ($this->places[$this->currentPlayer] == 4) {
+            return "Pop";
+        }
+        if ($this->places[$this->currentPlayer] == 8) {
+            return "Pop";
+        }
+        if ($this->places[$this->currentPlayer] == 1) {
+            return "Science";
+        }
+        if ($this->places[$this->currentPlayer] == 5) {
+            return "Science";
+        }
+        if ($this->places[$this->currentPlayer] == 9) {
+            return "Science";
+        }
+        if ($this->places[$this->currentPlayer] == 2) {
+            return "Sports";
+        }
+        if ($this->places[$this->currentPlayer] == 6) {
+            return "Sports";
+        }
+        if ($this->places[$this->currentPlayer] == 10) {
+            return "Sports";
+        }
+        return "Rock";
     }
 
     private function didPlayerWin(): bool
