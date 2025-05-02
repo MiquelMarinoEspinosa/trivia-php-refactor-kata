@@ -61,7 +61,7 @@ final class Game
 
     public function wasCorrectlyAnswered(): bool
     {
-        $currentPlayer = $this->currentPlayer;
+        $player = $this->currentPlayer;
 
         if ($this->inPenaltyBox[$this->currentPlayer]) {
             if (!$this->isGettingOutOfPenaltyBox) {
@@ -80,7 +80,7 @@ final class Game
             $this->currentPlayer = 0;
         }
         
-        return $this->printAnswerCorrect($currentPlayer);
+        return $this->printAnswerCorrect($player);
     }
 
     public function wrongAnswer(): bool

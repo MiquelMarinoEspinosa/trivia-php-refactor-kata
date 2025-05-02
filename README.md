@@ -418,3 +418,4 @@ make install
         - Save `currentPlayer` at the beggining of the execution
         - replace `winner` `temp variable` into a `query`
         - extract answer correct print into a method
+        - Rename `$currentPlayer` temp variable to `$player`
