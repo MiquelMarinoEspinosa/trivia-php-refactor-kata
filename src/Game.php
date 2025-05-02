@@ -55,17 +55,23 @@ final class Game
         $this->echoln($this->players[$this->currentPlayer] . " is the current player");
         $this->echoln("They have rolled a " . $roll);
 
+		if ($this->inPenaltyBox[$this->currentPlayer]) {
+            if ($roll % 2 != 0) {
+                $this->echoln($this->players[$this->currentPlayer] . " is getting out of the penalty box");
+            } else {
+                $this->echoln($this->players[$this->currentPlayer] . " is not getting out of the penalty box");
+            }
+        }
+
         if ($this->inPenaltyBox[$this->currentPlayer]) {
             if ($roll % 2 != 0) {
                 $this->isGettingOutOfPenaltyBox = true;
 
-                $this->echoln($this->players[$this->currentPlayer] . " is getting out of the penalty box");
                 $this->places[$this->currentPlayer] = $this->places[$this->currentPlayer] + $roll;
                 if ($this->places[$this->currentPlayer] > 11) {
                     $this->places[$this->currentPlayer] = $this->places[$this->currentPlayer] - 12;
                 }
             } else {
-                $this->echoln($this->players[$this->currentPlayer] . " is not getting out of the penalty box");
                 $this->isGettingOutOfPenaltyBox = false;
 				return;
             }

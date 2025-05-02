@@ -384,3 +384,4 @@ make install
     - To achive that, it would be needed to save some information in temp variables or fields
 - Let's start decoupling `presentation` from `business` logic at `roll` method
     - Extract common logic presentation for both conditional branches at `roll` method removing this way some duplicated code
+    - Now I am going to proceed to `duplicate conditional` to decouple `presentation` from `business` logic at `$this->inPenaltyBox[$this->currentPlayer]` condition 
