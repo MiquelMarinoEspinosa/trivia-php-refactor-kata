@@ -380,3 +380,6 @@ make install
     - The methods `roll` and `wasCorrectlyAnswered` are the ones with more indentation levels and code paragraph
     - During the testing phase, it has been identified some duplication code which could be remove
     - Let's start to extract paragraph codes into methods and see whether the duplication can be remove using this technique 
+- Before extracting any method, as explained at the beggining of this section, the aim would be decoupling `presentation` from `business` logic. Now the `presentation` rely on the current `business` status and displays the current status at every action took. The idea would be try to make all the actions at once and then display the information once all the actions had happened
+    - To achive that, it would be needed to save some information in temp variables or fields
+      
