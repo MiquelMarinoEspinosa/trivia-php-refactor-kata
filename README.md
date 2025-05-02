@@ -354,3 +354,6 @@ make install
 
 #### Refactor steps
 - Let's start adding visibility to the `Game` methods to distinguish which ones are called from outside - `public` - from which ones are internally called - `private`
+- It has also been found that the `echoln` function is outside the `Game` class
+    - It might that this function is globally called by other clients. Nevertheless, it will be asumed that this function is just called at the `Game` class
+    - Therefore, the method will be move to the `Game` class and declare it as `private`
