@@ -163,23 +163,18 @@ final class Game
 
     private function processCorrectAnswer(): void
     {
-        if ($this->isCurrentPlayerGettingOutOfPenaltyBox() === false) {
-            $this->currentPlayer++;
-            if ($this->currentPlayer == count($this->players)) {
-                $this->currentPlayer = 0;
-            }
+        $player = $this->currentPlayer;
+
+        $this->currentPlayer++;
+        if ($this->currentPlayer == count($this->players)) {
+            $this->currentPlayer = 0;
         }
 
         if ($this->isCurrentPlayerGettingOutOfPenaltyBox() === false) {
             return;
         }
 
-        $this->purses[$this->currentPlayer]++;
-
-        $this->currentPlayer++;
-        if ($this->currentPlayer == count($this->players)) {
-            $this->currentPlayer = 0;
-        }
+        $this->purses[$player]++;
     }
 
     private function printAnswerCorrect(string $player): bool

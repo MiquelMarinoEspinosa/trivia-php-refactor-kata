@@ -424,3 +424,4 @@ make install
             - Since the condition logic looked similar to the one implemented at `isCurrentPlayerGettingOutOfPenaltyBox` it has been tried to use the result method in this condition, at it worked! ^^
         - Extract the `business` logic into a new method called `processCorrectAnswer`
         - `Tell don't ask` at `answer correct` printing method
+        - introduce `player` temp variable to remove conditions code duplication at `processCorrectAnswer` method
