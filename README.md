@@ -369,4 +369,5 @@ make install
     - The IDE force to add `type hinting` to these fields. In the next iteration, type hinting will be added to the rest of the fields
     - In further iterations a more elegant solution might be found. For now, it is ok
     - Refactor test class introducing `setUp` method to instantiate at each test the `Game` class
-    - Refactor test class extract number questions into constant 
+    - Refactor test class extract number questions into constant
+    - Type hint the fields at `Game` class 

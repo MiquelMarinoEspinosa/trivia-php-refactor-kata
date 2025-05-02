@@ -4,18 +4,18 @@ namespace Game;
 
 class Game
 {
-    private $players;
-    private $places;
-    private $purses ;
-    private $inPenaltyBox ;
+    private array $players;
+    private array $places;
+    private array $purses;
+    private array $inPenaltyBox;
 
     public private(set) array $popQuestions;
     public private(set) array $scienceQuestions;
     public private(set) array $sportsQuestions;
     public private(set) array $rockQuestions;
 
-    private $currentPlayer = 0;
-    private $isGettingOutOfPenaltyBox;
+    private int $currentPlayer = 0;
+    private bool $isGettingOutOfPenaltyBox;
 
     public function __construct()
     {
