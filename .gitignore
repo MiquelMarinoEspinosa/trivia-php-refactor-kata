@@ -2,3 +2,4 @@
 /vendor
 /.phpunit.result.cache
 launch.json
+.php-cs-fixer.cache

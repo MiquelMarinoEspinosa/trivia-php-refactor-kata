@@ -357,3 +357,6 @@ make install
 - It has also been found that the `echoln` function is outside the `Game` class
     - It might that this function is globally called by other clients. Nevertheless, it will be asumed that this function is just called at the `Game` class
     - Therefore, the method will be move to the `Game` class and declare it as `private`
+- There are some format to fix to improve readability. That will be done using an external tool called [PHP-CS-Fixer](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer)
+    - The tool has done a good job. Just some manual fixes would be needed
+    - It has also added `public` visibility to the the `Game` fields. This change would be undone because I would like to do this one in the next iteration 
