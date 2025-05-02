@@ -398,3 +398,4 @@ make install
     - Extract `presentation` `roll` method logic in two methods `pre` and `post` roll process
         - Extract initial `roll` presentation message into a new method called `printPreRollMessage`
         - Extract the last `roll` presentation message into a new method called `printPostRollMessage`
+        - Extract `roll` `business logic` into a new method called `processRoll`

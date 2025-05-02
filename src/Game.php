@@ -54,19 +54,12 @@ final class Game
     {
         $this->printPreRollMessage($roll);
 
-        if ($this->inPenaltyBox[$this->currentPlayer]) {
-            $this->isGettingOutOfPenaltyBox = $roll % 2 != 0;
-        }
+        $this->processRoll($roll);
 
         if ($this->inPenaltyBox[$this->currentPlayer] && $this->isGettingOutOfPenaltyBox === false) {
             return;
         }
-
-        $this->places[$this->currentPlayer] = $this->places[$this->currentPlayer] + $roll;
-        if ($this->places[$this->currentPlayer] > 11) {
-            $this->places[$this->currentPlayer] = $this->places[$this->currentPlayer] - 12;
-        }
-
+    
         $this->printPostRollMessage();
     }
 
@@ -147,6 +140,22 @@ final class Game
         $this->echoln("They have rolled a " . $roll);
 
         $this->printPenaltyBoxMessage($roll);
+    }
+
+    private function processRoll(int $roll): void
+    {
+        if ($this->inPenaltyBox[$this->currentPlayer]) {
+            $this->isGettingOutOfPenaltyBox = $roll % 2 != 0;
+        }
+
+        if ($this->inPenaltyBox[$this->currentPlayer] && $this->isGettingOutOfPenaltyBox === false) {
+            return;
+        }
+
+        $this->places[$this->currentPlayer] = $this->places[$this->currentPlayer] + $roll;
+        if ($this->places[$this->currentPlayer] > 11) {
+            $this->places[$this->currentPlayer] = $this->places[$this->currentPlayer] - 12;
+        }
     }
 
     private function printPostRollMessage(): void
