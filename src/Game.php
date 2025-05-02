@@ -63,14 +63,15 @@ final class Game
     {
         $player = $this->currentPlayer;
 
-        if ($this->inPenaltyBox[$this->currentPlayer]) {
-            if (!$this->isGettingOutOfPenaltyBox) {
-                $this->currentPlayer++;
-                if ($this->currentPlayer == count($this->players)) {
-                    $this->currentPlayer = 0;
-                }
-                return true;
+        if ($this->inPenaltyBox[$this->currentPlayer] && !$this->isGettingOutOfPenaltyBox) {
+            $this->currentPlayer++;
+            if ($this->currentPlayer == count($this->players)) {
+                $this->currentPlayer = 0;
             }
+        }
+
+        if ($this->inPenaltyBox[$this->currentPlayer] && !$this->isGettingOutOfPenaltyBox) {
+            return true;
         }
 
         $this->purses[$this->currentPlayer]++;

@@ -419,3 +419,4 @@ make install
         - replace `winner` `temp variable` into a `query`
         - extract answer correct print into a method
         - Rename `$currentPlayer` temp variable to `$player`
+        - Duplicate penalty box condition to apply early return to avoid printing answer correct and simplify condition
