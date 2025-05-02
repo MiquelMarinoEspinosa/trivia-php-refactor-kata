@@ -413,3 +413,4 @@ make install
             - As a rule of thumb, the `else` branches can be replaced by `safe guard early returns` making the code more readable and easier to understand :)
         - Save `currentPlayer` value into a `temp` variable for printing porpuses and `slide` variables grouping them at the `presentation` logic
         - Add parameter to ask `didPlayerWin` by player
+        - Slide `business` logic at top of the method
