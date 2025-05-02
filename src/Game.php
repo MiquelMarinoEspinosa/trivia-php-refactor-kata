@@ -68,9 +68,12 @@ final class Game
                 $this->isGettingOutOfPenaltyBox = true;
             } else {
                 $this->isGettingOutOfPenaltyBox = false;
-				return;
             }
         }
+
+		if ($this->inPenaltyBox[$this->currentPlayer] && $this->isGettingOutOfPenaltyBox === false) {
+			return;
+		}
 
 		$this->places[$this->currentPlayer] = $this->places[$this->currentPlayer] + $roll;
 		if ($this->places[$this->currentPlayer] > 11) {
