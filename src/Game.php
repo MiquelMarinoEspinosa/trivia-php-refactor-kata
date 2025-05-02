@@ -86,9 +86,7 @@ final class Game
                 . $this->purses[$currentPlayer]
                 . " Gold Coins.");
 
-        $winner = $this->didPlayerWin($currentPlayer);
-
-        return $winner;
+        return $this->didPlayerWin($currentPlayer);
     }
 
     public function wrongAnswer(): bool

@@ -415,3 +415,4 @@ make install
         - Add parameter to ask `didPlayerWin` by player
         - Slide `business` logic at top of the method
         - Save `currentPlayer` at the beggining of the execution
+        - replace `winner` `temp variable` into a `query`
