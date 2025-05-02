@@ -394,3 +394,6 @@ make install
         - Create a new method to print the message keeping another to build the message
     - After taking a look at the code in github, I have realized that the `Game` class is not well formatted. Let's fix that
         - format `__construct` method
+        - Eventually the whole class has been formated using a IDE command
+    - Extract `presentation` `roll` method logic in two methods `pre` and `post` roll process
+        - Extract initial `roll` presentation message into a new method called `printPreRollMessage`

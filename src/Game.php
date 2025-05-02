@@ -52,10 +52,7 @@ final class Game
 
     public function roll(int $roll): void
     {
-        $this->echoln($this->players[$this->currentPlayer] . " is the current player");
-        $this->echoln("They have rolled a " . $roll);
-
-        $this->printPenaltyBoxMessage($roll);
+        $this->printPreRollMessage($roll);
 
         if ($this->inPenaltyBox[$this->currentPlayer]) {
             $this->isGettingOutOfPenaltyBox = $roll % 2 != 0;
@@ -146,6 +143,14 @@ final class Game
     private function howManyPlayers(): int
     {
         return count($this->players);
+    }
+
+    private function printPreRollMessage(int $roll): void
+    {
+        $this->echoln($this->players[$this->currentPlayer] . " is the current player");
+        $this->echoln("They have rolled a " . $roll);
+
+        $this->printPenaltyBoxMessage($roll);
     }
 
     private function printPenaltyBoxMessage(int $roll): void 
