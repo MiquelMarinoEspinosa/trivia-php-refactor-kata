@@ -79,7 +79,7 @@ final class Game
                 . $this->purses[$currentPlayer]
                 . " Gold Coins.");
 
-        $winner = $this->didPlayerWin();
+        $winner = $this->didPlayerWin($currentPlayer);
         $this->currentPlayer++;
         if ($this->currentPlayer == count($this->players)) {
             $this->currentPlayer = 0;
@@ -228,9 +228,9 @@ final class Game
         return "Rock";
     }
 
-    private function didPlayerWin(): bool
+    private function didPlayerWin(string $player): bool
     {
-        return !($this->purses[$this->currentPlayer] == 6);
+        return !($this->purses[$player] == 6);
     }
 
     private function echoln($string): void
