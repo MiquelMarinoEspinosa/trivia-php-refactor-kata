@@ -56,7 +56,7 @@ final class Game
 
         $this->processRoll($roll);
 
-        if ($this->inPenaltyBox[$this->currentPlayer] && $this->isGettingOutOfPenaltyBox === false) {
+        if ($this->isCurrentPlayerGettingOutOfPenaltyBox() === false) {
             return;
         }
     
@@ -148,7 +148,7 @@ final class Game
             $this->isGettingOutOfPenaltyBox = $roll % 2 != 0;
         }
 
-        if ($this->inPenaltyBox[$this->currentPlayer] && $this->isGettingOutOfPenaltyBox === false) {
+        if ($this->isCurrentPlayerGettingOutOfPenaltyBox() === false) {
             return;
         }
 
@@ -156,6 +156,11 @@ final class Game
         if ($this->places[$this->currentPlayer] > 11) {
             $this->places[$this->currentPlayer] = $this->places[$this->currentPlayer] - 12;
         }
+    }
+
+    private function isCurrentPlayerGettingOutOfPenaltyBox(): bool
+    {
+        return ($this->inPenaltyBox[$this->currentPlayer] && $this->isGettingOutOfPenaltyBox === false) === false;
     }
 
     private function printPostRollMessage(): void

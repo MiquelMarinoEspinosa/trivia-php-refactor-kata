@@ -399,3 +399,4 @@ make install
         - Extract initial `roll` presentation message into a new method called `printPreRollMessage`
         - Extract the last `roll` presentation message into a new method called `printPostRollMessage`
         - Extract `roll` `business logic` into a new method called `processRoll`
+        - There are duplication code related to the penalty box condition which would like to be remove extrating it into a new method and use it as a `query`
