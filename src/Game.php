@@ -80,13 +80,7 @@ final class Game
             $this->currentPlayer = 0;
         }
         
-        $this->echoln("Answer was correct!!!!");
-        $this->echoln($this->players[$currentPlayer]
-                . " now has "
-                . $this->purses[$currentPlayer]
-                . " Gold Coins.");
-
-        return $this->didPlayerWin($currentPlayer);
+        return $this->printAnswerCorrect($currentPlayer);
     }
 
     public function wrongAnswer(): bool
@@ -161,6 +155,17 @@ final class Game
                     .$this->places[$this->currentPlayer]);
         $this->echoln("The category is " . $this->currentCategory());
         $this->askQuestion();
+    }
+
+    private function printAnswerCorrect(string $player): bool
+    {
+        $this->echoln("Answer was correct!!!!");
+        $this->echoln($this->players[$player]
+                . " now has "
+                . $this->purses[$player]
+                . " Gold Coins.");
+
+        return $this->didPlayerWin($player);
     }
 
     private function printPenaltyBoxMessage(int $roll): void 
