@@ -55,13 +55,7 @@ final class Game
         $this->echoln($this->players[$this->currentPlayer] . " is the current player");
         $this->echoln("They have rolled a " . $roll);
 
-		if ($this->inPenaltyBox[$this->currentPlayer]) {
-            if ($roll % 2 != 0) {
-                $this->echoln($this->players[$this->currentPlayer] . " is getting out of the penalty box");
-            } else {
-                $this->echoln($this->players[$this->currentPlayer] . " is not getting out of the penalty box");
-            }
-        }
+		$this->printPenaltyBoxMessage($roll);
 
         if ($this->inPenaltyBox[$this->currentPlayer]) {
 			$this->isGettingOutOfPenaltyBox = $roll % 2 != 0;
@@ -153,6 +147,24 @@ final class Game
     {
         return count($this->players);
     }
+
+	private function printPenaltyBoxMessage(int $roll): void 
+	{
+		if (!$this->inPenaltyBox[$this->currentPlayer]) {
+			return;
+        }
+
+		$this->echoln($this->players[$this->currentPlayer] . $this->buildPenaltyBoxMessage($roll));
+	}
+
+	private function buildPenaltyBoxMessage(int $roll): string
+	{
+		if ($roll % 2 != 0) {
+			return " is getting out of the penalty box";
+		}
+
+		return " is not getting out of the penalty box";
+	}
 
     private function askQuestion(): void
     {
