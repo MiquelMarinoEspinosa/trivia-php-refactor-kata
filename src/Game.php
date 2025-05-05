@@ -53,11 +53,11 @@ final class Game
 
     public function roll(int $roll): void
     {
-        $this->printPreRollMessage($roll);
+        $player = $this->currentPlayer;
 
         $this->processRoll($roll);
 
-        $this->printPostRollMessage();
+        $this->printRoll($roll, $player);
     }
 
     public function wasCorrectlyAnswered(): bool
@@ -97,14 +97,6 @@ final class Game
         return count($this->players);
     }
 
-    private function printPreRollMessage(int $roll): void
-    {
-        $this->echoln($this->players[$this->currentPlayer] . " is the current player");
-        $this->echoln("They have rolled a " . $roll);
-
-        $this->printPenaltyBoxMessage($roll);
-    }
-
     private function processRoll(int $roll): void
     {
         if ($this->inPenaltyBox[$this->currentPlayer]) {
@@ -121,6 +113,24 @@ final class Game
         }
     }
 
+    private function printRoll(int $roll, int $player): void
+    {
+        $this->echoln($this->players[$player] . " is the current player");
+        $this->echoln("They have rolled a " . $roll);
+
+        $this->printPenaltyBoxMessage($roll, $player);
+
+        if ($this->isCurrentPlayerGettingOutOfPenaltyBox() === false) {
+            return;
+        }
+
+        $this->echoln($this->players[$this->currentPlayer]
+                    . "'s new location is "
+                    .$this->places[$this->currentPlayer]);
+        $this->echoln("The category is " . $this->currentCategory());
+        $this->askQuestion();        
+    }
+
     private function isCurrentPlayerGettingOutOfPenaltyBox(): bool
     {
         if (!$this->inPenaltyBox[$this->currentPlayer]) {
@@ -130,26 +140,13 @@ final class Game
         return $this->isGettingOutOfPenaltyBox === true;
     }
 
-    private function printPostRollMessage(): void
+    private function printPenaltyBoxMessage(int $roll, int $player): void 
     {
-        if ($this->isCurrentPlayerGettingOutOfPenaltyBox() === false) {
+        if (!$this->inPenaltyBox[$player]) {
             return;
         }
 
-        $this->echoln($this->players[$this->currentPlayer]
-                    . "'s new location is "
-                    .$this->places[$this->currentPlayer]);
-        $this->echoln("The category is " . $this->currentCategory());
-        $this->askQuestion();
-    }
-
-    private function printPenaltyBoxMessage(int $roll): void 
-    {
-        if (!$this->inPenaltyBox[$this->currentPlayer]) {
-            return;
-        }
-
-        $this->echoln($this->players[$this->currentPlayer] . $this->buildPenaltyBoxMessage($roll));
+        $this->echoln($this->players[$player] . $this->buildPenaltyBoxMessage($roll));
     }
 
     private function buildPenaltyBoxMessage(int $roll): string

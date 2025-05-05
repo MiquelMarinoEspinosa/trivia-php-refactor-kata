@@ -430,3 +430,8 @@ make install
     - Decouple `wrongAnswer` `business` logic from `presentation` logic
     - Explore other logic that should be remove
     - Introduce an `inline anonymous class` to start to relocate the `business` to a new class
+- Review the current `roll` method logic to simplify it to just one method to `print` and another to `process` just like the `wasCorrectlyAnswered` method
+    - The trick will be saving the `currentPlayer` in a `temp` variable before process it
+    - Pass the `player` to the `print` method to use it for printing porpuses
+    - `slide` 2 `print` methods together after the `rollProcess` method 
+    - Merge the `pre` and `post` method into unified `printRoll` method 
