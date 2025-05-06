@@ -118,10 +118,7 @@ final class Game
     {
         $player = $this->currentPlayer();
 
-        $this->currentPlayer++;
-        if ($this->currentPlayer() == $this->howManyPlayers()) {
-            $this->currentPlayer = 0;
-        }
+        $this->nextPlayer();
 
         if ($this->isCurrentPlayerGettingOutOfPenaltyBox() === false) {
             return;
@@ -143,10 +140,7 @@ final class Game
     {
         $this->inPenaltyBox[$this->currentPlayer()] = true;
 
-        $this->currentPlayer++;
-        if ($this->currentPlayer() == $this->howManyPlayers()) {
-            $this->currentPlayer = 0;
-        }
+        $this->nextPlayer();
     }
 
     private function didPlayerWin(string $player): bool
@@ -157,6 +151,14 @@ final class Game
     private function currentPlayer(): int
     {
         return $this->currentPlayer;
+    }
+
+    private function nextPlayer(): void
+    {
+        $this->currentPlayer++;
+        if ($this->currentPlayer() == $this->howManyPlayers()) {
+            $this->currentPlayer = 0;
+        }
     }
 
     private function printAdd(string $playerName): void
