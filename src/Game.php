@@ -107,6 +107,46 @@ final class Game
         }
     }
 
+    private function processCorrectAnswer(): void
+    {
+        $player = $this->currentPlayer;
+
+        $this->currentPlayer++;
+        if ($this->currentPlayer == count($this->players)) {
+            $this->currentPlayer = 0;
+        }
+
+        if ($this->isCurrentPlayerGettingOutOfPenaltyBox() === false) {
+            return;
+        }
+
+        $this->purses[$player]++;
+    }
+
+    private function isCurrentPlayerGettingOutOfPenaltyBox(): bool
+    {
+        if (!$this->inPenaltyBox[$this->currentPlayer]) {
+            return true;
+        }
+
+        return $this->isGettingOutOfPenaltyBox === true;
+    }
+
+    private function processWrongAnswer(): void
+    {
+        $this->inPenaltyBox[$this->currentPlayer] = true;
+
+        $this->currentPlayer++;
+        if ($this->currentPlayer == count($this->players)) {
+            $this->currentPlayer = 0;
+        }
+    }
+
+    private function didPlayerWin(string $player): bool
+    {
+        return !($this->purses[$player] == 6);
+    }
+
     private function printRoll(int $roll, int $player): void
     {
         $this->echoln($this->players[$player] . " is the current player");
@@ -125,15 +165,6 @@ final class Game
         $this->askQuestion();        
     }
 
-    private function isCurrentPlayerGettingOutOfPenaltyBox(): bool
-    {
-        if (!$this->inPenaltyBox[$this->currentPlayer]) {
-            return true;
-        }
-
-        return $this->isGettingOutOfPenaltyBox === true;
-    }
-
     private function printPenaltyBoxMessage(int $roll, int $player): void 
     {
         if (!$this->inPenaltyBox[$player]) {
@@ -150,22 +181,6 @@ final class Game
         }
 
         return " is not getting out of the penalty box";
-    }
-
-    private function processCorrectAnswer(): void
-    {
-        $player = $this->currentPlayer;
-
-        $this->currentPlayer++;
-        if ($this->currentPlayer == count($this->players)) {
-            $this->currentPlayer = 0;
-        }
-
-        if ($this->isCurrentPlayerGettingOutOfPenaltyBox() === false) {
-            return;
-        }
-
-        $this->purses[$player]++;
     }
 
     private function printAnswerCorrect(string $player): bool
@@ -187,16 +202,6 @@ final class Game
     {
         $this->echoln("Question was incorrectly answered");
         $this->echoln($this->players[$this->currentPlayer] . " was sent to the penalty box");
-    }
-
-    private function processWrongAnswer(): void
-    {
-        $this->inPenaltyBox[$this->currentPlayer] = true;
-
-        $this->currentPlayer++;
-        if ($this->currentPlayer == count($this->players)) {
-            $this->currentPlayer = 0;
-        }
     }
 
     private function askQuestion(): void
@@ -245,11 +250,6 @@ final class Game
             return "Sports";
         }
         return "Rock";
-    }
-
-    private function didPlayerWin(string $player): bool
-    {
-        return !($this->purses[$player] == 6);
     }
 
     private function echoln($string): void
