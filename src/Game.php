@@ -87,7 +87,7 @@ final class Game
 
     private function howManyPlayers(): int
     {
-        return count($this->players);
+        return count($this->playersProcess);
     }
 
     private function processAdd(string $playerName): void
