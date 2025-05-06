@@ -447,3 +447,5 @@ make install
 - At this point, the `business` logic has been decoupled from the `presentation` logic at the same `Game` class. Now the intention will be move the logic into a separate new class. This process will be done via small steps which will be commented in this section
     - The first step will be to add `getters queries` to all that fields which the `presentation` logic access to print its values
         - `slide` print and process methods together
+        - It has been identified in previous iterations that the `players` structure which stores the players names is used for both `presentation` and `business` logic. To remove dependencies, a new structure will be created to store the same information and it will be used at `process` methods
+            - Create and use new players structure called `playersProcess` - temporary name

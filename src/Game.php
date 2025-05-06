@@ -5,6 +5,7 @@ namespace Game;
 final class Game
 {
     private array $players;
+    private array $playersProcess;
     private array $places;
     private array $purses;
     private array $inPenaltyBox;
@@ -21,6 +22,7 @@ final class Game
     {
         $this->currentPlayer = 0;
         $this->players = [];
+        $this->playersProcess = [];
         $this->places = [0];
         $this->purses  = [0];
         $this->inPenaltyBox  = [0];
