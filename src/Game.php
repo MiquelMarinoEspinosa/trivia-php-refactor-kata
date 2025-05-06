@@ -43,8 +43,8 @@ final class Game
     {
         $this->processAdd($playerName);
 
-        $this->echoln($playerName . " was added");
-        $this->echoln("They are player number " . count($this->players));
+        $this->printAdd($playerName);
+
         return true;
     }
 
@@ -150,6 +150,12 @@ final class Game
     private function didPlayerWin(string $player): bool
     {
         return !($this->purses[$player] == 6);
+    }
+
+    private function printAdd(string $playerName): void
+    {
+        $this->echoln($playerName . " was added");
+        $this->echoln("They are player number " . count($this->players));
     }
 
     private function printRoll(int $roll, int $player): void
