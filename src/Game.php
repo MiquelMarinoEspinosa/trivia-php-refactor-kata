@@ -135,7 +135,7 @@ final class Game
 
     private function processWrongAnswer(): void
     {
-        $this->inPenaltyBox[$this->currentPlayer()] = true;
+        $this->addCurrentPlayerToPenaltyBox();
 
         $this->nextPlayer();
     }
@@ -189,6 +189,11 @@ final class Game
     private function isPlayerInPenaltyBox(int $player): bool
     {
         return $this->inPenaltyBox[$player];
+    }
+
+    private function addCurrentPlayerToPenaltyBox(): void
+    {
+        $this->inPenaltyBox[$this->currentPlayer()] = true;
     }
 
     private function printAdd(string $playerName): void
