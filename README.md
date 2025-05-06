@@ -461,3 +461,4 @@ make install
                 - Add method to increment `purses`
             - Replace `$this->places` to a query called `currentPlayerPlaces`
                 - Extract update `places` logic into a new method
+            - Replace `$this->inPenaltyBox[$this->currentPlayer()]` for a query called `isCurrentPlayerInPenaltyBox`

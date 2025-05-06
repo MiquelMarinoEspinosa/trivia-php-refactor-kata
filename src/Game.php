@@ -100,7 +100,7 @@ final class Game
 
     private function processRoll(int $roll): void
     {
-        if ($this->inPenaltyBox[$this->currentPlayer()]) {
+        if ($this->isCurrentPlayerInPenaltyBox()) {
             $this->isGettingOutOfPenaltyBox = $roll % 2 != 0;
         }
 
@@ -126,7 +126,7 @@ final class Game
 
     private function isCurrentPlayerGettingOutOfPenaltyBox(): bool
     {
-        if (!$this->inPenaltyBox[$this->currentPlayer()]) {
+        if (!$this->isCurrentPlayerInPenaltyBox()) {
             return true;
         }
 
@@ -179,6 +179,11 @@ final class Game
         if ($this->currentPlayerPlaces() > 11) {
             $this->places[$this->currentPlayer()] = $this->currentPlayerPlaces() - 12;
         }
+    }
+
+    private function isCurrentPlayerInPenaltyBox(): bool
+    {
+        return $this->inPenaltyBox[$this->currentPlayer()];
     }
 
     private function printAdd(string $playerName): void
