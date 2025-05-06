@@ -464,3 +464,5 @@ make install
             - Replace `$this->inPenaltyBox[$this->currentPlayer()]` for a query called `isCurrentPlayerInPenaltyBox`
                 - Replace `$this->inPenaltyBox[$player]` for a query called `isPlayerInPenaltyBox`
                 - Add method to update `inPenaltyBox` status
+            - The `questions categories` will not be introduced any query because would stay in the end at the `presentation` class
+            - Next Step: Replace `isGettingOutOfPenaltyBox` direct access by a `query`
