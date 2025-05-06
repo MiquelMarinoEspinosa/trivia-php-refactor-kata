@@ -452,3 +452,5 @@ make install
             - Update `playersProcess` at `processAdd` method and `players` just at `addPrint` method
             - Replace at `howManyPlayers` method to use `playersProcess` new data structure since it is just used for `process` methods
             - Replace all `process` methods to use `playersProcess` new data structure instead of `players` data structure
+        - At this point, all methods which directly use a `field` will be refactor to use a `query` instead. That would help us to get ready to introduce the new class and start to move `business` logic to this new class
+            - Replace `$this->currentPlayer` to access via `query` called `currentPlayer`

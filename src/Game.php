@@ -52,7 +52,7 @@ final class Game
 
     public function roll(int $roll): void
     {
-        $player = $this->currentPlayer;
+        $player = $this->currentPlayer();
 
         $this->processRoll($roll);
 
@@ -61,7 +61,7 @@ final class Game
 
     public function wasCorrectlyAnswered(): bool
     {
-        $player = $this->currentPlayer;
+        $player = $this->currentPlayer();
 
         $this->processCorrectAnswer();
         
@@ -100,7 +100,7 @@ final class Game
 
     private function processRoll(int $roll): void
     {
-        if ($this->inPenaltyBox[$this->currentPlayer]) {
+        if ($this->inPenaltyBox[$this->currentPlayer()]) {
             $this->isGettingOutOfPenaltyBox = $roll % 2 != 0;
         }
 
@@ -108,18 +108,18 @@ final class Game
             return;
         }
 
-        $this->places[$this->currentPlayer] = $this->places[$this->currentPlayer] + $roll;
-        if ($this->places[$this->currentPlayer] > 11) {
-            $this->places[$this->currentPlayer] = $this->places[$this->currentPlayer] - 12;
+        $this->places[$this->currentPlayer()] = $this->places[$this->currentPlayer()] + $roll;
+        if ($this->places[$this->currentPlayer()] > 11) {
+            $this->places[$this->currentPlayer()] = $this->places[$this->currentPlayer()] - 12;
         }
     }
 
     private function processCorrectAnswer(): void
     {
-        $player = $this->currentPlayer;
+        $player = $this->currentPlayer();
 
         $this->currentPlayer++;
-        if ($this->currentPlayer == $this->howManyPlayers()) {
+        if ($this->currentPlayer() == $this->howManyPlayers()) {
             $this->currentPlayer = 0;
         }
 
@@ -132,7 +132,7 @@ final class Game
 
     private function isCurrentPlayerGettingOutOfPenaltyBox(): bool
     {
-        if (!$this->inPenaltyBox[$this->currentPlayer]) {
+        if (!$this->inPenaltyBox[$this->currentPlayer()]) {
             return true;
         }
 
@@ -141,10 +141,10 @@ final class Game
 
     private function processWrongAnswer(): void
     {
-        $this->inPenaltyBox[$this->currentPlayer] = true;
+        $this->inPenaltyBox[$this->currentPlayer()] = true;
 
         $this->currentPlayer++;
-        if ($this->currentPlayer == $this->howManyPlayers()) {
+        if ($this->currentPlayer() == $this->howManyPlayers()) {
             $this->currentPlayer = 0;
         }
     }
@@ -152,6 +152,11 @@ final class Game
     private function didPlayerWin(string $player): bool
     {
         return !($this->purses[$player] == 6);
+    }
+
+    private function currentPlayer(): int
+    {
+        return $this->currentPlayer;
     }
 
     private function printAdd(string $playerName): void
@@ -172,9 +177,9 @@ final class Game
             return;
         }
 
-        $this->echoln($this->players[$this->currentPlayer]
+        $this->echoln($this->players[$this->currentPlayer()]
                     . "'s new location is "
-                    .$this->places[$this->currentPlayer]);
+                    .$this->places[$this->currentPlayer()]);
         $this->echoln("The category is " . $this->currentCategory());
         $this->askQuestion();        
     }
@@ -215,7 +220,7 @@ final class Game
     private function printWrongAnswer(): void 
     {
         $this->echoln("Question was incorrectly answered");
-        $this->echoln($this->players[$this->currentPlayer] . " was sent to the penalty box");
+        $this->echoln($this->players[$this->currentPlayer()] . " was sent to the penalty box");
     }
 
     private function askQuestion(): void
@@ -236,31 +241,31 @@ final class Game
 
     private function currentCategory(): string
     {
-        if ($this->places[$this->currentPlayer] == 0) {
+        if ($this->places[$this->currentPlayer()] == 0) {
             return "Pop";
         }
-        if ($this->places[$this->currentPlayer] == 4) {
+        if ($this->places[$this->currentPlayer()] == 4) {
             return "Pop";
         }
-        if ($this->places[$this->currentPlayer] == 8) {
+        if ($this->places[$this->currentPlayer()] == 8) {
             return "Pop";
         }
-        if ($this->places[$this->currentPlayer] == 1) {
+        if ($this->places[$this->currentPlayer()] == 1) {
             return "Science";
         }
-        if ($this->places[$this->currentPlayer] == 5) {
+        if ($this->places[$this->currentPlayer()] == 5) {
             return "Science";
         }
-        if ($this->places[$this->currentPlayer] == 9) {
+        if ($this->places[$this->currentPlayer()] == 9) {
             return "Science";
         }
-        if ($this->places[$this->currentPlayer] == 2) {
+        if ($this->places[$this->currentPlayer()] == 2) {
             return "Sports";
         }
-        if ($this->places[$this->currentPlayer] == 6) {
+        if ($this->places[$this->currentPlayer()] == 6) {
             return "Sports";
         }
-        if ($this->places[$this->currentPlayer] == 10) {
+        if ($this->places[$this->currentPlayer()] == 10) {
             return "Sports";
         }
         return "Rock";
