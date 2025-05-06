@@ -108,10 +108,7 @@ final class Game
             return;
         }
 
-        $this->places[$this->currentPlayer()] = $this->currentPlayerPlaces() + $roll;
-        if ($this->currentPlayerPlaces() > 11) {
-            $this->places[$this->currentPlayer()] = $this->currentPlayerPlaces() - 12;
-        }
+        $this->increaseCurrentPlayerPlacesBy($roll);
     }
 
     private function processCorrectAnswer(): void
@@ -174,6 +171,14 @@ final class Game
     private function currentPlayerPlaces(): int
     {
         return $this->places[$this->currentPlayer()];        
+    }
+
+    private function increaseCurrentPlayerPlacesBy(int $roll): void
+    {
+        $this->places[$this->currentPlayer()] = $this->currentPlayerPlaces() + $roll;
+        if ($this->currentPlayerPlaces() > 11) {
+            $this->places[$this->currentPlayer()] = $this->currentPlayerPlaces() - 12;
+        }
     }
 
     private function printAdd(string $playerName): void

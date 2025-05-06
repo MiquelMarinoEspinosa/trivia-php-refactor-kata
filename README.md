@@ -460,3 +460,4 @@ make install
             - Replace `$this->purses[$player]` access to a method called `pursesBy`
                 - Add method to increment `purses`
             - Replace `$this->places` to a query called `currentPlayerPlaces`
+                - Extract update `places` logic into a new method
