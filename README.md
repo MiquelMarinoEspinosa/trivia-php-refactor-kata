@@ -451,3 +451,4 @@ make install
             - Create and use new players structure called `playersProcess` - temporary name
             - Update `playersProcess` at `processAdd` method and `players` just at `addPrint` method
             - Replace at `howManyPlayers` method to use `playersProcess` new data structure since it is just used for `process` methods
+            - Replace all `process` methods to use `playersProcess` new data structure instead of `players` data structure

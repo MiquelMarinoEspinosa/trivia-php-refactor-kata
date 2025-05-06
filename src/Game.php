@@ -119,7 +119,7 @@ final class Game
         $player = $this->currentPlayer;
 
         $this->currentPlayer++;
-        if ($this->currentPlayer == count($this->players)) {
+        if ($this->currentPlayer == $this->howManyPlayers()) {
             $this->currentPlayer = 0;
         }
 
@@ -144,7 +144,7 @@ final class Game
         $this->inPenaltyBox[$this->currentPlayer] = true;
 
         $this->currentPlayer++;
-        if ($this->currentPlayer == count($this->players)) {
+        if ($this->currentPlayer == $this->howManyPlayers()) {
             $this->currentPlayer = 0;
         }
     }
