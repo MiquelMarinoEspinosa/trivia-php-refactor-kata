@@ -41,10 +41,7 @@ final class Game
 
     public function add(string $playerName): bool
     {
-        array_push($this->players, $playerName);
-        $this->places[$this->howManyPlayers()] = 0;
-        $this->purses[$this->howManyPlayers()] = 0;
-        $this->inPenaltyBox[$this->howManyPlayers()] = false;
+        $this->processAdd($playerName);
 
         $this->echoln($playerName . " was added");
         $this->echoln("They are player number " . count($this->players));
@@ -89,6 +86,14 @@ final class Game
     private function howManyPlayers(): int
     {
         return count($this->players);
+    }
+
+    private function processAdd(string $playerName): void
+    {
+        array_push($this->players, $playerName);
+        $this->places[$this->howManyPlayers()] = 0;
+        $this->purses[$this->howManyPlayers()] = 0;
+        $this->inPenaltyBox[$this->howManyPlayers()] = false;
     }
 
     private function processRoll(int $roll): void

@@ -439,6 +439,10 @@ make install
     - `extract method` print wrong answer
     - `extract method` process wrong answer
     - This iteration has been easier than the `roll` iteration since the code was not so much coupled with the field current values
+- Split `add` method into `print` and `process`
+    - `extract method` process
+        - even though the `players` data structure store the players name, the data structure is used also for the `business` logic
+        - It would be better this structure to be hold by the `business` class rather exposing methods to allow the `presentation` logic to print the right data
 - At this point, the `business` logic has been decoupled from the `presentation` logic at the same `Game` class. Now the intention will be move the logic into a separate new class. This process will be done via small steps which will be commented in this section
     - The first step will be to add `getters queries` to all that fields which the `presentation` logic access to print its values
         - `slide` print and process methods together
