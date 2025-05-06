@@ -434,4 +434,6 @@ make install
     - The trick will be saving the `currentPlayer` in a `temp` variable before process it
     - Pass the `player` to the `print` method to use it for printing porpuses
     - `slide` 2 `print` methods together after the `rollProcess` method 
-    - Merge the `pre` and `post` method into unified `printRoll` method 
+    - Merge the `pre` and `post` method into unified `printRoll` method
+- Split `wrongAnswer` into 2 methods: one to `print` and another to `process`
+    - `extract method` print wrong answer

@@ -71,8 +71,7 @@ final class Game
 
     public function wrongAnswer(): bool
     {
-        $this->echoln("Question was incorrectly answered");
-        $this->echoln($this->players[$this->currentPlayer] . " was sent to the penalty box");
+        $this->printWrongAnswer();
         $this->inPenaltyBox[$this->currentPlayer] = true;
 
         $this->currentPlayer++;
@@ -187,6 +186,12 @@ final class Game
                 . " Gold Coins.");
 
         return $this->didPlayerWin($player);
+    }
+
+    private function printWrongAnswer(): void 
+    {
+        $this->echoln("Question was incorrectly answered");
+        $this->echoln($this->players[$this->currentPlayer] . " was sent to the penalty box");
     }
 
     private function askQuestion(): void
