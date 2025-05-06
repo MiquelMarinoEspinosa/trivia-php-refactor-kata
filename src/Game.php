@@ -92,7 +92,7 @@ final class Game
 
     private function processAdd(string $playerName): void
     {
-        array_push($this->players, $playerName);
+        array_push($this->playersProcess, $playerName);
         $this->places[$this->howManyPlayers()] = 0;
         $this->purses[$this->howManyPlayers()] = 0;
         $this->inPenaltyBox[$this->howManyPlayers()] = false;
@@ -156,6 +156,7 @@ final class Game
 
     private function printAdd(string $playerName): void
     {
+        array_push($this->players, $playerName);
         $this->echoln($playerName . " was added");
         $this->echoln("They are player number " . count($this->players));
     }

@@ -449,3 +449,4 @@ make install
         - `slide` print and process methods together
         - It has been identified in previous iterations that the `players` structure which stores the players names is used for both `presentation` and `business` logic. To remove dependencies, a new structure will be created to store the same information and it will be used at `process` methods
             - Create and use new players structure called `playersProcess` - temporary name
+            - Update `playersProcess` at `processAdd` method and `players` just at `addPrint` method
