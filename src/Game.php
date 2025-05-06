@@ -72,12 +72,7 @@ final class Game
     public function wrongAnswer(): bool
     {
         $this->printWrongAnswer();
-        $this->inPenaltyBox[$this->currentPlayer] = true;
-
-        $this->currentPlayer++;
-        if ($this->currentPlayer == count($this->players)) {
-            $this->currentPlayer = 0;
-        }
+        $this->processWrongAnswer();
         return true;
     }
 
@@ -192,6 +187,16 @@ final class Game
     {
         $this->echoln("Question was incorrectly answered");
         $this->echoln($this->players[$this->currentPlayer] . " was sent to the penalty box");
+    }
+
+    private function processWrongAnswer(): void
+    {
+        $this->inPenaltyBox[$this->currentPlayer] = true;
+
+        $this->currentPlayer++;
+        if ($this->currentPlayer == count($this->players)) {
+            $this->currentPlayer = 0;
+        }
     }
 
     private function askQuestion(): void

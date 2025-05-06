@@ -437,3 +437,5 @@ make install
     - Merge the `pre` and `post` method into unified `printRoll` method
 - Split `wrongAnswer` into 2 methods: one to `print` and another to `process`
     - `extract method` print wrong answer
+    - `extract method` process wrong answer
+    - This iteration has been easier than the `roll` iteration since the code was not so much coupled with the field current values
