@@ -108,9 +108,9 @@ final class Game
             return;
         }
 
-        $this->places[$this->currentPlayer()] = $this->pursesByCurrentPlayer() + $roll;
-        if ($this->pursesByCurrentPlayer() > 11) {
-            $this->places[$this->currentPlayer()] = $this->pursesByCurrentPlayer() - 12;
+        $this->places[$this->currentPlayer()] = $this->currentPlayerPlaces() + $roll;
+        if ($this->currentPlayerPlaces() > 11) {
+            $this->places[$this->currentPlayer()] = $this->currentPlayerPlaces() - 12;
         }
     }
 
@@ -171,7 +171,7 @@ final class Game
         $this->purses[$player]++;
     }
 
-    private function pursesByCurrentPlayer(): int
+    private function currentPlayerPlaces(): int
     {
         return $this->places[$this->currentPlayer()];        
     }
@@ -196,7 +196,7 @@ final class Game
 
         $this->echoln($this->players[$this->currentPlayer()]
                     . "'s new location is "
-                    .$this->pursesByCurrentPlayer());
+                    .$this->currentPlayerPlaces());
         $this->echoln("The category is " . $this->currentCategory());
         $this->askQuestion();        
     }
@@ -258,31 +258,31 @@ final class Game
 
     private function currentCategory(): string
     {
-        if ($this->pursesByCurrentPlayer() == 0) {
+        if ($this->currentPlayerPlaces() == 0) {
             return "Pop";
         }
-        if ($this->pursesByCurrentPlayer() == 4) {
+        if ($this->currentPlayerPlaces() == 4) {
             return "Pop";
         }
-        if ($this->pursesByCurrentPlayer() == 8) {
+        if ($this->currentPlayerPlaces() == 8) {
             return "Pop";
         }
-        if ($this->pursesByCurrentPlayer() == 1) {
+        if ($this->currentPlayerPlaces() == 1) {
             return "Science";
         }
-        if ($this->pursesByCurrentPlayer() == 5) {
+        if ($this->currentPlayerPlaces() == 5) {
             return "Science";
         }
-        if ($this->pursesByCurrentPlayer() == 9) {
+        if ($this->currentPlayerPlaces() == 9) {
             return "Science";
         }
-        if ($this->pursesByCurrentPlayer() == 2) {
+        if ($this->currentPlayerPlaces() == 2) {
             return "Sports";
         }
-        if ($this->pursesByCurrentPlayer() == 6) {
+        if ($this->currentPlayerPlaces() == 6) {
             return "Sports";
         }
-        if ($this->pursesByCurrentPlayer() == 10) {
+        if ($this->currentPlayerPlaces() == 10) {
             return "Sports";
         }
         return "Rock";

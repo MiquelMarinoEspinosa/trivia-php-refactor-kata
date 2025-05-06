@@ -459,4 +459,4 @@ make install
                 - Notice that the initializations are not using queries but access directly to the fields
             - Replace `$this->purses[$player]` access to a method called `pursesBy`
                 - Add method to increment `purses`
-                - Create a new `currentPlayerPurses` and replace all their access
+            - Replace `$this->places` to a query called `currentPlayerPlaces`
