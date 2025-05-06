@@ -186,6 +186,11 @@ final class Game
         return $this->inPenaltyBox[$this->currentPlayer()];
     }
 
+    private function isPlayerInPenaltyBox(int $player): bool
+    {
+        return $this->inPenaltyBox[$player];
+    }
+
     private function printAdd(string $playerName): void
     {
         array_push($this->players, $playerName);
@@ -213,7 +218,7 @@ final class Game
 
     private function printPenaltyBoxMessage(int $roll, int $player): void 
     {
-        if (!$this->inPenaltyBox[$player]) {
+        if (!$this->isPlayerInPenaltyBox($player)) {
             return;
         }
 

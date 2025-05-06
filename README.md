@@ -462,3 +462,4 @@ make install
             - Replace `$this->places` to a query called `currentPlayerPlaces`
                 - Extract update `places` logic into a new method
             - Replace `$this->inPenaltyBox[$this->currentPlayer()]` for a query called `isCurrentPlayerInPenaltyBox`
+            - Replace `$this->inPenaltyBox[$player]` for a query called `isPlayerInPenaltyBox`
