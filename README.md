@@ -456,3 +456,5 @@ make install
             - Replace `$this->currentPlayer` to access via `query` called `currentPlayer`
             - Add method to update `currentPlayer` without directly access to it
                 - add this point `currentPlayer` is accessible just via methods, not directly accessible
+                - Notice that the initializations are not using queries but access directly to the fields
+            - Replace `$this->purses[$player]` access to a method called `pursesBy`

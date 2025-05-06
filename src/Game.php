@@ -143,9 +143,9 @@ final class Game
         $this->nextPlayer();
     }
 
-    private function didPlayerWin(string $player): bool
+    private function didPlayerWin(int $player): bool
     {
-        return !($this->purses[$player] == 6);
+        return !($this->pursesBy($player) == 6);
     }
 
     private function currentPlayer(): int
@@ -159,6 +159,11 @@ final class Game
         if ($this->currentPlayer() == $this->howManyPlayers()) {
             $this->currentPlayer = 0;
         }
+    }
+    
+    private function pursesBy(int $player): int
+    {
+        return $this->purses[$player];
     }
 
     private function printAdd(string $playerName): void
@@ -213,7 +218,7 @@ final class Game
         $this->echoln("Answer was correct!!!!");
         $this->echoln($this->players[$player]
                 . " now has "
-                . $this->purses[$player]
+                . $this->pursesBy($player)
                 . " Gold Coins.");
 
         return $this->didPlayerWin($player);
