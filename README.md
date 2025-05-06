@@ -458,3 +458,4 @@ make install
                 - add this point `currentPlayer` is accessible just via methods, not directly accessible
                 - Notice that the initializations are not using queries but access directly to the fields
             - Replace `$this->purses[$player]` access to a method called `pursesBy`
+                - Add method to increment `purses`

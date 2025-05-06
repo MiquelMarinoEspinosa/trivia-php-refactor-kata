@@ -124,7 +124,7 @@ final class Game
             return;
         }
 
-        $this->purses[$player]++;
+        $this->increasePursesFor($player);
     }
 
     private function isCurrentPlayerGettingOutOfPenaltyBox(): bool
@@ -164,6 +164,11 @@ final class Game
     private function pursesBy(int $player): int
     {
         return $this->purses[$player];
+    }
+
+    private function increasePursesFor(int $player): void
+    {
+        $this->purses[$player]++;
     }
 
     private function printAdd(string $playerName): void
