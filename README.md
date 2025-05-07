@@ -507,3 +507,4 @@ make install
         - Inline `processAdd` method at `add` method
         - Move `isCurrentPlayerGettingOutOfPenaltyBox` method at `gameCalculator`
         - Move `processRoll` method to `gameCalculator`
+        - Move `processCorrectAnswer` method to `gameCalculator`

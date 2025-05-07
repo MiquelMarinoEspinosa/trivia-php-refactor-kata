@@ -133,6 +133,19 @@ final class Game
         
                 $this->increaseCurrentPlayerPlacesBy($roll);
             }
+
+            public function processCorrectAnswer(): void
+            {
+                $player = $this->currentPlayer();
+
+                $this->nextPlayer();
+
+                if ($this->isCurrentPlayerGettingOutOfPenaltyBox() === false) {
+                    return;
+                }
+
+                $this->increasePursesFor($player);
+            }
         };
 
         $this->players = [];
@@ -172,7 +185,7 @@ final class Game
     {
         $player = $this->gameCalculator->currentPlayer();
 
-        $this->processCorrectAnswer();
+        $this->gameCalculator->processCorrectAnswer();
         
         return $this->printAnswerCorrect($player);
     }
@@ -192,19 +205,6 @@ final class Game
     private function createRockQuestion(int $index): string
     {
         return "Rock Question " . $index;
-    }
-
-    private function processCorrectAnswer(): void
-    {
-        $player = $this->gameCalculator->currentPlayer();
-
-        $this->gameCalculator->nextPlayer();
-
-        if ($this->gameCalculator->isCurrentPlayerGettingOutOfPenaltyBox() === false) {
-            return;
-        }
-
-        $this->gameCalculator->increasePursesFor($player);
     }
 
     private function processWrongAnswer(): void
