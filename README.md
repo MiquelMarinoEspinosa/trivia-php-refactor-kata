@@ -495,3 +495,8 @@ make install
             - move `pursesBy` method
             - move `increasePursesFor` method
             - Refactor `Game` to use this the field methods from `gameCalculator`
+        - Move `places` field and methods
+            - Move `places` field
+            - Move `currentPlayerPlaces` method
+            - Move `increaseCurrentPlayerPlacesBy` method
+            - Refactor `Game` to use this the field methods from `gameCalculator`

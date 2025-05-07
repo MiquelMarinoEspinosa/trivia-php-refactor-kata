@@ -5,7 +5,6 @@ namespace Game;
 final class Game
 {
     private array $players;
-    private array $places;
 
     public private(set) array $popQuestions;
     public private(set) array $scienceQuestions;
@@ -22,6 +21,7 @@ final class Game
             private bool $isGettingOutOfPenaltyBox;
             private array $inPenaltyBox;
             private array $purses;
+            private array $places;
 
             public function __construct()
             {
@@ -30,6 +30,7 @@ final class Game
                 $this->isGettingOutOfPenaltyBox = true;
                 $this->inPenaltyBox = [0];
                 $this->purses  = [0];
+                $this->places = [0];
             }
 
             public function processAdd(string $playerName): void
@@ -37,6 +38,7 @@ final class Game
                 array_push($this->playersProcess, $playerName);
                 $this->inPenaltyBox[$this->howManyPlayers()] = false;
                 $this->purses[$this->howManyPlayers()] = 0;
+                $this->places[$this->howManyPlayers()] = 0;
             }
 
             public function howManyPlayers(): int
@@ -91,10 +93,22 @@ final class Game
             {
                 $this->purses[$player]++;
             }
+
+            public function currentPlayerPlaces(): int
+            {
+                return $this->places[$this->currentPlayer()];        
+            }
+
+            public function increaseCurrentPlayerPlacesBy(int $roll): void
+            {
+                $this->places[$this->currentPlayer()] = $this->currentPlayerPlaces() + $roll;
+                if ($this->currentPlayerPlaces() > 11) {
+                    $this->places[$this->currentPlayer()] = $this->currentPlayerPlaces() - 12;
+                }
+            }
         };
 
         $this->players = [];
-        $this->places = [0];
         
         $this->popQuestions = [];
         $this->scienceQuestions = [];
@@ -156,7 +170,6 @@ final class Game
     private function processAdd(string $playerName): void
     {
         $this->gameCalculator->processAdd($playerName);
-        $this->places[$this->gameCalculator->howManyPlayers()] = 0;
     }
 
     private function processRoll(int $roll): void
@@ -169,7 +182,7 @@ final class Game
             return;
         }
 
-        $this->increaseCurrentPlayerPlacesBy($roll);
+        $this->gameCalculator->increaseCurrentPlayerPlacesBy($roll);
     }
 
     private function processCorrectAnswer(): void
@@ -206,19 +219,6 @@ final class Game
         return !($this->gameCalculator->pursesBy($player) == 6);
     }
 
-    private function currentPlayerPlaces(): int
-    {
-        return $this->places[$this->gameCalculator->currentPlayer()];        
-    }
-
-    private function increaseCurrentPlayerPlacesBy(int $roll): void
-    {
-        $this->places[$this->gameCalculator->currentPlayer()] = $this->currentPlayerPlaces() + $roll;
-        if ($this->currentPlayerPlaces() > 11) {
-            $this->places[$this->gameCalculator->currentPlayer()] = $this->currentPlayerPlaces() - 12;
-        }
-    }
-
     private function printAdd(string $playerName): void
     {
         array_push($this->players, $playerName);
@@ -239,7 +239,7 @@ final class Game
 
         $this->echoln($this->players[$this->gameCalculator->currentPlayer()]
                     . "'s new location is "
-                    .$this->currentPlayerPlaces());
+                    .$this->gameCalculator->currentPlayerPlaces());
         $this->echoln("The category is " . $this->currentCategory());
         $this->askQuestion();        
     }
@@ -301,31 +301,31 @@ final class Game
 
     private function currentCategory(): string
     {
-        if ($this->currentPlayerPlaces() == 0) {
+        if ($this->gameCalculator->currentPlayerPlaces() == 0) {
             return "Pop";
         }
-        if ($this->currentPlayerPlaces() == 4) {
+        if ($this->gameCalculator->currentPlayerPlaces() == 4) {
             return "Pop";
         }
-        if ($this->currentPlayerPlaces() == 8) {
+        if ($this->gameCalculator->currentPlayerPlaces() == 8) {
             return "Pop";
         }
-        if ($this->currentPlayerPlaces() == 1) {
+        if ($this->gameCalculator->currentPlayerPlaces() == 1) {
             return "Science";
         }
-        if ($this->currentPlayerPlaces() == 5) {
+        if ($this->gameCalculator->currentPlayerPlaces() == 5) {
             return "Science";
         }
-        if ($this->currentPlayerPlaces() == 9) {
+        if ($this->gameCalculator->currentPlayerPlaces() == 9) {
             return "Science";
         }
-        if ($this->currentPlayerPlaces() == 2) {
+        if ($this->gameCalculator->currentPlayerPlaces() == 2) {
             return "Sports";
         }
-        if ($this->currentPlayerPlaces() == 6) {
+        if ($this->gameCalculator->currentPlayerPlaces() == 6) {
             return "Sports";
         }
-        if ($this->currentPlayerPlaces() == 10) {
+        if ($this->gameCalculator->currentPlayerPlaces() == 10) {
             return "Sports";
         }
         return "Rock";
