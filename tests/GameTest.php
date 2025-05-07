@@ -22,7 +22,7 @@ final class GameTest extends TestCase
     public function testPlayGame(): void
     {
         ob_start();
-  
+
         self::assertTrue($this->aGame->add("Player1"));
         self::assertTrue($this->aGame->add("Player2"));
 
@@ -49,7 +49,7 @@ final class GameTest extends TestCase
 
         $this->aGame->roll(6);
         self::assertTrue($this->aGame->wasCorrectlyAnswered());
-        
+
         $this->aGame->roll(5);
         self::assertTrue($this->aGame->wrongAnswer());
 
@@ -94,7 +94,7 @@ final class GameTest extends TestCase
     public function testGivenThreePlayersWhenPlayGameItIsRightPlayerTurn(): void
     {
         ob_start();
-  
+
         self::assertTrue($this->aGame->add("Player1"));
         self::assertTrue($this->aGame->add("Player2"));
         self::assertTrue($this->aGame->add("Player3"));
@@ -113,12 +113,12 @@ final class GameTest extends TestCase
         Approvals::verifyString($output);
     }
 
-    public function testShouldTheGameBeNotPlayableWhenZeroPlayersHaveBeenAdded(): void 
+    public function testShouldTheGameBeNotPlayableWhenZeroPlayersHaveBeenAdded(): void
     {
         self::assertFalse($this->aGame->isPlayable());
     }
 
-    public function testShouldTheGameBeNotPlayableWhenOnePlayersHaveBeenAdded(): void 
+    public function testShouldTheGameBeNotPlayableWhenOnePlayersHaveBeenAdded(): void
     {
         ob_start();
 
@@ -129,7 +129,7 @@ final class GameTest extends TestCase
         self::assertFalse($this->aGame->isPlayable());
     }
 
-    public function testShouldTheGameBePlayableWhenTwoPlayersHaveBeenAdded(): void 
+    public function testShouldTheGameBePlayableWhenTwoPlayersHaveBeenAdded(): void
     {
         ob_start();
 
@@ -137,7 +137,7 @@ final class GameTest extends TestCase
         self::assertTrue($this->aGame->add("Player2"));
 
         ob_get_clean();
-        
+
         self::assertTrue($this->aGame->isPlayable());
     }
 

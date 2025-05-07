@@ -16,9 +16,9 @@ make install
     - Every time that a refactor is done, the tests are executed and the code coverage is scrutinized
 - At this point, branches would be created to explore different solutions and the taken decisions would be detailed explained at this `README.md` file
 
-### Testing with approval testing 
+### Testing with approval testing
 - Since the code output string values in the stdout which are mixed with the calculation and also given the couplement code degree, using [approval tests](https://github.com/approvals/approvaltests.php) can help into quick cover the code with unit tests without overthink
-- The idea would be to run `Game` executions, capture their result into a file and check the coverage 
+- The idea would be to run `Game` executions, capture their result into a file and check the coverage
 - The [GameRunner.php](src/GameRunner.php) file can be used as inspiration to implement the approval testing
 
 #### Steps
@@ -64,7 +64,7 @@ make install
     - Next iteration take a look into the yet not covered code
 - Code not covered yet
     - `isPlayable` method might be removed in this small context. However, let's asume that the code is integrated in a bigger context. Therefore, the method can be called by other client classes
-        - This case can be easily covered with some specific unit tests for this method 
+        - This case can be easily covered with some specific unit tests for this method
     - There is another line of code at `askQuestion()` regarding this condition `if ($this->currentCategory() == "Pop"`
         - It is posible that with some few more iterations on the `roll` test, the line can eventually be covered. Let's see ^^
 - Let's add coverage to the `isPlayable` method first which seems the easiest code to cover
@@ -98,7 +98,7 @@ make install
             - `if ($this->places[$this->currentPlayer] > 11) $this->places[$this->currentPlayer] = $this->places[$this->currentPlayer] - 12;`
             - `if ($this->places[$this->currentPlayer] == 0) return "Pop";`
             - `if ($this->currentPlayer == count($this->players)) $this->currentPlayer = 1`
-            - For these cases will be added the extra brackets to analyze the coverage and cover the code which is not covered yet 
+            - For these cases will be added the extra brackets to analyze the coverage and cover the code which is not covered yet
         - There are other cases which needed to be analyzed in a deeper way
             ```
                 else {
@@ -107,7 +107,7 @@ make install
 	                return false;
                 }
             ```
-            
+
             ```
                 function didPlayerWin() {
 		            return !($this->purses[$this->currentPlayer] == 6);
@@ -133,7 +133,7 @@ make install
         - A little bit more coverage
             - `95.50%` -> `96.40%`
     - The number of players does not seem to be a decisive factor in increasing the coverage. Let's stay on increasing/changing the rolls
-- Remove number of players down to `3` again keeping the `23` rolls 
+- Remove number of players down to `3` again keeping the `23` rolls
     - Coverage increased from `96.40%` -> `98.20%` ^^
     - Let's do a commit & push to have a safe point to return
 - Change the last rolls configuration
@@ -172,7 +172,7 @@ make install
 - Next steps
     - Analyze introduce breaking changes to the code to confirm that the code coverage prevents from breaking changes during the refactor process
     - Analyze whether the test can be simplified reducing number of players from `3` down to `2`
-        - If so, re-check the coverage introducing breaking changes 
+        - If so, re-check the coverage introducing breaking changes
 - Introduce breaking changes to check the current code coverage
     - Almost all and more than the previous code coverage breaking changes have been detected by the current unit test configuration
         - `didPlayerWin` method breaking changes have been no detected
@@ -182,7 +182,7 @@ make install
             - It should be considered that may be the values would not be used in future iterations since this kind of design couple the client code with the server unless is expected the client to do nay kind of action depending on the result value
                 - `add`
                 - `wasCorrectlyAnswered`
-                - `wrongAnswered` 
+                - `wrongAnswered`
 - Refactor `GameTest`
     - Change `testCreateGame` name for `testPlayGame`
     - Capture string outputs to reduce the output noise tests for the `add` test methods
@@ -194,8 +194,8 @@ make install
         - 39/3 = 13
         - 39 - 13 = 26
         - Still `100%` coverage with `26` rolls
-    - Presumably, it is very probable that at least `12` rolls by player would be needed to cover the logic 
-        - That makes `24` rolls per game 
+    - Presumably, it is very probable that at least `12` rolls by player would be needed to cover the logic
+        - That makes `24` rolls per game
         - Currently, there are `26` rolls
         - Let's remove the last `2` rolls and check the coverage
             - Still `100%` coverage
@@ -221,7 +221,7 @@ make install
         - With already `20` rolls in the `approval test`, the maximum category number is `4`
         - Therefore, it would require a lot of rolls with `2` players to reach the `50th` category questions, overcomplicating the `approval test`
         - Not confirmed yet, but it might be that the current tests cover the rest of the logic as well as its posible breaking changes
-        - Some could argue that this breaking change it is not needed to be covered because it is just a matter of being catious. I would disagree. As long as it can easily be covered by unit test, even though they can be coupled somehow with the code, I would rather at this initial point before starting the refactor to be as much backed by the tests as I could be 
+        - Some could argue that this breaking change it is not needed to be covered because it is just a matter of being catious. I would disagree. As long as it can easily be covered by unit test, even though they can be coupled somehow with the code, I would rather at this initial point before starting the refactor to be as much backed by the tests as I could be
         - Let's use first the strategy of adding extra tests to check the number of category question when the `game` is first initialized to confirm that each category has initially got `50` number of questions
             - Breacking change captured with the new unit test
         - Neither code has been added nor change at `Game` to cover this breaking change
@@ -230,12 +230,12 @@ make install
     - Remove initialization arrays not covered
     - `$this->places[$this->currentPlayer] > 10` instead of `$this->places[$this->currentPlayer] > 11` not covered
         - it catches `$this->places[$this->currentPlayer] > 12` though
-        - also it catches `$this->places[$this->currentPlayer] > 9` 
+        - also it catches `$this->places[$this->currentPlayer] > 9`
         - removing `$winner = $this->didPlayerWin();` raises just a `warning`
         - removing `return $winner` does not catch
         - removing `return true;`
             - They are related to not use returned value
-            - Let's add their assertions to the `wasCorrectlyAnswered` and `wrongAnswer` at the `approval test` once it has finished all the rest of the checks 
+            - Let's add their assertions to the `wasCorrectlyAnswered` and `wrongAnswer` at the `approval test` once it has finished all the rest of the checks
         - returning allways `true` at `didPlayerWin` method not catched
 - Next steps
     - Cover the return results for `wasCorrectlyAnswered` and `wrongAnswer`
@@ -283,10 +283,10 @@ make install
             ```
         - An error appeared which says
             ```
-               The file "/tmp/infection/phpunitConfiguration.initial.infection.xml" does not pass the XSD schema  
-               validation.                                                                                       
-                [Error] Element 'source': This element is not expected.                                            
-                in /app/ (line 6, col 0)  
+               The file "/tmp/infection/phpunitConfiguration.initial.infection.xml" does not pass the XSD schema
+               validation.
+                [Error] Element 'source': This element is not expected.
+                in /app/ (line 6, col 0)
             ```
             - It is related to the new [phpunit.xml](phpunit.xml) configuration of the new `phpunit` library version
                 - Removing the `source` node at [phpunit.xml](phpunit.xml) allow executing the `infection` program
@@ -343,7 +343,7 @@ make install
 - After having reached the 100% coverage of the code the refactor can start
 - It has been noticed among other aspects that genarally the game (`business`) logic is very coupled with (`presentation`) messages outputs. Therefore, the first refactor goal would be `decouple business from presentation logic`. To achieve this goal, very likely both logic will be placed at different `object classes`. That is a good practice to be able to modify these logics independently without the need of modifying the other logic
 - It has also been found that neither `field and method visibility`, `return and parameters type hinting` nor in general best practices of `object orientation programming` have been applied. Duing the factor this aspekt will be enhanced
-- Also a lot of `duplication code` has been found which will be remove through the refactor action 
+- Also a lot of `duplication code` has been found which will be remove through the refactor action
 
 #### Refactor strategy
 - The strategy will start applying quick wins in a baby steps manner
@@ -379,7 +379,7 @@ make install
 - At this point, I will take some time to analyze the current `Game` code structure in high level
     - The methods `roll` and `wasCorrectlyAnswered` are the ones with more indentation levels and code paragraph
     - During the testing phase, it has been identified some duplication code which could be remove
-    - Let's start to extract paragraph codes into methods and see whether the duplication can be remove using this technique 
+    - Let's start to extract paragraph codes into methods and see whether the duplication can be remove using this technique
 - Before extracting any method, as explained at the beggining of this section, the aim would be decoupling `presentation` from `business` logic. Now the `presentation` rely on the current `business` status and displays the current status at every action took. The idea would be try to make all the actions at once and then display the information once all the actions had happened
     - To achive that, it would be needed to save some information in temp variables or fields
 - Let's start decoupling `presentation` from `business` logic at `roll` method
@@ -433,7 +433,7 @@ make install
 - Review the current `roll` method logic to simplify it to just one method to `print` and another to `process` just like the `wasCorrectlyAnswered` method
     - The trick will be saving the `currentPlayer` in a `temp` variable before process it
     - Pass the `player` to the `print` method to use it for printing porpuses
-    - `slide` 2 `print` methods together after the `rollProcess` method 
+    - `slide` 2 `print` methods together after the `rollProcess` method
     - Merge the `pre` and `post` method into unified `printRoll` method
 - Split `wrongAnswer` into 2 methods: one to `print` and another to `process`
     - `extract method` print wrong answer
@@ -510,3 +510,6 @@ make install
         - Move `processCorrectAnswer` method to `gameCalculator`
         - Move `processWrongAnswer` method to `gameCalculator`
         - Move `didPlayerWin` method to `gameCalculator` and `inline` it at `Game`
+        - Create `GameCalculator` class, extract anonymous class and instantiate it at `Game`
+            - Due to `strict_type` it was needed to fix the `inPenaltyBox` initialization to be a `boolean`
+            - Fixing also spaces at end of line format
