@@ -466,3 +466,4 @@ make install
                 - Add method to update `inPenaltyBox` status
             - The `questions categories` will not be introduced any query because would stay in the end at the `presentation` class
             - Replace `isGettingOutOfPenaltyBox` direct access by a `query`
+                - Create method to update `isGettingOutOfPenaltyBox` value

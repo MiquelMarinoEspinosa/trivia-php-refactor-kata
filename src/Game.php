@@ -101,7 +101,8 @@ final class Game
     private function processRoll(int $roll): void
     {
         if ($this->isCurrentPlayerInPenaltyBox()) {
-            $this->isGettingOutOfPenaltyBox = $roll % 2 != 0;
+            $this->setIsGettingOutOfPenaltyBox($roll % 2 != 0);
+            //$this->isGettingOutOfPenaltyBox = $roll % 2 != 0;
         }
 
         if ($this->isCurrentPlayerGettingOutOfPenaltyBox() === false) {
@@ -199,6 +200,11 @@ final class Game
     private function isCurrentPlayerNowGettingOutOfPenaltyBox(): bool
     {
         return $this->isGettingOutOfPenaltyBox;
+    }
+
+    private function setIsGettingOutOfPenaltyBox(bool $value): void
+    {
+        $this->isGettingOutOfPenaltyBox = $value;
     }
 
     private function printAdd(string $playerName): void
