@@ -513,3 +513,10 @@ make install
         - Create `GameCalculator` class, extract anonymous class and instantiate it at `Game`
             - Due to `strict_type` it was needed to fix the `inPenaltyBox` initialization to be a `boolean`
             - Fixing also spaces at end of line format
+- At this point we have 2 `classes` more or less of the same size - between 150 and 200 lines - and more importantly, the `presentation` logic is decoupled from the `business` logic
+    - Using an `anonymous inline class` at the beggining of the refactor made the process much more painless and efective
+    - Next steps
+        - Refactor `GameCalculator` restricting visibility of some methods
+        - Refactor `GameCalculator` `process` methods to remove the word at the methods names
+        - Check whether the `GameCalculator` can return the `currentPlayer` name to be able to remove the `players` data structure at `Game`
+        - Check on `Game` class for further refactors
