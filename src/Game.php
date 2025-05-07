@@ -102,7 +102,6 @@ final class Game
     {
         if ($this->isCurrentPlayerInPenaltyBox()) {
             $this->setIsGettingOutOfPenaltyBox($roll % 2 != 0);
-            //$this->isGettingOutOfPenaltyBox = $roll % 2 != 0;
         }
 
         if ($this->isCurrentPlayerGettingOutOfPenaltyBox() === false) {

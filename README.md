@@ -467,3 +467,4 @@ make install
             - The `questions categories` will not be introduced any query because would stay in the end at the `presentation` class
             - Replace `isGettingOutOfPenaltyBox` direct access by a `query`
                 - Create method to update `isGettingOutOfPenaltyBox` value
+    - At this point of the refactor, all the shared variables have been limited their access via `queries` and `setters` methods. Therefore, it should be safe to move them into a new class. A new `anonymous class` will be created at `Game` class to start the `process` fields transition. At the end, the methods will be also be moved to this new anonymous class and a proper class will be created.
