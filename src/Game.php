@@ -130,7 +130,7 @@ final class Game
             return true;
         }
 
-        return $this->isGettingOutOfPenaltyBox === true;
+        return $this->isCurrentPlayerNowGettingOutOfPenaltyBox();
     }
 
     private function processWrongAnswer(): void
@@ -194,6 +194,11 @@ final class Game
     private function addCurrentPlayerToPenaltyBox(): void
     {
         $this->inPenaltyBox[$this->currentPlayer()] = true;
+    }
+
+    private function isCurrentPlayerNowGettingOutOfPenaltyBox(): bool
+    {
+        return $this->isGettingOutOfPenaltyBox;
     }
 
     private function printAdd(string $playerName): void
