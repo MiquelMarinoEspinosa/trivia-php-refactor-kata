@@ -18,8 +18,12 @@ final class Game
     private int $currentPlayer;
     private bool $isGettingOutOfPenaltyBox;
 
+    private object $gameCalculator;
+
     public function __construct()
     {
+        $this->gameCalculator = new class(){};
+
         $this->currentPlayer = 0;
         $this->players = [];
         $this->playersProcess = [];
