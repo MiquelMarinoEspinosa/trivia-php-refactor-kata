@@ -500,3 +500,7 @@ make install
             - Move `currentPlayerPlaces` method
             - Move `increaseCurrentPlayerPlacesBy` method
             - Refactor `Game` to use this the field methods from `gameCalculator`
+    - At this point all `business` logic fields and their access methods have been moved to `gameCalculator anonymous class`. Also the methods that just use other `gameCalculator` methods can be also be moved before extracting the class to another class on its own, since they do not have any other dependency. They should be the ones with the `process` prefix. This way the current moved methods could their visibility be restricted
+        - Create `isPlayable` method at `gameCalculator`
+            - This method would not be removed from the `Game` since it is used by the client test. Neither I would like to expose `gameCalculator` to the test and I would like to apply `demeter law` in this case
+            - At least the `howManyPlayers` method reduce one external dependency

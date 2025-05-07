@@ -106,6 +106,11 @@ final class Game
                     $this->places[$this->currentPlayer()] = $this->currentPlayerPlaces() - 12;
                 }
             }
+
+            public function isPlayable(): bool
+            {
+                return ($this->howManyPlayers() >= 2);
+            }
         };
 
         $this->players = [];
@@ -159,7 +164,7 @@ final class Game
 
     public function isPlayable(): bool
     {
-        return ($this->gameCalculator->howManyPlayers() >= 2);
+        return $this->gameCalculator->isPlayable();
     }
 
     private function createRockQuestion(int $index): string
