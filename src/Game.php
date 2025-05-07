@@ -130,7 +130,7 @@ final class Game
 
     public function add(string $playerName): bool
     {
-        $this->processAdd($playerName);
+        $this->gameCalculator->processAdd($playerName);
 
         $this->printAdd($playerName);
 
@@ -170,11 +170,6 @@ final class Game
     private function createRockQuestion(int $index): string
     {
         return "Rock Question " . $index;
-    }
-
-    private function processAdd(string $playerName): void
-    {
-        $this->gameCalculator->processAdd($playerName);
     }
 
     private function processRoll(int $roll): void
