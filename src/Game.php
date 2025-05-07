@@ -153,6 +153,11 @@ final class Game
         
                 $this->nextPlayer();
             }
+
+            public function didPlayerWin(int $player): bool
+            {
+                return !($this->pursesBy($player) == 6);
+            }
         };
 
         $this->players = [];
@@ -214,11 +219,6 @@ final class Game
         return "Rock Question " . $index;
     }
 
-    private function didPlayerWin(int $player): bool
-    {
-        return !($this->gameCalculator->pursesBy($player) == 6);
-    }
-
     private function printAdd(string $playerName): void
     {
         array_push($this->players, $playerName);
@@ -274,7 +274,7 @@ final class Game
                 . $this->gameCalculator->pursesBy($player)
                 . " Gold Coins.");
 
-        return $this->didPlayerWin($player);
+        return $this->gameCalculator->didPlayerWin($player);
     }
 
     private function printWrongAnswer(): void 

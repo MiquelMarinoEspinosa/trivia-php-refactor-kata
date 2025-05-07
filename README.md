@@ -509,3 +509,4 @@ make install
         - Move `processRoll` method to `gameCalculator`
         - Move `processCorrectAnswer` method to `gameCalculator`
         - Move `processWrongAnswer` method to `gameCalculator`
+        - Move `didPlayerWin` method to `gameCalculator` and `inline` it at `Game`
