@@ -505,3 +505,4 @@ make install
             - This method would not be removed from the `Game` since it is used by the client test. Neither I would like to expose `gameCalculator` to the test and I would like to apply `demeter law` in this case
             - At least the `howManyPlayers` method reduce one external dependency
         - Inline `processAdd` method at `add` method
+        - Move `isCurrentPlayerGettingOutOfPenaltyBox` method at `gameCalculator`

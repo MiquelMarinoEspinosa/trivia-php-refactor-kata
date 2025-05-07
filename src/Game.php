@@ -111,6 +111,15 @@ final class Game
             {
                 return ($this->howManyPlayers() >= 2);
             }
+
+            public function isCurrentPlayerGettingOutOfPenaltyBox(): bool
+            {
+                if (!$this->isCurrentPlayerInPenaltyBox()) {
+                    return true;
+                }
+
+                return $this->isCurrentPlayerNowGettingOutOfPenaltyBox();
+            }
         };
 
         $this->players = [];
@@ -178,7 +187,7 @@ final class Game
             $this->gameCalculator->setIsGettingOutOfPenaltyBox($roll % 2 != 0);
         }
 
-        if ($this->isCurrentPlayerGettingOutOfPenaltyBox() === false) {
+        if ($this->gameCalculator->isCurrentPlayerGettingOutOfPenaltyBox() === false) {
             return;
         }
 
@@ -191,20 +200,11 @@ final class Game
 
         $this->gameCalculator->nextPlayer();
 
-        if ($this->isCurrentPlayerGettingOutOfPenaltyBox() === false) {
+        if ($this->gameCalculator->isCurrentPlayerGettingOutOfPenaltyBox() === false) {
             return;
         }
 
         $this->gameCalculator->increasePursesFor($player);
-    }
-
-    private function isCurrentPlayerGettingOutOfPenaltyBox(): bool
-    {
-        if (!$this->gameCalculator->isCurrentPlayerInPenaltyBox()) {
-            return true;
-        }
-
-        return $this->gameCalculator->isCurrentPlayerNowGettingOutOfPenaltyBox();
     }
 
     private function processWrongAnswer(): void
@@ -233,7 +233,7 @@ final class Game
 
         $this->printPenaltyBoxMessage($roll, $player);
 
-        if ($this->isCurrentPlayerGettingOutOfPenaltyBox() === false) {
+        if ($this->gameCalculator->isCurrentPlayerGettingOutOfPenaltyBox() === false) {
             return;
         }
 
@@ -264,7 +264,7 @@ final class Game
 
     private function printAnswerCorrect(string $player): bool
     {
-        if ($this->isCurrentPlayerGettingOutOfPenaltyBox() === false) {
+        if ($this->gameCalculator->isCurrentPlayerGettingOutOfPenaltyBox() === false) {
             return true;
         }
 
