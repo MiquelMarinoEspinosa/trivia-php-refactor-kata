@@ -7,7 +7,6 @@ final class Game
     private array $players;
     private array $places;
     private array $purses;
-    private array $inPenaltyBox;
 
     public private(set) array $popQuestions;
     public private(set) array $scienceQuestions;
@@ -22,17 +21,20 @@ final class Game
             private array $playersProcess;
             private int $currentPlayer;
             private bool $isGettingOutOfPenaltyBox;
+            private array $inPenaltyBox;
 
             public function __construct()
             {
                 $this->playersProcess = [];
                 $this->currentPlayer = 0;
                 $this->isGettingOutOfPenaltyBox = true;
+                $this->inPenaltyBox = [0];
             }
 
             public function processAdd(string $playerName): void
             {
                 array_push($this->playersProcess, $playerName);
+                $this->inPenaltyBox[$this->howManyPlayers()] = false;
             }
 
             public function howManyPlayers(): int
@@ -62,12 +64,26 @@ final class Game
             {
                 $this->isGettingOutOfPenaltyBox = $value;
             }
+
+            public function isCurrentPlayerInPenaltyBox(): bool
+            {
+                return $this->inPenaltyBox[$this->currentPlayer()];
+            }
+
+            public function isPlayerInPenaltyBox(int $player): bool
+            {
+                return $this->inPenaltyBox[$player];
+            }
+
+            public function addCurrentPlayerToPenaltyBox(): void
+            {
+                $this->inPenaltyBox[$this->currentPlayer()] = true;
+            }
         };
 
         $this->players = [];
         $this->places = [0];
         $this->purses  = [0];
-        $this->inPenaltyBox  = [0];
         
         $this->popQuestions = [];
         $this->scienceQuestions = [];
@@ -131,12 +147,11 @@ final class Game
         $this->gameCalculator->processAdd($playerName);
         $this->places[$this->gameCalculator->howManyPlayers()] = 0;
         $this->purses[$this->gameCalculator->howManyPlayers()] = 0;
-        $this->inPenaltyBox[$this->gameCalculator->howManyPlayers()] = false;
     }
 
     private function processRoll(int $roll): void
     {
-        if ($this->isCurrentPlayerInPenaltyBox()) {
+        if ($this->gameCalculator->isCurrentPlayerInPenaltyBox()) {
             $this->gameCalculator->setIsGettingOutOfPenaltyBox($roll % 2 != 0);
         }
 
@@ -162,7 +177,7 @@ final class Game
 
     private function isCurrentPlayerGettingOutOfPenaltyBox(): bool
     {
-        if (!$this->isCurrentPlayerInPenaltyBox()) {
+        if (!$this->gameCalculator->isCurrentPlayerInPenaltyBox()) {
             return true;
         }
 
@@ -171,7 +186,7 @@ final class Game
 
     private function processWrongAnswer(): void
     {
-        $this->addCurrentPlayerToPenaltyBox();
+        $this->gameCalculator->addCurrentPlayerToPenaltyBox();
 
         $this->gameCalculator->nextPlayer();
     }
@@ -204,21 +219,6 @@ final class Game
         }
     }
 
-    private function isCurrentPlayerInPenaltyBox(): bool
-    {
-        return $this->inPenaltyBox[$this->gameCalculator->currentPlayer()];
-    }
-
-    private function isPlayerInPenaltyBox(int $player): bool
-    {
-        return $this->inPenaltyBox[$player];
-    }
-
-    private function addCurrentPlayerToPenaltyBox(): void
-    {
-        $this->inPenaltyBox[$this->gameCalculator->currentPlayer()] = true;
-    }
-
     private function printAdd(string $playerName): void
     {
         array_push($this->players, $playerName);
@@ -246,7 +246,7 @@ final class Game
 
     private function printPenaltyBoxMessage(int $roll, int $player): void 
     {
-        if (!$this->isPlayerInPenaltyBox($player)) {
+        if (!$this->gameCalculator->isPlayerInPenaltyBox($player)) {
             return;
         }
 

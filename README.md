@@ -473,14 +473,20 @@ make install
             - Moved `playersProcess` field
             - Moved partially `processAdd` method
             - Moved `howManyPlayers` method
-            - Refactor `Game` to use this field and method from `gameCalculator`
+            - Refactor `Game` to use the field methods from `gameCalculator`
         - Move `currentPlayer` field and methods
             - Moved `currentPlayer` field
             - Moved `currentPlayer`
             - Moved `nextPlayer`
-            - Refactor `Game` to use this field and method from `gameCalculator`
+            - Refactor `Game` to use the field methods from `gameCalculator`
         - Move `isGettingOutOfPenaltyBox` field and methods
             - Moved `isGettingOutOfPenaltyBox` field
             - Moved `isCurrentPlayerNowGettingOutOfPenaltyBox` method
             - Moved `setIsGettingOutOfPenaltyBox` method
-            - Refactor `Game` to use this field and method from `gameCalculator`
+            - Refactor `Game` to use this the field methods from `gameCalculator`
+        - Move `inPenaltyBox` field and methods
+            - Moved `inPenaltyBox` field
+            - Moved `isCurrentPlayerInPenaltyBox` method
+            - Moved `isPlayerInPenaltyBox` method
+            - Moved `addCurrentPlayerToPenaltyBox` method
+            - Refactor `Game` to use this the field methods from `gameCalculator`
