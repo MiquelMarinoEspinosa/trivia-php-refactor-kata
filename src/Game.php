@@ -146,6 +146,13 @@ final class Game
 
                 $this->increasePursesFor($player);
             }
+
+            public function processWrongAnswer(): void
+            {
+                $this->addCurrentPlayerToPenaltyBox();
+        
+                $this->nextPlayer();
+            }
         };
 
         $this->players = [];
@@ -193,7 +200,7 @@ final class Game
     public function wrongAnswer(): bool
     {
         $this->printWrongAnswer();
-        $this->processWrongAnswer();
+        $this->gameCalculator->processWrongAnswer();
         return true;
     }
 
@@ -205,13 +212,6 @@ final class Game
     private function createRockQuestion(int $index): string
     {
         return "Rock Question " . $index;
-    }
-
-    private function processWrongAnswer(): void
-    {
-        $this->gameCalculator->addCurrentPlayerToPenaltyBox();
-
-        $this->gameCalculator->nextPlayer();
     }
 
     private function didPlayerWin(int $player): bool
