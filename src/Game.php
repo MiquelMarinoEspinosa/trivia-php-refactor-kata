@@ -5,7 +5,6 @@ namespace Game;
 final class Game
 {
     private array $players;
-    private array $playersProcess;
     private array $places;
     private array $purses;
     private array $inPenaltyBox;
@@ -22,11 +21,27 @@ final class Game
 
     public function __construct()
     {
-        $this->gameCalculator = new class(){};
+        $this->gameCalculator = new class(){
+            private array $playersProcess;
+
+            public function __construct()
+            {
+                $this->playersProcess = [];
+            }
+
+            public function processAdd(string $playerName): void
+            {
+                array_push($this->playersProcess, $playerName);
+            }
+
+            public function howManyPlayers(): int
+            {
+                return count($this->playersProcess);
+            }
+        };
 
         $this->currentPlayer = 0;
         $this->players = [];
-        $this->playersProcess = [];
         $this->places = [0];
         $this->purses  = [0];
         $this->inPenaltyBox  = [0];
@@ -81,7 +96,7 @@ final class Game
 
     public function isPlayable(): bool
     {
-        return ($this->howManyPlayers() >= 2);
+        return ($this->gameCalculator->howManyPlayers() >= 2);
     }
 
     private function createRockQuestion(int $index): string
@@ -89,17 +104,12 @@ final class Game
         return "Rock Question " . $index;
     }
 
-    private function howManyPlayers(): int
-    {
-        return count($this->playersProcess);
-    }
-
     private function processAdd(string $playerName): void
     {
-        array_push($this->playersProcess, $playerName);
-        $this->places[$this->howManyPlayers()] = 0;
-        $this->purses[$this->howManyPlayers()] = 0;
-        $this->inPenaltyBox[$this->howManyPlayers()] = false;
+        $this->gameCalculator->processAdd($playerName);
+        $this->places[$this->gameCalculator->howManyPlayers()] = 0;
+        $this->purses[$this->gameCalculator->howManyPlayers()] = 0;
+        $this->inPenaltyBox[$this->gameCalculator->howManyPlayers()] = false;
     }
 
     private function processRoll(int $roll): void
@@ -157,7 +167,7 @@ final class Game
     private function nextPlayer(): void
     {
         $this->currentPlayer++;
-        if ($this->currentPlayer() == $this->howManyPlayers()) {
+        if ($this->currentPlayer() == $this->gameCalculator->howManyPlayers()) {
             $this->currentPlayer = 0;
         }
     }
