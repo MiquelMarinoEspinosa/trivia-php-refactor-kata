@@ -120,6 +120,19 @@ final class Game
 
                 return $this->isCurrentPlayerNowGettingOutOfPenaltyBox();
             }
+
+            public function processRoll(int $roll): void
+            {
+                if ($this->isCurrentPlayerInPenaltyBox()) {
+                    $this->setIsGettingOutOfPenaltyBox($roll % 2 != 0);
+                }
+        
+                if ($this->isCurrentPlayerGettingOutOfPenaltyBox() === false) {
+                    return;
+                }
+        
+                $this->increaseCurrentPlayerPlacesBy($roll);
+            }
         };
 
         $this->players = [];
@@ -150,7 +163,7 @@ final class Game
     {
         $player = $this->gameCalculator->currentPlayer();
 
-        $this->processRoll($roll);
+        $this->gameCalculator->processRoll($roll);
 
         $this->printRoll($roll, $player);
     }
@@ -179,19 +192,6 @@ final class Game
     private function createRockQuestion(int $index): string
     {
         return "Rock Question " . $index;
-    }
-
-    private function processRoll(int $roll): void
-    {
-        if ($this->gameCalculator->isCurrentPlayerInPenaltyBox()) {
-            $this->gameCalculator->setIsGettingOutOfPenaltyBox($roll % 2 != 0);
-        }
-
-        if ($this->gameCalculator->isCurrentPlayerGettingOutOfPenaltyBox() === false) {
-            return;
-        }
-
-        $this->gameCalculator->increaseCurrentPlayerPlacesBy($roll);
     }
 
     private function processCorrectAnswer(): void

@@ -506,3 +506,4 @@ make install
             - At least the `howManyPlayers` method reduce one external dependency
         - Inline `processAdd` method at `add` method
         - Move `isCurrentPlayerGettingOutOfPenaltyBox` method at `gameCalculator`
+        - Move `processRoll` method to `gameCalculator`
