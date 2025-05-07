@@ -490,3 +490,8 @@ make install
             - Moved `isPlayerInPenaltyBox` method
             - Moved `addCurrentPlayerToPenaltyBox` method
             - Refactor `Game` to use this the field methods from `gameCalculator`
+        - Move `purses` field and methods
+            - move `purses` field
+            - move `pursesBy` method
+            - move `increasePursesFor` method
+            - Refactor `Game` to use this the field methods from `gameCalculator`

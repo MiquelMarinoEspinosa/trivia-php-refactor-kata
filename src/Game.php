@@ -6,7 +6,6 @@ final class Game
 {
     private array $players;
     private array $places;
-    private array $purses;
 
     public private(set) array $popQuestions;
     public private(set) array $scienceQuestions;
@@ -22,6 +21,7 @@ final class Game
             private int $currentPlayer;
             private bool $isGettingOutOfPenaltyBox;
             private array $inPenaltyBox;
+            private array $purses;
 
             public function __construct()
             {
@@ -29,12 +29,14 @@ final class Game
                 $this->currentPlayer = 0;
                 $this->isGettingOutOfPenaltyBox = true;
                 $this->inPenaltyBox = [0];
+                $this->purses  = [0];
             }
 
             public function processAdd(string $playerName): void
             {
                 array_push($this->playersProcess, $playerName);
                 $this->inPenaltyBox[$this->howManyPlayers()] = false;
+                $this->purses[$this->howManyPlayers()] = 0;
             }
 
             public function howManyPlayers(): int
@@ -79,11 +81,20 @@ final class Game
             {
                 $this->inPenaltyBox[$this->currentPlayer()] = true;
             }
+
+            public function pursesBy(int $player): int
+            {
+                return $this->purses[$player];
+            }
+
+            public function increasePursesFor(int $player): void
+            {
+                $this->purses[$player]++;
+            }
         };
 
         $this->players = [];
         $this->places = [0];
-        $this->purses  = [0];
         
         $this->popQuestions = [];
         $this->scienceQuestions = [];
@@ -146,7 +157,6 @@ final class Game
     {
         $this->gameCalculator->processAdd($playerName);
         $this->places[$this->gameCalculator->howManyPlayers()] = 0;
-        $this->purses[$this->gameCalculator->howManyPlayers()] = 0;
     }
 
     private function processRoll(int $roll): void
@@ -172,7 +182,7 @@ final class Game
             return;
         }
 
-        $this->increasePursesFor($player);
+        $this->gameCalculator->increasePursesFor($player);
     }
 
     private function isCurrentPlayerGettingOutOfPenaltyBox(): bool
@@ -193,17 +203,7 @@ final class Game
 
     private function didPlayerWin(int $player): bool
     {
-        return !($this->pursesBy($player) == 6);
-    }
-    
-    private function pursesBy(int $player): int
-    {
-        return $this->purses[$player];
-    }
-
-    private function increasePursesFor(int $player): void
-    {
-        $this->purses[$player]++;
+        return !($this->gameCalculator->pursesBy($player) == 6);
     }
 
     private function currentPlayerPlaces(): int
@@ -271,7 +271,7 @@ final class Game
         $this->echoln("Answer was correct!!!!");
         $this->echoln($this->players[$player]
                 . " now has "
-                . $this->pursesBy($player)
+                . $this->gameCalculator->pursesBy($player)
                 . " Gold Coins.");
 
         return $this->didPlayerWin($player);
