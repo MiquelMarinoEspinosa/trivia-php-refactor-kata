@@ -14,8 +14,6 @@ final class Game
     public private(set) array $sportsQuestions;
     public private(set) array $rockQuestions;
 
-    private bool $isGettingOutOfPenaltyBox;
-
     private object $gameCalculator;
 
     public function __construct()
@@ -23,11 +21,13 @@ final class Game
         $this->gameCalculator = new class(){
             private array $playersProcess;
             private int $currentPlayer;
+            private bool $isGettingOutOfPenaltyBox;
 
             public function __construct()
             {
                 $this->playersProcess = [];
                 $this->currentPlayer = 0;
+                $this->isGettingOutOfPenaltyBox = true;
             }
 
             public function processAdd(string $playerName): void
@@ -52,13 +52,22 @@ final class Game
                     $this->currentPlayer = 0;
                 }
             }
+
+            public function isCurrentPlayerNowGettingOutOfPenaltyBox(): bool
+            {
+                return $this->isGettingOutOfPenaltyBox;
+            }
+
+            public function setIsGettingOutOfPenaltyBox(bool $value): void
+            {
+                $this->isGettingOutOfPenaltyBox = $value;
+            }
         };
 
         $this->players = [];
         $this->places = [0];
         $this->purses  = [0];
         $this->inPenaltyBox  = [0];
-        $this->isGettingOutOfPenaltyBox = true;
         
         $this->popQuestions = [];
         $this->scienceQuestions = [];
@@ -128,7 +137,7 @@ final class Game
     private function processRoll(int $roll): void
     {
         if ($this->isCurrentPlayerInPenaltyBox()) {
-            $this->setIsGettingOutOfPenaltyBox($roll % 2 != 0);
+            $this->gameCalculator->setIsGettingOutOfPenaltyBox($roll % 2 != 0);
         }
 
         if ($this->isCurrentPlayerGettingOutOfPenaltyBox() === false) {
@@ -157,7 +166,7 @@ final class Game
             return true;
         }
 
-        return $this->isCurrentPlayerNowGettingOutOfPenaltyBox();
+        return $this->gameCalculator->isCurrentPlayerNowGettingOutOfPenaltyBox();
     }
 
     private function processWrongAnswer(): void
@@ -208,16 +217,6 @@ final class Game
     private function addCurrentPlayerToPenaltyBox(): void
     {
         $this->inPenaltyBox[$this->gameCalculator->currentPlayer()] = true;
-    }
-
-    private function isCurrentPlayerNowGettingOutOfPenaltyBox(): bool
-    {
-        return $this->isGettingOutOfPenaltyBox;
-    }
-
-    private function setIsGettingOutOfPenaltyBox(bool $value): void
-    {
-        $this->isGettingOutOfPenaltyBox = $value;
     }
 
     private function printAdd(string $playerName): void

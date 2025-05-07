@@ -469,13 +469,18 @@ make install
                 - Create method to update `isGettingOutOfPenaltyBox` value
     - At this point of the refactor, all the shared variables have been limited their access via `queries` and `setters` methods. Therefore, it should be safe to move them into a new class. A new `anonymous class` will be created at `Game` class to start the `process` fields transition. At the end, the methods will be also be moved to this new anonymous class and a proper class will be created
         - Create `anonymous class` as `Game` field called `gameCalculator`
-        - Move `playersProcess` field and methods. Use them at the `Game` class
+        - Move `playersProcess` field and methods
             - Moved `playersProcess` field
             - Moved partially `processAdd` method
             - Moved `howManyPlayers` method
             - Refactor `Game` to use this field and method from `gameCalculator`
-        - Move `currentPlayer` field
+        - Move `currentPlayer` field and methods
             - Moved `currentPlayer` field
             - Moved `currentPlayer`
             - Moved `nextPlayer`
+            - Refactor `Game` to use this field and method from `gameCalculator`
+        - Move `isGettingOutOfPenaltyBox` field and methods
+            - Moved `isGettingOutOfPenaltyBox` field
+            - Moved `isCurrentPlayerNowGettingOutOfPenaltyBox` method
+            - Moved `setIsGettingOutOfPenaltyBox` method
             - Refactor `Game` to use this field and method from `gameCalculator`
