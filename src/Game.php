@@ -14,7 +14,6 @@ final class Game
     public private(set) array $sportsQuestions;
     public private(set) array $rockQuestions;
 
-    private int $currentPlayer;
     private bool $isGettingOutOfPenaltyBox;
 
     private object $gameCalculator;
@@ -23,10 +22,12 @@ final class Game
     {
         $this->gameCalculator = new class(){
             private array $playersProcess;
+            private int $currentPlayer;
 
             public function __construct()
             {
                 $this->playersProcess = [];
+                $this->currentPlayer = 0;
             }
 
             public function processAdd(string $playerName): void
@@ -38,9 +39,21 @@ final class Game
             {
                 return count($this->playersProcess);
             }
+
+            public function currentPlayer(): int
+            {
+                return $this->currentPlayer;
+            }
+
+            public function nextPlayer(): void
+            {
+                $this->currentPlayer++;
+                if ($this->currentPlayer() == $this->howManyPlayers()) {
+                    $this->currentPlayer = 0;
+                }
+            }
         };
 
-        $this->currentPlayer = 0;
         $this->players = [];
         $this->places = [0];
         $this->purses  = [0];
@@ -71,7 +84,7 @@ final class Game
 
     public function roll(int $roll): void
     {
-        $player = $this->currentPlayer();
+        $player = $this->gameCalculator->currentPlayer();
 
         $this->processRoll($roll);
 
@@ -80,7 +93,7 @@ final class Game
 
     public function wasCorrectlyAnswered(): bool
     {
-        $player = $this->currentPlayer();
+        $player = $this->gameCalculator->currentPlayer();
 
         $this->processCorrectAnswer();
         
@@ -127,9 +140,9 @@ final class Game
 
     private function processCorrectAnswer(): void
     {
-        $player = $this->currentPlayer();
+        $player = $this->gameCalculator->currentPlayer();
 
-        $this->nextPlayer();
+        $this->gameCalculator->nextPlayer();
 
         if ($this->isCurrentPlayerGettingOutOfPenaltyBox() === false) {
             return;
@@ -151,25 +164,12 @@ final class Game
     {
         $this->addCurrentPlayerToPenaltyBox();
 
-        $this->nextPlayer();
+        $this->gameCalculator->nextPlayer();
     }
 
     private function didPlayerWin(int $player): bool
     {
         return !($this->pursesBy($player) == 6);
-    }
-
-    private function currentPlayer(): int
-    {
-        return $this->currentPlayer;
-    }
-
-    private function nextPlayer(): void
-    {
-        $this->currentPlayer++;
-        if ($this->currentPlayer() == $this->gameCalculator->howManyPlayers()) {
-            $this->currentPlayer = 0;
-        }
     }
     
     private function pursesBy(int $player): int
@@ -184,20 +184,20 @@ final class Game
 
     private function currentPlayerPlaces(): int
     {
-        return $this->places[$this->currentPlayer()];        
+        return $this->places[$this->gameCalculator->currentPlayer()];        
     }
 
     private function increaseCurrentPlayerPlacesBy(int $roll): void
     {
-        $this->places[$this->currentPlayer()] = $this->currentPlayerPlaces() + $roll;
+        $this->places[$this->gameCalculator->currentPlayer()] = $this->currentPlayerPlaces() + $roll;
         if ($this->currentPlayerPlaces() > 11) {
-            $this->places[$this->currentPlayer()] = $this->currentPlayerPlaces() - 12;
+            $this->places[$this->gameCalculator->currentPlayer()] = $this->currentPlayerPlaces() - 12;
         }
     }
 
     private function isCurrentPlayerInPenaltyBox(): bool
     {
-        return $this->inPenaltyBox[$this->currentPlayer()];
+        return $this->inPenaltyBox[$this->gameCalculator->currentPlayer()];
     }
 
     private function isPlayerInPenaltyBox(int $player): bool
@@ -207,7 +207,7 @@ final class Game
 
     private function addCurrentPlayerToPenaltyBox(): void
     {
-        $this->inPenaltyBox[$this->currentPlayer()] = true;
+        $this->inPenaltyBox[$this->gameCalculator->currentPlayer()] = true;
     }
 
     private function isCurrentPlayerNowGettingOutOfPenaltyBox(): bool
@@ -238,7 +238,7 @@ final class Game
             return;
         }
 
-        $this->echoln($this->players[$this->currentPlayer()]
+        $this->echoln($this->players[$this->gameCalculator->currentPlayer()]
                     . "'s new location is "
                     .$this->currentPlayerPlaces());
         $this->echoln("The category is " . $this->currentCategory());
@@ -281,7 +281,7 @@ final class Game
     private function printWrongAnswer(): void 
     {
         $this->echoln("Question was incorrectly answered");
-        $this->echoln($this->players[$this->currentPlayer()] . " was sent to the penalty box");
+        $this->echoln($this->players[$this->gameCalculator->currentPlayer()] . " was sent to the penalty box");
     }
 
     private function askQuestion(): void

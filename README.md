@@ -473,3 +473,9 @@ make install
             - Moved `playersProcess` field
             - Moved partially `processAdd` method
             - Moved `howManyPlayers` method
+            - Refactor `Game` to use this field and method from `gameCalculator`
+        - Move `currentPlayer` field
+            - Moved `currentPlayer` field
+            - Moved `currentPlayer`
+            - Moved `nextPlayer`
+            - Refactor `Game` to use this field and method from `gameCalculator`
