@@ -535,3 +535,4 @@ make install
     - Create a public method at `GameCalculator` called `nameBy` and passing the `player` parameter returning the player's name and use it at `Game`. Remove at `Game` the `players` data structure
     - Although I do not really fancy the idea of storing players names at `GameCalculator`, I must admit that this data structure is mainly used at the `GameCalculator` and just exposing a simple method to be used at `Game`, the data structure duplication can be avoid
     - Remove `purses` innecessary initialization at `GameCalculator`
+    - `type hint` `GameCalculator` field at `Game` class

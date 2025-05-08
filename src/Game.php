@@ -9,7 +9,7 @@ final class Game
     public private(set) array $sportsQuestions;
     public private(set) array $rockQuestions;
 
-    private object $gameCalculator;
+    private GameCalculator $gameCalculator;
 
     public function __construct()
     {
