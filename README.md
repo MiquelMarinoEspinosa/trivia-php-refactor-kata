@@ -529,3 +529,4 @@ make install
     - `inline setIsGettingOutOfPenaltyBox` method
     - `inline addCurrentPlayerToPenaltyBox` method
     - `inline increasePursesFor` method
+    - `inline increaseCurrentPlayerPlacesBy` method

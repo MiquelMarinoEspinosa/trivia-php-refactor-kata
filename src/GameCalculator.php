@@ -41,7 +41,10 @@ final class GameCalculator
             return;
         }
 
-        $this->increaseCurrentPlayerPlacesBy($roll);
+        $this->places[$this->currentPlayer()] = $this->currentPlayerPlaces() + $roll;
+        if ($this->currentPlayerPlaces() > 11) {
+            $this->places[$this->currentPlayer()] = $this->currentPlayerPlaces() - 12;
+        }
     }
 
     public function correctAnswer(): void
@@ -101,14 +104,6 @@ final class GameCalculator
     public function didPlayerWin(int $player): bool
     {
         return !($this->pursesBy($player) == 6);
-    }
-
-    private function increaseCurrentPlayerPlacesBy(int $roll): void
-    {
-        $this->places[$this->currentPlayer()] = $this->currentPlayerPlaces() + $roll;
-        if ($this->currentPlayerPlaces() > 11) {
-            $this->places[$this->currentPlayer()] = $this->currentPlayerPlaces() - 12;
-        }
     }
 
     private function isCurrentPlayerInPenaltyBox(): bool
