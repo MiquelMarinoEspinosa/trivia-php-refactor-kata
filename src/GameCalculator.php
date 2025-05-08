@@ -6,7 +6,7 @@ namespace Game;
 
 final class GameCalculator
 {
-    private array $playersProcess;
+    private array $players;
     private int $currentPlayer;
     private bool $isGettingOutOfPenaltyBox;
     private array $inPenaltyBox;
@@ -15,7 +15,7 @@ final class GameCalculator
 
     public function __construct()
     {
-        $this->playersProcess = [];
+        $this->players = [];
         $this->currentPlayer = 0;
         $this->isGettingOutOfPenaltyBox = true;
         $this->inPenaltyBox = [false];
@@ -25,7 +25,7 @@ final class GameCalculator
 
     public function add(string $playerName): void
     {
-        array_push($this->playersProcess, $playerName);
+        array_push($this->players, $playerName);
         $this->inPenaltyBox[$this->howManyPlayers()] = false;
         $this->purses[$this->howManyPlayers()] = 0;
         $this->places[$this->howManyPlayers()] = 0;
@@ -146,6 +146,6 @@ final class GameCalculator
 
     private function howManyPlayers(): int
     {
-        return count($this->playersProcess);
+        return count($this->players);
     }
 }
