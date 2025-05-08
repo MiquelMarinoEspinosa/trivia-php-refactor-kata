@@ -111,6 +111,11 @@ final class GameCalculator
         return count($this->players);
     }
 
+    public function nameBy(int $player): string
+    {
+        return $this->players[$player];
+    }
+
     private function isCurrentPlayerInPenaltyBox(): bool
     {
         return $this->inPenaltyBox[$this->currentPlayer()];

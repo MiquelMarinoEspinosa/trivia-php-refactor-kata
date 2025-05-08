@@ -4,8 +4,6 @@ namespace Game;
 
 final class Game
 {
-    private array $players;
-
     public private(set) array $popQuestions;
     public private(set) array $scienceQuestions;
     public private(set) array $sportsQuestions;
@@ -16,8 +14,6 @@ final class Game
     public function __construct()
     {
         $this->gameCalculator = new GameCalculator();
-
-        $this->players = [];
 
         $this->popQuestions = [];
         $this->scienceQuestions = [];
@@ -78,14 +74,13 @@ final class Game
 
     private function printAdd(string $playerName): void
     {
-        array_push($this->players, $playerName);
         $this->echoln($playerName . " was added");
         $this->echoln("They are player number " . $this->gameCalculator->numPlayers());
     }
 
     private function printRoll(int $roll, int $player): void
     {
-        $this->echoln($this->players[$player] . " is the current player");
+        $this->echoln($this->gameCalculator->nameBy($player) . " is the current player");
         $this->echoln("They have rolled a " . $roll);
 
         $this->printPenaltyBoxMessage($roll, $player);
@@ -94,9 +89,10 @@ final class Game
             return;
         }
 
-        $this->echoln($this->players[$this->gameCalculator->currentPlayer()]
-                    . "'s new location is "
-                    .$this->gameCalculator->currentPlayerPlaces());
+        $this->echoln($this->gameCalculator->nameBy(
+            $this->gameCalculator->currentPlayer()
+        ) . "'s new location is "
+          .$this->gameCalculator->currentPlayerPlaces());
         $this->echoln("The category is " . $this->currentCategory());
         $this->askQuestion();
     }
@@ -107,7 +103,7 @@ final class Game
             return;
         }
 
-        $this->echoln($this->players[$player] . $this->buildPenaltyBoxMessage($roll));
+        $this->echoln($this->gameCalculator->nameBy($player) . $this->buildPenaltyBoxMessage($roll));
     }
 
     private function buildPenaltyBoxMessage(int $roll): string
@@ -126,7 +122,7 @@ final class Game
         }
 
         $this->echoln("Answer was correct!!!!");
-        $this->echoln($this->players[$player]
+        $this->echoln($this->gameCalculator->nameBy($player)
                 . " now has "
                 . $this->gameCalculator->pursesBy($player)
                 . " Gold Coins.");
@@ -137,7 +133,9 @@ final class Game
     private function printWrongAnswer(): void
     {
         $this->echoln("Question was incorrectly answered");
-        $this->echoln($this->players[$this->gameCalculator->currentPlayer()] . " was sent to the penalty box");
+        $this->echoln($this->gameCalculator->nameBy(
+            $this->gameCalculator->currentPlayer()
+        ) . " was sent to the penalty box");
     }
 
     private function askQuestion(): void
