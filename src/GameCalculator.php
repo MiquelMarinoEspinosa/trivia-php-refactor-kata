@@ -19,7 +19,6 @@ final class GameCalculator
         $this->currentPlayer = 0;
         $this->isGettingOutOfPenaltyBox = true;
         $this->inPenaltyBox = [false];
-        $this->purses  = [0];
         $this->places = [0];
     }
 
