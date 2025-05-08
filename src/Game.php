@@ -34,7 +34,7 @@ final class Game
 
     public function add(string $playerName): bool
     {
-        $this->gameCalculator->processAdd($playerName);
+        $this->gameCalculator->add($playerName);
 
         $this->printAdd($playerName);
 
@@ -45,7 +45,7 @@ final class Game
     {
         $player = $this->gameCalculator->currentPlayer();
 
-        $this->gameCalculator->processRoll($roll);
+        $this->gameCalculator->roll($roll);
 
         $this->printRoll($roll, $player);
     }
@@ -54,7 +54,7 @@ final class Game
     {
         $player = $this->gameCalculator->currentPlayer();
 
-        $this->gameCalculator->processCorrectAnswer();
+        $this->gameCalculator->correctAnswer();
 
         return $this->printAnswerCorrect($player);
     }
@@ -62,7 +62,7 @@ final class Game
     public function wrongAnswer(): bool
     {
         $this->printWrongAnswer();
-        $this->gameCalculator->processWrongAnswer();
+        $this->gameCalculator->wrongAnswer();
         return true;
     }
 

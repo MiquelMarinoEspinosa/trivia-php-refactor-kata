@@ -23,7 +23,7 @@ final class GameCalculator
         $this->places = [0];
     }
 
-    public function processAdd(string $playerName): void
+    public function add(string $playerName): void
     {
         array_push($this->playersProcess, $playerName);
         $this->inPenaltyBox[$this->howManyPlayers()] = false;
@@ -31,7 +31,7 @@ final class GameCalculator
         $this->places[$this->howManyPlayers()] = 0;
     }
 
-    public function processRoll(int $roll): void
+    public function roll(int $roll): void
     {
         if ($this->isCurrentPlayerInPenaltyBox()) {
             $this->setIsGettingOutOfPenaltyBox($roll % 2 != 0);
@@ -44,7 +44,7 @@ final class GameCalculator
         $this->increaseCurrentPlayerPlacesBy($roll);
     }
 
-    public function processCorrectAnswer(): void
+    public function correctAnswer(): void
     {
         $player = $this->currentPlayer();
 
@@ -57,7 +57,7 @@ final class GameCalculator
         $this->increasePursesFor($player);
     }
 
-    public function processWrongAnswer(): void
+    public function wrongAnswer(): void
     {
         $this->addCurrentPlayerToPenaltyBox();
 

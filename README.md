@@ -521,3 +521,4 @@ make install
         - Check whether the `GameCalculator` can return the `currentPlayer` name to be able to remove the `players` data structure at `Game`
         - Check on `Game` class for further refactors
 - Refactor `GameCalculator` restricting visibility of some methods, the ones which are note access by `Game` and sort the methods by visibility - `public` first
+- Refactor `GameCalculator` `process` methods to remove the word at the methods names
