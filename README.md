@@ -552,3 +552,8 @@ make install
     - create a `private` method at `GameCalculator` called `isGettingOutOfPenaltyBoxBy` passing the `roll` and use it at `GameCalculator`
     - Make the method from the previous item public and use it at `Game` class
 - `extract constant` max num questions `magic number` at `Game` class
+- Next steps
+    - The `askQuestion` method also can be simplified and it might be used a `match` operator for instance or a map of numbers for each question
+    - Similar situation for `currentCategory` method
+    - Execute `mutant testing`
+    - Close the refactor exercise with final considerations about the process and how much I like the exercies ^-^
