@@ -543,3 +543,5 @@ make install
         - Similar situation for `currentCategory` method
         - The rest look like kind of ok
         - Let's do the changes one per iteration :D
+- Refactor questions initialization at `Game` class `__construct` method
+    - `extract method` for questions initialization

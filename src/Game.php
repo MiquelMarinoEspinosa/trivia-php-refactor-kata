@@ -20,12 +20,7 @@ final class Game
         $this->sportsQuestions = [];
         $this->rockQuestions = [];
 
-        for ($i = 0; $i < 50; $i++) {
-            array_push($this->popQuestions, "Pop Question " . $i);
-            array_push($this->scienceQuestions, ("Science Question " . $i));
-            array_push($this->sportsQuestions, ("Sports Question " . $i));
-            array_push($this->rockQuestions, $this->createRockQuestion($i));
-        }
+        $this->createQuestions();
     }
 
     public function add(string $playerName): bool
@@ -65,6 +60,16 @@ final class Game
     public function isPlayable(): bool
     {
         return $this->gameCalculator->isPlayable();
+    }
+
+    private function createQuestions(): void
+    {
+        for ($i = 0; $i < 50; $i++) {
+            array_push($this->popQuestions, "Pop Question " . $i);
+            array_push($this->scienceQuestions, ("Science Question " . $i));
+            array_push($this->sportsQuestions, ("Sports Question " . $i));
+            array_push($this->rockQuestions, $this->createRockQuestion($i));
+        }
     }
 
     private function createRockQuestion(int $index): string
