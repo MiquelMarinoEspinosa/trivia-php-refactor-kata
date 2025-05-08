@@ -59,7 +59,7 @@ final class GameCalculator
 
     public function wrongAnswer(): void
     {
-        $this->addCurrentPlayerToPenaltyBox();
+        $this->inPenaltyBox[$this->currentPlayer()] = true;
 
         $this->nextPlayer();
     }
@@ -114,11 +114,6 @@ final class GameCalculator
     private function increasePursesFor(int $player): void
     {
         $this->purses[$player]++;
-    }
-
-    private function addCurrentPlayerToPenaltyBox(): void
-    {
-        $this->inPenaltyBox[$this->currentPlayer()] = true;
     }
 
     private function isCurrentPlayerInPenaltyBox(): bool

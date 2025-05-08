@@ -527,3 +527,4 @@ make install
 - Now that the visibility of some methods at `GameCalculator` has been reduced, it can easily be identified which ones are used not many times which deserves to have its own class and `inline` them
     - `inline isCurrentPlayerNowGettingOutOfPenaltyBox` method
     - `inline setIsGettingOutOfPenaltyBox` method
+    - `inline addCurrentPlayerToPenaltyBox` method
