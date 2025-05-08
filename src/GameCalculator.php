@@ -34,7 +34,7 @@ final class GameCalculator
     public function roll(int $roll): void
     {
         if ($this->isCurrentPlayerInPenaltyBox()) {
-            $this->setIsGettingOutOfPenaltyBox($roll % 2 != 0);
+            $this->isGettingOutOfPenaltyBox = $roll % 2 != 0;
         }
 
         if ($this->isCurrentPlayerGettingOutOfPenaltyBox() === false) {
@@ -124,11 +124,6 @@ final class GameCalculator
     private function isCurrentPlayerInPenaltyBox(): bool
     {
         return $this->inPenaltyBox[$this->currentPlayer()];
-    }
-
-    private function setIsGettingOutOfPenaltyBox(bool $value): void
-    {
-        $this->isGettingOutOfPenaltyBox = $value;
     }
 
     private function nextPlayer(): void
