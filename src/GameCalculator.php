@@ -26,9 +26,9 @@ final class GameCalculator
     public function add(string $playerName): void
     {
         array_push($this->players, $playerName);
-        $this->inPenaltyBox[$this->howManyPlayers()] = false;
-        $this->purses[$this->howManyPlayers()] = 0;
-        $this->places[$this->howManyPlayers()] = 0;
+        $this->inPenaltyBox[$this->numPlayers()] = false;
+        $this->purses[$this->numPlayers()] = 0;
+        $this->places[$this->numPlayers()] = 0;
     }
 
     public function roll(int $roll): void
@@ -86,7 +86,7 @@ final class GameCalculator
 
     public function isPlayable(): bool
     {
-        return ($this->howManyPlayers() >= 2);
+        return ($this->numPlayers() >= 2);
     }
 
     public function isCurrentPlayerGettingOutOfPenaltyBox(): bool
@@ -139,12 +139,12 @@ final class GameCalculator
     private function nextPlayer(): void
     {
         $this->currentPlayer++;
-        if ($this->currentPlayer() == $this->howManyPlayers()) {
+        if ($this->currentPlayer() == $this->numPlayers()) {
             $this->currentPlayer = 0;
         }
     }
 
-    private function howManyPlayers(): int
+    private function numPlayers(): int
     {
         return count($this->players);
     }

@@ -523,3 +523,4 @@ make install
 - Refactor `GameCalculator` restricting visibility of some methods, the ones which are note access by `Game` and sort the methods by visibility - `public` first
 - Refactor `GameCalculator` `process` methods to remove the word at the methods names
 - Refactor `GameCalculator` rename `playersProcess` name to `players` since does not colide with `players` field any longer
+- Refactor `GameCalculator` rename `howManyPlayers` method's name to `numPlayers`
