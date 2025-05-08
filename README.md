@@ -546,3 +546,4 @@ make install
 - Refactor questions initialization at `Game` class `__construct` method
     - `extract method` for questions initialization
     - refactor `$i` temp variable to `$question`
+    - extract `for` body into a new method called `createCategoryQuestionsBy` and rename `$question` to `$numQuestion`
