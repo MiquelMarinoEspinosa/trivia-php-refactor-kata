@@ -537,3 +537,9 @@ make install
     - Remove `purses` innecessary initialization at `GameCalculator`
     - `type hint` `GameCalculator` field at `Game` class
     - Extract `magic numbers` at `GameCalculator` into constants
+    - At this point, the `GameCalculator` refactor class can be considered as finished. Let's take a look at `Game` class
+        - At the `__construct` method there is some logic regarding the questions creation that I think could be extracted some how into a private method
+        - The `askQuestion` method also can be simplified and it might be used a `match` operator for instance
+        - Similar situation for `currentCategory` method
+        - The rest look like kind of ok
+        - Let's do the changes one per iteration :D
