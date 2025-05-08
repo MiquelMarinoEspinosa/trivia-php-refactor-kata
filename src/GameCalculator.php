@@ -6,6 +6,11 @@ namespace Game;
 
 final class GameCalculator
 {
+    private const int MIN_NUM_PLAYERS = 2;
+    private const int NUM_PURSES_PLAYER_WIN = 6;
+    private const int MAX_PLACES = 11;
+    private const int FIRST_PLAYER = 0;
+
     private array $players;
     private int $currentPlayer;
     private bool $isGettingOutOfPenaltyBox;
@@ -41,8 +46,9 @@ final class GameCalculator
         }
 
         $this->places[$this->currentPlayer()] = $this->currentPlayerPlaces() + $roll;
-        if ($this->currentPlayerPlaces() > 11) {
-            $this->places[$this->currentPlayer()] = $this->currentPlayerPlaces() - 12;
+        if ($this->currentPlayerPlaces() > self::MAX_PLACES) {
+            $this->places[$this->currentPlayer()] = $this->currentPlayerPlaces()
+                - (self::MAX_PLACES + 1);
         }
     }
 
@@ -88,7 +94,7 @@ final class GameCalculator
 
     public function isPlayable(): bool
     {
-        return ($this->numPlayers() >= 2);
+        return ($this->numPlayers() >= self::MIN_NUM_PLAYERS);
     }
 
     public function isCurrentPlayerGettingOutOfPenaltyBox(): bool
@@ -102,7 +108,7 @@ final class GameCalculator
 
     public function didPlayerWin(int $player): bool
     {
-        return !($this->pursesBy($player) == 6);
+        return !($this->pursesBy($player) == self::NUM_PURSES_PLAYER_WIN);
     }
 
     public function numPlayers(): int
@@ -124,7 +130,7 @@ final class GameCalculator
     {
         $this->currentPlayer++;
         if ($this->currentPlayer() == $this->numPlayers()) {
-            $this->currentPlayer = 0;
+            $this->currentPlayer = self::FIRST_PLAYER;
         }
     }
 }
