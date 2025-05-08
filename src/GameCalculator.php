@@ -106,6 +106,11 @@ final class GameCalculator
         return !($this->pursesBy($player) == 6);
     }
 
+    public function numPlayers(): int
+    {
+        return count($this->players);
+    }
+
     private function isCurrentPlayerInPenaltyBox(): bool
     {
         return $this->inPenaltyBox[$this->currentPlayer()];
@@ -117,10 +122,5 @@ final class GameCalculator
         if ($this->currentPlayer() == $this->numPlayers()) {
             $this->currentPlayer = 0;
         }
-    }
-
-    private function numPlayers(): int
-    {
-        return count($this->players);
     }
 }

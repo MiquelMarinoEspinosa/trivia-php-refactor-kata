@@ -80,7 +80,7 @@ final class Game
     {
         array_push($this->players, $playerName);
         $this->echoln($playerName . " was added");
-        $this->echoln("They are player number " . count($this->players));
+        $this->echoln("They are player number " . $this->gameCalculator->numPlayers());
     }
 
     private function printRoll(int $roll, int $player): void

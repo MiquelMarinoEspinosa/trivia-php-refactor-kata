@@ -530,3 +530,5 @@ make install
     - `inline addCurrentPlayerToPenaltyBox` method
     - `inline increasePursesFor` method
     - `inline increaseCurrentPlayerPlacesBy` method
+- Check whether the `GameCalculator` can return the `currentPlayer` name to be able to remove the `players` data structure at `Game`
+    - Make `numPlayers` method `public` at `GameCalculator` and use it at `Game`
