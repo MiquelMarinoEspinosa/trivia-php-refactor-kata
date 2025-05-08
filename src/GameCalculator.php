@@ -54,7 +54,7 @@ final class GameCalculator
             return;
         }
 
-        $this->increasePursesFor($player);
+        $this->purses[$player]++;
     }
 
     public function wrongAnswer(): void
@@ -109,11 +109,6 @@ final class GameCalculator
         if ($this->currentPlayerPlaces() > 11) {
             $this->places[$this->currentPlayer()] = $this->currentPlayerPlaces() - 12;
         }
-    }
-
-    private function increasePursesFor(int $player): void
-    {
-        $this->purses[$player]++;
     }
 
     private function isCurrentPlayerInPenaltyBox(): bool

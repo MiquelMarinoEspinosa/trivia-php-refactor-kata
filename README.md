@@ -524,7 +524,8 @@ make install
 - Refactor `GameCalculator` `process` methods to remove the word at the methods names
 - Refactor `GameCalculator` rename `playersProcess` name to `players` since does not colide with `players` field any longer
 - Refactor `GameCalculator` rename `howManyPlayers` method's name to `numPlayers`
-- Now that the visibility of some methods at `GameCalculator` has been reduced, it can easily be identified which ones are used not many times which deserves to have its own class and `inline` them
+- Now that the visibility of some methods at `GameCalculator` has been reduced, it can easily be identified which ones are used not many times which deserves to have its own class and `inline` them, specially the ones that just have a single line of code and are just called in a single place
     - `inline isCurrentPlayerNowGettingOutOfPenaltyBox` method
     - `inline setIsGettingOutOfPenaltyBox` method
     - `inline addCurrentPlayerToPenaltyBox` method
+    - `inline increasePursesFor` method
