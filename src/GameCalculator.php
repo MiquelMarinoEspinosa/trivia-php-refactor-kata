@@ -95,7 +95,7 @@ final class GameCalculator
             return true;
         }
 
-        return $this->isCurrentPlayerNowGettingOutOfPenaltyBox();
+        return $this->isGettingOutOfPenaltyBox;
     }
 
     public function didPlayerWin(int $player): bool
@@ -129,11 +129,6 @@ final class GameCalculator
     private function setIsGettingOutOfPenaltyBox(bool $value): void
     {
         $this->isGettingOutOfPenaltyBox = $value;
-    }
-
-    private function isCurrentPlayerNowGettingOutOfPenaltyBox(): bool
-    {
-        return $this->isGettingOutOfPenaltyBox;
     }
 
     private function nextPlayer(): void
