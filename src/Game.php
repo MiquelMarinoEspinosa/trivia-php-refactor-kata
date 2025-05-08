@@ -113,7 +113,7 @@ final class Game
 
     private function buildPenaltyBoxMessage(int $roll): string
     {
-        if ($roll % 2 != 0) {
+        if ($this->gameCalculator->isGettingOutOfPenaltyBoxBy($roll)) {
             return " is getting out of the penalty box";
         }
 

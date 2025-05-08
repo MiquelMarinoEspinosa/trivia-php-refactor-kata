@@ -121,7 +121,7 @@ final class GameCalculator
         return $this->players[$player];
     }
 
-    private function isGettingOutOfPenaltyBoxBy(int $roll): bool
+    public function isGettingOutOfPenaltyBoxBy(int $roll): bool
     {
         return $roll % 2 != 0;
     }
