@@ -551,3 +551,4 @@ make install
 - Just discovered that this logic `$roll % 2 != 0` which is duplicated in both `Game` and `GameCalculator`, should just belong to `GameCalculator`. To do so, `GameCalculator` needs to expose a public method to return the result of this expresion's evaluation
     - create a `private` method at `GameCalculator` called `isGettingOutOfPenaltyBoxBy` passing the `roll` and use it at `GameCalculator`
     - Make the method from the previous item public and use it at `Game` class
+- `extract constant` max num questions `magic number` at `Game` class

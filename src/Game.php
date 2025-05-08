@@ -4,6 +4,8 @@ namespace Game;
 
 final class Game
 {
+    private const int MAX_NUM_QUESTIONS = 50;
+
     public private(set) array $popQuestions;
     public private(set) array $scienceQuestions;
     public private(set) array $sportsQuestions;
@@ -64,7 +66,7 @@ final class Game
 
     private function createQuestions(): void
     {
-        for ($numQuestion = 0; $numQuestion < 50; $numQuestion++) {
+        for ($numQuestion = 0; $numQuestion < self::MAX_NUM_QUESTIONS; $numQuestion++) {
             $this->createCategoryQuestionsBy($numQuestion);
         }
     }
