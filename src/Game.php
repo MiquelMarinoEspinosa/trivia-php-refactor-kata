@@ -64,11 +64,11 @@ final class Game
 
     private function createQuestions(): void
     {
-        for ($i = 0; $i < 50; $i++) {
-            array_push($this->popQuestions, "Pop Question " . $i);
-            array_push($this->scienceQuestions, ("Science Question " . $i));
-            array_push($this->sportsQuestions, ("Sports Question " . $i));
-            array_push($this->rockQuestions, $this->createRockQuestion($i));
+        for ($question = 0; $question < 50; $question++) {
+            array_push($this->popQuestions, "Pop Question " . $question);
+            array_push($this->scienceQuestions, ("Science Question " . $question));
+            array_push($this->sportsQuestions, ("Sports Question " . $question));
+            array_push($this->rockQuestions, $this->createRockQuestion($question));
         }
     }
 
