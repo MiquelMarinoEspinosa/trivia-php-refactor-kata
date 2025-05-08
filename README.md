@@ -547,3 +547,4 @@ make install
     - `extract method` for questions initialization
     - refactor `$i` temp variable to `$question`
     - extract `for` body into a new method called `createCategoryQuestionsBy` and rename `$question` to `$numQuestion`
+    - Good enough. To finish I will remove the extra parentesis of the strings and `inline` the `createRockQuestion` method

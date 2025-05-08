@@ -72,14 +72,9 @@ final class Game
     private function createCategoryQuestionsBy(int $numQuestion): void
     {
         array_push($this->popQuestions, "Pop Question " . $numQuestion);
-        array_push($this->scienceQuestions, ("Science Question " . $numQuestion));
-        array_push($this->sportsQuestions, ("Sports Question " . $numQuestion));
-        array_push($this->rockQuestions, $this->createRockQuestion($numQuestion));
-    }
-
-    private function createRockQuestion(int $index): string
-    {
-        return "Rock Question " . $index;
+        array_push($this->scienceQuestions, "Science Question " . $numQuestion);
+        array_push($this->sportsQuestions, "Sports Question " . $numQuestion);
+        array_push($this->rockQuestions, "Rock Question " . $numQuestion);
     }
 
     private function printAdd(string $playerName): void
