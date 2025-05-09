@@ -598,3 +598,4 @@ make install
         - `extract constat` `Sports` category question
         - Use the new structure for `Sports` questions at `currentQuestion` method
         - Remove `sportQuestions` data structure
+        - Initialize `Rock` questions at the new data structure
