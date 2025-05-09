@@ -575,3 +575,4 @@ make install
     - Introduce `2` `Sports` case at `match` operator
     - Introduce the rest of `Sports` cases
     - Remove `category` temp variable and directly return the `match` result
+- Remove not use `default` case at `currentQuestion` method at `match` operator just to make clear that the case is not used even though the coverage does not reflect this fact

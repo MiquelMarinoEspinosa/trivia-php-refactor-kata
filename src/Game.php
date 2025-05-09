@@ -156,8 +156,7 @@ final class Game
             "Pop"       => array_shift($this->popQuestions),
             "Science"   => array_shift($this->scienceQuestions),
             "Sports"    => array_shift($this->sportsQuestions),
-            "Rock"      => array_shift($this->rockQuestions),
-            default     => ""
+            "Rock"      => array_shift($this->rockQuestions)
         };
     }
 
