@@ -569,3 +569,4 @@ make install
 - Refactor `currentCategory` method to use the `match` operator
     - Introduce `category` temp variable
     - Introduce `match` operator with first `0` `Pop` category and `default` `Rock` cases
+    - Add rest of `Pop` cases at `match` operator
