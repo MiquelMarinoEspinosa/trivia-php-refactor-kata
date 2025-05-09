@@ -148,16 +148,11 @@ final class Game
             return;
         }
 
-        $this->echoln($this->gameCalculator->nameBy($player) . $this->buildPenaltyBoxMessage($roll));
-    }
+        $penaltyBoxMessage = $this->gameCalculator->isGettingOutOfPenaltyBoxBy($roll)
+            ? " is getting out of the penalty box"
+            : " is not getting out of the penalty box";
 
-    private function buildPenaltyBoxMessage(int $roll): string
-    {
-        if ($this->gameCalculator->isGettingOutOfPenaltyBoxBy($roll)) {
-            return " is getting out of the penalty box";
-        }
-
-        return " is not getting out of the penalty box";
+        $this->echoln($this->gameCalculator->nameBy($player) . $penaltyBoxMessage);
     }
 
     private function printAnswerCorrect(string $player): bool
