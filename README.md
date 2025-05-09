@@ -620,3 +620,7 @@ make install
     - Refactor `printAnswerCorrect` to use `sprintf`
     - Refactor `printWrongAnswer` to use `sprintf`
     - Refactor `echoln` to use `sprintf`
+- At this point the `Game` refactor can be considered done
+- Next steps
+    - Execute `infection mutation testing`
+    - Document final considerations and general considerations about the refactor exercise :)
