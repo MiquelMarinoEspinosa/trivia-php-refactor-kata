@@ -62,10 +62,14 @@ final class Game
 
     public function totalNumQuestions(): int
     {
-        return count($this->questions[self::POP_CATEGORY])
-            + count($this->questions[self::SPORTS_CATEGORY])
-            + count($this->questions[self::SCIENCE_CATEGORY])
-            + count($this->questions[self::ROCK_CATEGORY]);
+        $totalNumQuestions = 0;
+
+        return array_reduce(
+            $this->questions,
+            static fn(int $totalNumQuestions, array $categoryQuestions)
+                => $totalNumQuestions + count($categoryQuestions),
+            $totalNumQuestions
+        );
     }
 
     private function createQuestions(): void

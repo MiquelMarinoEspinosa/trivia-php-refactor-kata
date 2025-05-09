@@ -605,3 +605,4 @@ make install
         - remove `rockQuestions` data structure
         - encapsulate questions initialization at `createQuestions` method
         - `inline method` `currentQuestion` at `askQuestion` method
+        - `use reduce` to calculate `totalNumQuestions`
