@@ -147,7 +147,12 @@ final class Game
 
     private function askQuestion(): void
     {
-        $question = null;
+        $this->echoln($this->currentQuestion());
+    }
+
+    private function currentQuestion(): string
+    {
+        $question = "";
         if ($this->currentCategory() == "Pop") {
             $question = array_shift($this->popQuestions);
         }
@@ -161,7 +166,7 @@ final class Game
             $question = array_shift($this->rockQuestions);
         }
 
-        $this->echoln($question);
+        return $question;
     }
 
     private function currentCategory(): string

@@ -559,3 +559,4 @@ make install
     - Close the refactor exercise with final considerations about the process and how much I like the exercies ^-^
 - Refactor `askQuestion` method to use `match` operator
     - `extract variable` called `question` to use a single `echo` instruction
+    - `extract method` get the current question from `askQuestion`
