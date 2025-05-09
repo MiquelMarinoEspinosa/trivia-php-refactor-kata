@@ -156,15 +156,9 @@ final class Game
             "Pop"       => array_shift($this->popQuestions),
             "Science"   => array_shift($this->scienceQuestions),
             "Sports"    => array_shift($this->sportsQuestions),
+            "Rock"      => array_shift($this->rockQuestions),
             default     => ""
         };
-
-        //if ($this->currentCategory() == "Sports") {
-        //    $question = array_shift($this->sportsQuestions);
-        //}
-        if ($this->currentCategory() == "Rock") {
-            $question = array_shift($this->rockQuestions);
-        }
 
         return $question;
     }

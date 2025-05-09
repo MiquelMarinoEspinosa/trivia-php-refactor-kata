@@ -564,3 +564,4 @@ make install
         - introduce `Pop` and `default` cases
         - add `Science` case
         - add `Sports` case
+        - add `Rock` case
