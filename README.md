@@ -581,3 +581,4 @@ make install
     - Encapsulate the access to the questions structure directly used by an unit test
         - Create `totalNumQuestions` and refactor `GameTest` to use it at an unit test
         - Make the questions data structure `private`
+        - Introduce `questions` data structure and initialize `Pop` questions
