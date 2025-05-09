@@ -599,3 +599,4 @@ make install
         - Use the new structure for `Sports` questions at `currentQuestion` method
         - Remove `sportQuestions` data structure
         - Initialize `Rock` questions at the new data structure
+        - Use new data structure for `Rock` questions at `totalNumQuestions`

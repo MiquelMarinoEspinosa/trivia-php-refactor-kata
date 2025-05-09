@@ -73,7 +73,7 @@ final class Game
         return count($this->questions[self::POP_CATEGORY])
             + count($this->questions[self::SPORTS_CATEGORY])
             + count($this->questions[self::SCIENCE_CATEGORY])
-            + count($this->rockQuestions);
+            + count($this->questions["Rock"]);
     }
 
     private function createQuestions(): void
