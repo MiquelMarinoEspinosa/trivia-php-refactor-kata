@@ -8,7 +8,6 @@ final class Game
     private const string POP_CATEGORY = "Pop";
     private const string SCIENCE_CATEGORY = "Science";
 
-    private array $scienceQuestions;
     private array $sportsQuestions;
     private array $rockQuestions;
     private array $questions;
@@ -19,7 +18,6 @@ final class Game
     {
         $this->gameCalculator = new GameCalculator();
 
-        $this->scienceQuestions = [];
         $this->sportsQuestions = [];
         $this->rockQuestions = [];
         $this->questions = [
@@ -88,7 +86,6 @@ final class Game
     {
         array_push($this->questions[self::POP_CATEGORY], "Pop Question " . $numQuestion);
         array_push($this->questions[self::SCIENCE_CATEGORY], "Science Question " . $numQuestion);
-        array_push($this->scienceQuestions, "Science Question " . $numQuestion);
         array_push($this->sportsQuestions, "Sports Question " . $numQuestion);
         array_push($this->rockQuestions, "Rock Question " . $numQuestion);
     }
