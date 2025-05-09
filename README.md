@@ -574,3 +574,4 @@ make install
     - Add rest `Science` cases
     - Introduce `2` `Sports` case at `match` operator
     - Introduce the rest of `Sports` cases
+    - Remove `category` temp variable and directly return the `match` result

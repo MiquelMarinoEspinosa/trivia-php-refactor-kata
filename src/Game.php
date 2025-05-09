@@ -163,14 +163,12 @@ final class Game
 
     private function currentCategory(): string
     {
-        $category = match($this->gameCalculator->currentPlayerPlaces()) {
+        return match($this->gameCalculator->currentPlayerPlaces()) {
             0,4,8   => "Pop",
             1,5,9   => "Science",
             2,6,10  => "Sports",
             default => "Rock"
         };
-
-        return $category;
     }
 
     private function echoln($string): void
