@@ -22,7 +22,8 @@ final class Game
         $this->sportsQuestions = [];
         $this->rockQuestions = [];
         $this->questions = [
-            self::POP_CATEGORY => []
+            self::POP_CATEGORY => [],
+            "Science" => []
         ];
 
         $this->createQuestions();
@@ -85,6 +86,7 @@ final class Game
     private function createCategoryQuestionsBy(int $numQuestion): void
     {
         array_push($this->questions[self::POP_CATEGORY], "Pop Question " . $numQuestion);
+        array_push($this->questions["Science"], "Science Question " . $numQuestion);
         array_push($this->scienceQuestions, "Science Question " . $numQuestion);
         array_push($this->sportsQuestions, "Sports Question " . $numQuestion);
         array_push($this->rockQuestions, "Rock Question " . $numQuestion);

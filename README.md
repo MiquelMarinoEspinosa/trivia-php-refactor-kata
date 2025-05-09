@@ -588,3 +588,4 @@ make install
         - Introduce `Pop` constant category
         - Remove phpunit tests warning initializing `purses` again at `GameCalculator` and add `phpunit` configuration to display warnings
         - Remove `popQuestions` data structure
+        - Initialize `Science` questions at the new `questions` data structure
