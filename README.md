@@ -580,3 +580,4 @@ make install
 - At this point, I have realized that the `3` questions data structure are kind of redundant and can be merge in a single `questions` structure data. That would also simplify - even remove - the `currentQuestion` and `currentCategory` methods
     - Encapsulate the access to the questions structure directly used by an unit test
         - Create `totalNumQuestions` and refactor `GameTest` to use it at an unit test
+        - Make the questions data structure `private`

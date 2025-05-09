@@ -6,10 +6,10 @@ final class Game
 {
     private const int MAX_NUM_QUESTIONS = 50;
 
-    public private(set) array $popQuestions;
-    public private(set) array $scienceQuestions;
-    public private(set) array $sportsQuestions;
-    public private(set) array $rockQuestions;
+    private array $popQuestions;
+    private array $scienceQuestions;
+    private array $sportsQuestions;
+    private array $rockQuestions;
 
     private GameCalculator $gameCalculator;
 
