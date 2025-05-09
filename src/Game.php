@@ -76,7 +76,7 @@ final class Game
             self::SPORTS_CATEGORY => [],
             self::ROCK_CATEGORY => []
         ];
-        
+
         for ($numQuestion = 0; $numQuestion < self::MAX_NUM_QUESTIONS; $numQuestion++) {
             $this->createCategoryQuestionsBy($numQuestion);
         }
@@ -158,17 +158,11 @@ final class Game
 
     private function askQuestion(): void
     {
-        $this->echoln($this->currentQuestion());
-    }
-
-    private function currentQuestion(): string
-    {
-        return match($this->currentCategory()) {
-            self::POP_CATEGORY      => array_shift($this->questions[$this->currentCategory()]),
-            self::SCIENCE_CATEGORY  => array_shift($this->questions[$this->currentCategory()]),
-            self::SPORTS_CATEGORY   => array_shift($this->questions[$this->currentCategory()]),
-            self::ROCK_CATEGORY     => array_shift($this->questions[$this->currentCategory()])
-        };
+        $this->echoln(
+            array_shift(
+                $this->questions[$this->currentCategory()]
+            )
+        );
     }
 
     private function currentCategory(): string

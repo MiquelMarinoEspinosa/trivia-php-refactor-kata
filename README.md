@@ -604,3 +604,4 @@ make install
         - use `Rock` questions new structure at `currentQuestion` method
         - remove `rockQuestions` data structure
         - encapsulate questions initialization at `createQuestions` method
+        - `inline method` `currentQuestion` at `askQuestion` method
