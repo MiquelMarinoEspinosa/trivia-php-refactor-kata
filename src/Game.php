@@ -116,8 +116,8 @@ final class Game
 
     private function printRoll(int $roll, int $player): void
     {
-        $this->echoln($this->gameCalculator->nameBy($player) . " is the current player");
-        $this->echoln("They have rolled a " . $roll);
+        $this->echoln(sprintf("%s is the current player", $this->gameCalculator->nameBy($player)));
+        $this->echoln(sprintf("They have rolled a %d", $roll));
 
         $this->printPenaltyBoxMessage($roll, $player);
 
@@ -125,12 +125,21 @@ final class Game
             return;
         }
 
-        $this->echoln($this->gameCalculator->nameBy(
-            $this->gameCalculator->currentPlayer()
-        ) . "'s new location is "
-          .$this->gameCalculator->currentPlayerPlaces());
-        $this->echoln("The category is " . $this->currentCategory());
+        $this->echoln(
+            sprintf(
+                "%s's new location is %d",
+                $this->currentPlayerName(),
+                $this->gameCalculator->currentPlayerPlaces())
+        );
+        $this->echoln(sprintf("The category is %s", $this->currentCategory()));
         $this->askQuestion();
+    }
+
+    private function currentPlayerName(): string
+    {
+        return $this->gameCalculator->nameBy(
+            $this->gameCalculator->currentPlayer()
+        );
     }
 
     private function printPenaltyBoxMessage(int $roll, int $player): void

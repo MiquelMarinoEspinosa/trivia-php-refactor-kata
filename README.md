@@ -613,3 +613,4 @@ make install
     - Fix `questions` bad field documentation
     - Refactor `printAdd` method to use `sprintf`
     - So far with `sprintf` the code looks like better organized
+    - Refactor `printRoll` method to use `printf`
