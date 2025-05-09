@@ -611,3 +611,5 @@ make install
     - Change `createCategoryQuestionsBy` method to use `sprintf`
     - Refactor `createCategoryQuestionsBy` to generate the questions dynamically by category
     - Fix `questions` bad field documentation
+    - Refactor `printAdd` method to use `sprintf`
+    - So far with `sprintf` the code looks like better organized

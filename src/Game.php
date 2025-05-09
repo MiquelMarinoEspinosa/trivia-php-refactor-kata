@@ -110,8 +110,8 @@ final class Game
 
     private function printAdd(string $playerName): void
     {
-        $this->echoln($playerName . " was added");
-        $this->echoln("They are player number " . $this->gameCalculator->numPlayers());
+        $this->echoln(sprintf("%s was added", $playerName));
+        $this->echoln(sprintf("They are player number %s", $this->gameCalculator->numPlayers()));
     }
 
     private function printRoll(int $roll, int $player): void
