@@ -593,3 +593,4 @@ make install
         - Use the new structure for `Science` questions at `currentQuestion`method
         - `extract constant` `Science` question category
         - remove `scienceQuestions` data structure
+        - initialize `Sports` questions into the new `questions` data structure
