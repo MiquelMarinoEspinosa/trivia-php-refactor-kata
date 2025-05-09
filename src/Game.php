@@ -103,7 +103,7 @@ final class Game
         foreach (self::CATEGORIES as $category) {
             array_push(
                 $this->questions[$category],
-                sprintf("%s Question %d", $category, $numQuestion)
+                sprintf("%s Question %u", $category, $numQuestion)
             );
         }
     }
@@ -117,7 +117,7 @@ final class Game
     private function printRoll(int $roll, int $player): void
     {
         $this->echoln(sprintf("%s is the current player", $this->gameCalculator->nameBy($player)));
-        $this->echoln(sprintf("They have rolled a %d", $roll));
+        $this->echoln(sprintf("They have rolled a %u", $roll));
 
         $this->printPenaltyBoxMessage($roll, $player);
 
@@ -127,7 +127,7 @@ final class Game
 
         $this->echoln(
             sprintf(
-                "%s's new location is %d",
+                "%s's new location is %u",
                 $this->currentPlayerName(),
                 $this->gameCalculator->currentPlayerPlaces())
         );

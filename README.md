@@ -614,3 +614,4 @@ make install
     - Refactor `printAdd` method to use `sprintf`
     - So far with `sprintf` the code looks like better organized
     - Refactor `printRoll` method to use `printf`
+    - Change `%d` integer identifier for `%u` unsigned integer at `sprintf`
