@@ -9,7 +9,19 @@ final class Game
     private const string SCIENCE_CATEGORY = "Science";
     private const string SPORTS_CATEGORY = "Sports";
     private const string ROCK_CATEGORY = "Rock";
+    /**
+     * @var array<string>
+     */
+    private const array CATEGORIES = [
+        self::POP_CATEGORY,
+        self::SCIENCE_CATEGORY,
+        self::SPORTS_CATEGORY,
+        self::ROCK_CATEGORY
+    ];
 
+    /**
+     * @var array<string>
+     */
     private array $questions;
 
     private GameCalculator $gameCalculator;
@@ -88,10 +100,12 @@ final class Game
 
     private function createCategoryQuestionsBy(int $numQuestion): void
     {
-        array_push($this->questions[self::POP_CATEGORY], sprintf("Pop Question %d", $numQuestion));
-        array_push($this->questions[self::SCIENCE_CATEGORY], sprintf("Science Question %d", $numQuestion));
-        array_push($this->questions[self::SPORTS_CATEGORY], sprintf("Sports Question %d", $numQuestion));
-        array_push($this->questions[self::ROCK_CATEGORY], sprintf("Rock Question %d", $numQuestion));
+        foreach (self::CATEGORIES as $category) {
+            array_push(
+                $this->questions[$category],
+                sprintf("%s Question %d", $category, $numQuestion)
+            );
+        }
     }
 
     private function printAdd(string $playerName): void

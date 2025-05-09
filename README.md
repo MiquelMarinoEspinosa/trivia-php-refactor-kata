@@ -609,3 +609,4 @@ make install
         - This refactor introducing a unique `questions`data structure can be considered done :)
 - I would like to change the dot string concatenation operator to use `sprintf` instead
     - Change `createCategoryQuestionsBy` method to use `sprintf`
+    - Refactor `createCategoryQuestionsBy` to generate the questions dynamically by category
