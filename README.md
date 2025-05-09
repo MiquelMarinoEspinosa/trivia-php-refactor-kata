@@ -617,4 +617,5 @@ make install
     - Change `%d` integer identifier for `%u` unsigned integer at `sprintf`
     - `inline method` `buildPenaltyBoxMessage` at `printPenaltyBoxMessage` method
     - Use `sprintf` at `printPenaltyBoxMessage` method
-    - refactor `printAnswerCorrect` to use `sprintf`
+    - Refactor `printAnswerCorrect` to use `sprintf`
+    - Refactor `printWrongAnswer` to use `sprintf`

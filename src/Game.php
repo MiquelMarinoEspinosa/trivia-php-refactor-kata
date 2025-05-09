@@ -167,7 +167,7 @@ final class Game
         $this->echoln("Answer was correct!!!!");
         $this->echoln(
             sprintf(
-                "%s now has %d Gold Coins.",
+                "%s now has %u Gold Coins.",
                 $this->gameCalculator->nameBy($player),
                 $this->gameCalculator->pursesBy($player),
             )
@@ -179,9 +179,12 @@ final class Game
     private function printWrongAnswer(): void
     {
         $this->echoln("Question was incorrectly answered");
-        $this->echoln($this->gameCalculator->nameBy(
-            $this->gameCalculator->currentPlayer()
-        ) . " was sent to the penalty box");
+        $this->echoln(
+            sprintf(
+                "%s was sent to the penalty box",
+                $this->currentPlayerName()
+            )
+        );
     }
 
     private function askQuestion(): void
