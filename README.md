@@ -584,3 +584,4 @@ make install
         - Introduce `questions` data structure and initialize `Pop` questions
         - Use the new `questions` structure at `currentQuestion` method for `Pop` questions
             - Notice that it is retrieving the question dynamically directly using the `$this->currentCategory()` value as index
+        - Use the new `questions` structure at `totalNumQuestions` method for `Pop` questions

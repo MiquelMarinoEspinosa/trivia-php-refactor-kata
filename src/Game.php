@@ -70,7 +70,7 @@ final class Game
 
     public function totalNumQuestions(): int
     {
-        return count($this->popQuestions)
+        return count($this->questions["Pop"])
             + count($this->sportsQuestions)
             + count($this->scienceQuestions)
             + count($this->rockQuestions);
