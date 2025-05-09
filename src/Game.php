@@ -206,8 +206,8 @@ final class Game
         };
     }
 
-    private function echoln($string): void
+    private function echoln(string $text): void
     {
-        echo $string."\n";
+        echo sprintf("%s\n", $text);
     }
 }

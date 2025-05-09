@@ -619,3 +619,4 @@ make install
     - Use `sprintf` at `printPenaltyBoxMessage` method
     - Refactor `printAnswerCorrect` to use `sprintf`
     - Refactor `printWrongAnswer` to use `sprintf`
+    - Refactor `echoln` to use `sprintf`
