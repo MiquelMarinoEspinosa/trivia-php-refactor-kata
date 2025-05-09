@@ -169,7 +169,7 @@ final class Game
         return match($this->currentCategory()) {
             self::POP_CATEGORY => array_shift($this->questions[$this->currentCategory()]),
             self::SCIENCE_CATEGORY   => array_shift($this->questions[$this->currentCategory()]),
-            self::SPORTS_CATEGORY    => array_shift($this->sportsQuestions),
+            self::SPORTS_CATEGORY    => array_shift($this->questions[$this->currentCategory()]),
             "Rock"      => array_shift($this->rockQuestions)
         };
     }

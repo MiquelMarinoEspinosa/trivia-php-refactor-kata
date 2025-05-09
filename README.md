@@ -596,3 +596,4 @@ make install
         - initialize `Sports` questions into the new `questions` data structure
         - Use the new structure for `Sports` questions at `totalNumQuestions` method
         - `extract constat` `Sports` category question
+        - Use the new structure for `Sports` questions at `currentQuestion` method
