@@ -7,6 +7,7 @@ final class Game
     private const int MAX_NUM_QUESTIONS = 50;
     private const string POP_CATEGORY = "Pop";
     private const string SCIENCE_CATEGORY = "Science";
+    private const string SPORTS_CATEGORY = "Sports";
 
     private array $sportsQuestions;
     private array $rockQuestions;
@@ -23,7 +24,7 @@ final class Game
         $this->questions = [
             self::POP_CATEGORY => [],
             self::SCIENCE_CATEGORY => [],
-            "Sports" => []
+            self::SPORTS_CATEGORY => []
         ];
 
         $this->createQuestions();
@@ -71,7 +72,7 @@ final class Game
     public function totalNumQuestions(): int
     {
         return count($this->questions[self::POP_CATEGORY])
-            + count($this->questions["Sports"])
+            + count($this->questions[self::SPORTS_CATEGORY])
             + count($this->questions[self::SCIENCE_CATEGORY])
             + count($this->rockQuestions);
     }
@@ -87,7 +88,7 @@ final class Game
     {
         array_push($this->questions[self::POP_CATEGORY], "Pop Question " . $numQuestion);
         array_push($this->questions[self::SCIENCE_CATEGORY], "Science Question " . $numQuestion);
-        array_push($this->questions["Sports"], "Sports Question " . $numQuestion);
+        array_push($this->questions[self::SPORTS_CATEGORY], "Sports Question " . $numQuestion);
         array_push($this->sportsQuestions, "Sports Question " . $numQuestion);
         array_push($this->rockQuestions, "Rock Question " . $numQuestion);
     }
@@ -168,7 +169,7 @@ final class Game
         return match($this->currentCategory()) {
             self::POP_CATEGORY => array_shift($this->questions[$this->currentCategory()]),
             self::SCIENCE_CATEGORY   => array_shift($this->questions[$this->currentCategory()]),
-            "Sports"    => array_shift($this->sportsQuestions),
+            self::SPORTS_CATEGORY    => array_shift($this->sportsQuestions),
             "Rock"      => array_shift($this->rockQuestions)
         };
     }
@@ -178,7 +179,7 @@ final class Game
         return match($this->gameCalculator->currentPlayerPlaces()) {
             0,4,8   => self::POP_CATEGORY,
             1,5,9   => self::SCIENCE_CATEGORY,
-            2,6,10  => "Sports",
+            2,6,10  => self::SPORTS_CATEGORY,
             default => "Rock"
         };
     }
