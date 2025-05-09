@@ -570,3 +570,4 @@ make install
     - Introduce `category` temp variable
     - Introduce `match` operator with first `0` `Pop` category and `default` `Rock` cases
     - Add rest of `Pop` cases at `match` operator
+    - Introduce `1` `Science` category at `match` operator
