@@ -6,6 +6,7 @@ final class Game
 {
     private const int MAX_NUM_QUESTIONS = 50;
     private const string POP_CATEGORY = "Pop";
+    private const string SCIENCE_CATEGORY = "Science";
 
     private array $scienceQuestions;
     private array $sportsQuestions;
@@ -23,7 +24,7 @@ final class Game
         $this->rockQuestions = [];
         $this->questions = [
             self::POP_CATEGORY => [],
-            "Science" => []
+            self::SCIENCE_CATEGORY => []
         ];
 
         $this->createQuestions();
@@ -72,7 +73,7 @@ final class Game
     {
         return count($this->questions[self::POP_CATEGORY])
             + count($this->sportsQuestions)
-            + count($this->questions["Science"])
+            + count($this->questions[self::SCIENCE_CATEGORY])
             + count($this->rockQuestions);
     }
 
@@ -86,7 +87,7 @@ final class Game
     private function createCategoryQuestionsBy(int $numQuestion): void
     {
         array_push($this->questions[self::POP_CATEGORY], "Pop Question " . $numQuestion);
-        array_push($this->questions["Science"], "Science Question " . $numQuestion);
+        array_push($this->questions[self::SCIENCE_CATEGORY], "Science Question " . $numQuestion);
         array_push($this->scienceQuestions, "Science Question " . $numQuestion);
         array_push($this->sportsQuestions, "Sports Question " . $numQuestion);
         array_push($this->rockQuestions, "Rock Question " . $numQuestion);
@@ -167,7 +168,7 @@ final class Game
     {
         return match($this->currentCategory()) {
             self::POP_CATEGORY => array_shift($this->questions[$this->currentCategory()]),
-            "Science"   => array_shift($this->questions[$this->currentCategory()]),
+            self::SCIENCE_CATEGORY   => array_shift($this->questions[$this->currentCategory()]),
             "Sports"    => array_shift($this->sportsQuestions),
             "Rock"      => array_shift($this->rockQuestions)
         };
@@ -177,7 +178,7 @@ final class Game
     {
         return match($this->gameCalculator->currentPlayerPlaces()) {
             0,4,8   => self::POP_CATEGORY,
-            1,5,9   => "Science",
+            1,5,9   => self::SCIENCE_CATEGORY,
             2,6,10  => "Sports",
             default => "Rock"
         };

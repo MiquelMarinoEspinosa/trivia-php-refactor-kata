@@ -591,3 +591,4 @@ make install
         - Initialize `Science` questions at the new `questions` data structure
         - Use the new structure for `Science` questions at `totalNumQuestions` method
         - Use the new structure for `Science` questions at `currentQuestion`method
+        - `extract constant` `Science` question category
