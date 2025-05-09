@@ -7,7 +7,6 @@ final class Game
     private const int MAX_NUM_QUESTIONS = 50;
     private const string POP_CATEGORY = "Pop";
 
-    private array $popQuestions;
     private array $scienceQuestions;
     private array $sportsQuestions;
     private array $rockQuestions;
@@ -19,7 +18,6 @@ final class Game
     {
         $this->gameCalculator = new GameCalculator();
 
-        $this->popQuestions = [];
         $this->scienceQuestions = [];
         $this->sportsQuestions = [];
         $this->rockQuestions = [];
@@ -87,7 +85,6 @@ final class Game
     private function createCategoryQuestionsBy(int $numQuestion): void
     {
         array_push($this->questions[self::POP_CATEGORY], "Pop Question " . $numQuestion);
-        array_push($this->popQuestions, "Pop Question " . $numQuestion);
         array_push($this->scienceQuestions, "Science Question " . $numQuestion);
         array_push($this->sportsQuestions, "Sports Question " . $numQuestion);
         array_push($this->rockQuestions, "Rock Question " . $numQuestion);
