@@ -582,3 +582,5 @@ make install
         - Create `totalNumQuestions` and refactor `GameTest` to use it at an unit test
         - Make the questions data structure `private`
         - Introduce `questions` data structure and initialize `Pop` questions
+        - Use the new `questions` structure at `currentQuestion` method for `Pop` questions
+            - Notice that it is retrieving the question dynamically directly using the `$this->currentCategory()` value as index
