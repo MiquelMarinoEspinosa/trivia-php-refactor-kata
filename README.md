@@ -606,3 +606,6 @@ make install
         - encapsulate questions initialization at `createQuestions` method
         - `inline method` `currentQuestion` at `askQuestion` method
         - `use reduce` to calculate `totalNumQuestions`
+        - This refactor introducing a unique `questions`data structure can be considered done :)
+- I would like to change the dot string concatenation operator to use `sprintf` instead
+    - Change `createCategoryQuestionsBy` method to use `sprintf`
