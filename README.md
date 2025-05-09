@@ -563,3 +563,4 @@ make install
     - introduce `match` operator at `currentQuestion` method
         - introduce `Pop` and `default` cases
         - add `Science` case
+        - add `Sports` case

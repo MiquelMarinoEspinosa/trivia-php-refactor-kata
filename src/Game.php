@@ -155,12 +155,13 @@ final class Game
         $question = match($this->currentCategory()) {
             "Pop"       => array_shift($this->popQuestions),
             "Science"   => array_shift($this->scienceQuestions),
+            "Sports"    => array_shift($this->sportsQuestions),
             default     => ""
         };
 
-        if ($this->currentCategory() == "Sports") {
-            $question = array_shift($this->sportsQuestions);
-        }
+        //if ($this->currentCategory() == "Sports") {
+        //    $question = array_shift($this->sportsQuestions);
+        //}
         if ($this->currentCategory() == "Rock") {
             $question = array_shift($this->rockQuestions);
         }
