@@ -573,3 +573,4 @@ make install
     - Introduce `1` `Science` category at `match` operator
     - Add rest `Science` cases
     - Introduce `2` `Sports` case at `match` operator
+    - Introduce the rest of `Sports` cases
