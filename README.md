@@ -601,3 +601,4 @@ make install
         - Initialize `Rock` questions at the new data structure
         - Use new data structure for `Rock` questions at `totalNumQuestions`
         - `extract constant` `Rock` category question
+        - use `Rock` questions new structure at `currentQuestion` method
