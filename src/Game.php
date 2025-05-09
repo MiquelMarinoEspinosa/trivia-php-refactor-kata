@@ -5,6 +5,7 @@ namespace Game;
 final class Game
 {
     private const int MAX_NUM_QUESTIONS = 50;
+    private const string POP_CATEGORY = "Pop";
 
     private array $popQuestions;
     private array $scienceQuestions;
@@ -23,7 +24,7 @@ final class Game
         $this->sportsQuestions = [];
         $this->rockQuestions = [];
         $this->questions = [
-            "Pop" => []
+            self::POP_CATEGORY => []
         ];
 
         $this->createQuestions();
@@ -70,7 +71,7 @@ final class Game
 
     public function totalNumQuestions(): int
     {
-        return count($this->questions["Pop"])
+        return count($this->questions[self::POP_CATEGORY])
             + count($this->sportsQuestions)
             + count($this->scienceQuestions)
             + count($this->rockQuestions);
@@ -85,7 +86,7 @@ final class Game
 
     private function createCategoryQuestionsBy(int $numQuestion): void
     {
-        array_push($this->questions["Pop"], "Pop Question " . $numQuestion);
+        array_push($this->questions[self::POP_CATEGORY], "Pop Question " . $numQuestion);
         array_push($this->popQuestions, "Pop Question " . $numQuestion);
         array_push($this->scienceQuestions, "Science Question " . $numQuestion);
         array_push($this->sportsQuestions, "Sports Question " . $numQuestion);
@@ -166,7 +167,7 @@ final class Game
     private function currentQuestion(): string
     {
         return match($this->currentCategory()) {
-            "Pop"       => array_shift($this->questions[$this->currentCategory()]),
+            self::POP_CATEGORY => array_shift($this->questions[$this->currentCategory()]),
             "Science"   => array_shift($this->scienceQuestions),
             "Sports"    => array_shift($this->sportsQuestions),
             "Rock"      => array_shift($this->rockQuestions)
@@ -176,7 +177,7 @@ final class Game
     private function currentCategory(): string
     {
         return match($this->gameCalculator->currentPlayerPlaces()) {
-            0,4,8   => "Pop",
+            0,4,8   => self::POP_CATEGORY,
             1,5,9   => "Science",
             2,6,10  => "Sports",
             default => "Rock"
