@@ -561,4 +561,5 @@ make install
     - `extract variable` called `question` to use a single `echo` instruction
     - `extract method` get the current question from `askQuestion`
     - introduce `match` operator at `currentQuestion` method
-        - introduce `pop` and `default` cases
+        - introduce `Pop` and `default` cases
+        - add `Science` case

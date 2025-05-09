@@ -153,13 +153,11 @@ final class Game
     private function currentQuestion(): string
     {
         $question = match($this->currentCategory()) {
-            "Pop" => array_shift($this->popQuestions),
-            default => ""
+            "Pop"       => array_shift($this->popQuestions),
+            "Science"   => array_shift($this->scienceQuestions),
+            default     => ""
         };
 
-        if ($this->currentCategory() == "Science") {
-            $question = array_shift($this->scienceQuestions);
-        }
         if ($this->currentCategory() == "Sports") {
             $question = array_shift($this->sportsQuestions);
         }
