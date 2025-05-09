@@ -163,34 +163,35 @@ final class Game
 
     private function currentCategory(): string
     {
+        $category = "Rock";
         if ($this->gameCalculator->currentPlayerPlaces() == 0) {
-            return "Pop";
+            $category = "Pop";
         }
         if ($this->gameCalculator->currentPlayerPlaces() == 4) {
-            return "Pop";
+            $category = "Pop";
         }
         if ($this->gameCalculator->currentPlayerPlaces() == 8) {
-            return "Pop";
+            $category = "Pop";
         }
         if ($this->gameCalculator->currentPlayerPlaces() == 1) {
-            return "Science";
+            $category = "Science";
         }
         if ($this->gameCalculator->currentPlayerPlaces() == 5) {
-            return "Science";
+            $category = "Science";
         }
         if ($this->gameCalculator->currentPlayerPlaces() == 9) {
-            return "Science";
+            $category = "Science";
         }
         if ($this->gameCalculator->currentPlayerPlaces() == 2) {
-            return "Sports";
+            $category = "Sports";
         }
         if ($this->gameCalculator->currentPlayerPlaces() == 6) {
-            return "Sports";
+            $category = "Sports";
         }
         if ($this->gameCalculator->currentPlayerPlaces() == 10) {
-            return "Sports";
+            $category = "Sports";
         }
-        return "Rock";
+        return $category;
     }
 
     private function echoln($string): void

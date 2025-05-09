@@ -566,3 +566,5 @@ make install
         - add `Sports` case
         - add `Rock` case
         - remove `question` temp variable and directly return the `match` result
+- Refactor `currentCategory` method to use the `match` operator
+    - Introduce `category` temp variable
