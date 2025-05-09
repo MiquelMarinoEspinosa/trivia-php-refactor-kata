@@ -165,16 +165,10 @@ final class Game
     {
         $category = match($this->gameCalculator->currentPlayerPlaces()) {
             0,4,8   => "Pop",
-            1       => "Science",
+            1,5,9   => "Science",
             default => "Rock"
         };
 
-        if ($this->gameCalculator->currentPlayerPlaces() == 5) {
-            $category = "Science";
-        }
-        if ($this->gameCalculator->currentPlayerPlaces() == 9) {
-            $category = "Science";
-        }
         if ($this->gameCalculator->currentPlayerPlaces() == 2) {
             $category = "Sports";
         }
