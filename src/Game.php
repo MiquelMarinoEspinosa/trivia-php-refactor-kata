@@ -18,13 +18,6 @@ final class Game
     {
         $this->gameCalculator = new GameCalculator();
 
-        $this->questions = [
-            self::POP_CATEGORY => [],
-            self::SCIENCE_CATEGORY => [],
-            self::SPORTS_CATEGORY => [],
-            self::ROCK_CATEGORY => []
-        ];
-
         $this->createQuestions();
     }
 
@@ -77,6 +70,13 @@ final class Game
 
     private function createQuestions(): void
     {
+        $this->questions = [
+            self::POP_CATEGORY => [],
+            self::SCIENCE_CATEGORY => [],
+            self::SPORTS_CATEGORY => [],
+            self::ROCK_CATEGORY => []
+        ];
+        
         for ($numQuestion = 0; $numQuestion < self::MAX_NUM_QUESTIONS; $numQuestion++) {
             $this->createCategoryQuestionsBy($numQuestion);
         }
