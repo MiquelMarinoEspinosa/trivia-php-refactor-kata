@@ -71,7 +71,7 @@ final class Game
     public function totalNumQuestions(): int
     {
         return count($this->questions[self::POP_CATEGORY])
-            + count($this->sportsQuestions)
+            + count($this->questions["Sports"])
             + count($this->questions[self::SCIENCE_CATEGORY])
             + count($this->rockQuestions);
     }
