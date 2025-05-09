@@ -165,10 +165,13 @@ final class Game
         }
 
         $this->echoln("Answer was correct!!!!");
-        $this->echoln($this->gameCalculator->nameBy($player)
-                . " now has "
-                . $this->gameCalculator->pursesBy($player)
-                . " Gold Coins.");
+        $this->echoln(
+            sprintf(
+                "%s now has %d Gold Coins.",
+                $this->gameCalculator->nameBy($player),
+                $this->gameCalculator->pursesBy($player),
+            )
+        );
 
         return $this->gameCalculator->didPlayerWin($player);
     }
