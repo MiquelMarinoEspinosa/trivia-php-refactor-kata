@@ -64,6 +64,14 @@ final class Game
         return $this->gameCalculator->isPlayable();
     }
 
+    public function totalNumQuestions(): int
+    {
+        return count($this->popQuestions)
+            + count($this->sportsQuestions)
+            + count($this->scienceQuestions)
+            + count($this->rockQuestions);
+    }
+
     private function createQuestions(): void
     {
         for ($numQuestion = 0; $numQuestion < self::MAX_NUM_QUESTIONS; $numQuestion++) {

@@ -576,3 +576,7 @@ make install
     - Introduce the rest of `Sports` cases
     - Remove `category` temp variable and directly return the `match` result
 - Remove not use `default` case at `currentQuestion` method at `match` operator just to make clear that the case is not used even though the coverage does not reflect this fact
+- Notice that during all this refactor the `GameCalculator` has not been modified, meaning that no `business` logic could not be affected by the refactor of the `presentation` logic
+- At this point, I have realized that the `3` questions data structure are kind of redundant and can be merge in a single `questions` structure data. That would also simplify - even remove - the `currentQuestion` and `currentCategory` methods
+    - Encapsulate the access to the questions structure directly used by an unit test
+        - Create `totalNumQuestions` and refactor `GameTest` to use it at an unit test
