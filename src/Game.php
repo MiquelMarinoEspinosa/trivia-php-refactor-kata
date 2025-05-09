@@ -148,11 +148,14 @@ final class Game
             return;
         }
 
-        $penaltyBoxMessage = $this->gameCalculator->isGettingOutOfPenaltyBoxBy($roll)
-            ? " is getting out of the penalty box"
-            : " is not getting out of the penalty box";
-
-        $this->echoln($this->gameCalculator->nameBy($player) . $penaltyBoxMessage);
+        $this->echoln(
+            sprintf(
+                "%s %s getting out of the penalty box",
+                $this->gameCalculator->nameBy($player),
+                $this->gameCalculator->isGettingOutOfPenaltyBoxBy($roll)
+                    ? "is" : "is not"
+            )
+        );
     }
 
     private function printAnswerCorrect(string $player): bool

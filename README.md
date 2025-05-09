@@ -616,3 +616,4 @@ make install
     - Refactor `printRoll` method to use `printf`
     - Change `%d` integer identifier for `%u` unsigned integer at `sprintf`
     - `inline method` `buildPenaltyBoxMessage` at `printPenaltyBoxMessage` method
+    - Use `sprintf` at `printPenaltyBoxMessage` method
