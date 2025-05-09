@@ -25,6 +25,7 @@ final class GameCalculator
         $this->isGettingOutOfPenaltyBox = true;
         $this->inPenaltyBox = [false];
         $this->places = [0];
+        $this->purses = [0];
     }
 
     public function add(string $playerName): void
