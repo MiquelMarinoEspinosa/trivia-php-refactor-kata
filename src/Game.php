@@ -163,10 +163,14 @@ final class Game
 
     private function currentCategory(): string
     {
-        $category = "Rock";
-        if ($this->gameCalculator->currentPlayerPlaces() == 0) {
-            $category = "Pop";
-        }
+        $category = match($this->gameCalculator->currentPlayerPlaces()) {
+            0       => "Pop",
+            default => "Rock"
+        };
+
+        //if ($this->gameCalculator->currentPlayerPlaces() == 0) {
+        //    $category = "Pop";
+        //}
         if ($this->gameCalculator->currentPlayerPlaces() == 4) {
             $category = "Pop";
         }
