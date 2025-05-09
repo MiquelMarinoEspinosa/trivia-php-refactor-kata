@@ -610,3 +610,4 @@ make install
 - I would like to change the dot string concatenation operator to use `sprintf` instead
     - Change `createCategoryQuestionsBy` method to use `sprintf`
     - Refactor `createCategoryQuestionsBy` to generate the questions dynamically by category
+    - Fix `questions` bad field documentation

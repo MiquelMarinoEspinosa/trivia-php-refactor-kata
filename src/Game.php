@@ -20,7 +20,7 @@ final class Game
     ];
 
     /**
-     * @var array<string>
+     * @var array<array<string>>
      */
     private array $questions;
 
