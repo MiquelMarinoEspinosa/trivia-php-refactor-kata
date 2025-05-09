@@ -147,18 +147,21 @@ final class Game
 
     private function askQuestion(): void
     {
+        $question = null;
         if ($this->currentCategory() == "Pop") {
-            $this->echoln(array_shift($this->popQuestions));
+            $question = array_shift($this->popQuestions);
         }
         if ($this->currentCategory() == "Science") {
-            $this->echoln(array_shift($this->scienceQuestions));
+            $question = array_shift($this->scienceQuestions);
         }
         if ($this->currentCategory() == "Sports") {
-            $this->echoln(array_shift($this->sportsQuestions));
+            $question = array_shift($this->sportsQuestions);
         }
         if ($this->currentCategory() == "Rock") {
-            $this->echoln(array_shift($this->rockQuestions));
+            $question = array_shift($this->rockQuestions);
         }
+
+        $this->echoln($question);
     }
 
     private function currentCategory(): string

@@ -557,3 +557,5 @@ make install
     - Similar situation for `currentCategory` method
     - Execute `mutant testing`
     - Close the refactor exercise with final considerations about the process and how much I like the exercies ^-^
+- Refactor `askQuestion` method to use `match` operator
+    - `extract variable` called `question` to use a single `echo` instruction
