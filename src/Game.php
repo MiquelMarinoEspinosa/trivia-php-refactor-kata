@@ -72,7 +72,7 @@ final class Game
     {
         return count($this->questions[self::POP_CATEGORY])
             + count($this->sportsQuestions)
-            + count($this->scienceQuestions)
+            + count($this->questions["Science"])
             + count($this->rockQuestions);
     }
 
