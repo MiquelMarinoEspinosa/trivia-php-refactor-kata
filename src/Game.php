@@ -8,6 +8,7 @@ final class Game
     private const string POP_CATEGORY = "Pop";
     private const string SCIENCE_CATEGORY = "Science";
     private const string SPORTS_CATEGORY = "Sports";
+    private const string ROCK_CATEGORY = "Rock";
 
     private array $rockQuestions;
     private array $questions;
@@ -23,7 +24,7 @@ final class Game
             self::POP_CATEGORY => [],
             self::SCIENCE_CATEGORY => [],
             self::SPORTS_CATEGORY => [],
-            'Rock' => []
+            self::ROCK_CATEGORY => []
         ];
 
         $this->createQuestions();
@@ -73,7 +74,7 @@ final class Game
         return count($this->questions[self::POP_CATEGORY])
             + count($this->questions[self::SPORTS_CATEGORY])
             + count($this->questions[self::SCIENCE_CATEGORY])
-            + count($this->questions["Rock"]);
+            + count($this->questions[self::ROCK_CATEGORY]);
     }
 
     private function createQuestions(): void
@@ -88,7 +89,7 @@ final class Game
         array_push($this->questions[self::POP_CATEGORY], "Pop Question " . $numQuestion);
         array_push($this->questions[self::SCIENCE_CATEGORY], "Science Question " . $numQuestion);
         array_push($this->questions[self::SPORTS_CATEGORY], "Sports Question " . $numQuestion);
-        array_push($this->questions["Rock"], "Rock Question " . $numQuestion);
+        array_push($this->questions[self::ROCK_CATEGORY], "Rock Question " . $numQuestion);
         array_push($this->rockQuestions, "Rock Question " . $numQuestion);
     }
 
@@ -166,10 +167,10 @@ final class Game
     private function currentQuestion(): string
     {
         return match($this->currentCategory()) {
-            self::POP_CATEGORY => array_shift($this->questions[$this->currentCategory()]),
-            self::SCIENCE_CATEGORY   => array_shift($this->questions[$this->currentCategory()]),
-            self::SPORTS_CATEGORY    => array_shift($this->questions[$this->currentCategory()]),
-            "Rock"      => array_shift($this->rockQuestions)
+            self::POP_CATEGORY      => array_shift($this->questions[$this->currentCategory()]),
+            self::SCIENCE_CATEGORY  => array_shift($this->questions[$this->currentCategory()]),
+            self::SPORTS_CATEGORY   => array_shift($this->questions[$this->currentCategory()]),
+            self::ROCK_CATEGORY     => array_shift($this->rockQuestions)
         };
     }
 
@@ -179,7 +180,7 @@ final class Game
             0,4,8   => self::POP_CATEGORY,
             1,5,9   => self::SCIENCE_CATEGORY,
             2,6,10  => self::SPORTS_CATEGORY,
-            default => "Rock"
+            default => self::ROCK_CATEGORY
         };
     }
 
