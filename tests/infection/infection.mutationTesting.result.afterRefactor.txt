@@ -1,0 +1,62 @@
+
+    ____      ____          __  _
+   /  _/___  / __/__  _____/ /_(_)___  ____
+   / // __ \/ /_/ _ \/ ___/ __/ / __ \/ __ \
+ _/ // / / / __/  __/ /__/ /_/ / /_/ / / / /
+/___/_/ /_/_/  \___/\___/\__/_/\____/_/ /_/
+
+#StandWithUkraine
+
+Infection - PHP Mutation Testing Framework version 0.29.14
+
+
+Running initial test suite...
+
+PHPUnit version: 12.1.3
+
+
+
+Generate mutants...
+
+
+.: killed, M: escaped, U: uncovered, E: fatal error, X: syntax error, T: timed out, S: skipped, I: ignored
+
+.......................E..........................   ( 50 / 134)
+..............................................M...   (100 / 134)
+..................................                   (134 / 134)
+Escaped mutants:
+================
+
+
+1) /app/src/GameCalculator.php:50    [M] GreaterThan
+
+@@ @@
+             return;
+         }
+         $this->places[$this->currentPlayer()] = $this->currentPlayerPlaces() + $roll;
+-        if ($this->currentPlayerPlaces() > self::MAX_PLACES) {
++        if ($this->currentPlayerPlaces() >= self::MAX_PLACES) {
+             $this->places[$this->currentPlayer()] = $this->currentPlayerPlaces() - (self::MAX_PLACES + 1);
+         }
+     }
+
+
+
+134 mutations were generated:
+     132 mutants were killed
+       0 mutants were configured to be ignored
+       0 mutants were not covered by tests
+       1 covered mutants were not detected
+       1 errors were encountered
+       0 syntax errors were encountered
+       0 time outs were encountered
+       0 mutants required more time than configured
+
+Metrics:
+         Mutation Score Indicator (MSI): 99%
+         Mutation Code Coverage: 100%
+         Covered Code MSI: 99%
+
+Please note that some mutants will inevitably be harmless (i.e. false positives).
+
+Time: 9s. Memory: 22.00MB. Threads: 1

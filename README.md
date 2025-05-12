@@ -624,3 +624,15 @@ make install
 - Next steps
     - Execute `infection mutation testing`
     - Document final considerations and general considerations about the refactor exercise :)
+- Execute `infection mutation testing`
+    - This was the `infection` execution before the refactor describe in detail at [infection.mutationTesting.result.beforeRefactor.txt](./tests/infection/infection.mutationTesting.result.beforeRefactor.txt)
+        - It is `95%` in the current code
+            - That means that the difference between the current code coverage - `100%` - and the MSI - `95%` - it is low and the tests effectivelly covers the code
+                - From `182` mutants, there were `9` not detected and just `1` error :D
+            - This provides extra trust on the current code coverage
+    - After the refactor, here there are the insigths more detailed at [infection.mutationTesting.result.afterRefactor.txt](./tests/infection/infection.mutationTesting.result.afterRefactor.txt)
+        - After the refactor the MSI has increased from `95%` up to `99%` :)
+            - That is due mainly to apply constraint visibility to some methods and that caught mutants which were not caught in the previous execution before the refactor
+            - From `134` mutations `132` were caught, just `2` scape ^_^
+            - It does not deserve the effor to cover this `2` mutants
+            - The `99%` MSI confirms that the `100%` coverage is robust enough to guarantee that the code is well covered
