@@ -636,3 +636,32 @@ make install
             - From `134` mutations `132` were caught, just `2` scape ^_^
             - It does not deserve the effor to cover this `2` mutants
             - The `99%` MSI confirms that the `100%` coverage is robust enough to guarantee that the code is well covered
+- Final considerations
+    - It has been a very good exercise :)
+        - It is very recommendable for developers to get used to manage legacy code and offer refactor alternatives to improve the code's design
+    - Here the before and after result
+        - Before
+            - [Game.php](https://github.com/MiquelMarinoEspinosa/trivia-php-refactor-kata/blob/master/src/Game.php)
+        - After
+            - [Game.php](https://github.com/MiquelMarinoEspinosa/trivia-php-refactor-kata/blob/refactor/src/Game.php)
+            - [GameCalculator.php](https://github.com/MiquelMarinoEspinosa/trivia-php-refactor-kata/blob/refactor/src/GameCalculator.php)
+    - Using [ApprovalTests](https://github.com/approvals/ApprovalTests.php) in this kind of scenarios with a high couple code between `presentation` and `business` logic is very usefull to quick cover code with `100%`
+        - After that, it is also important to introduce manual breaking changes as well as to use tools like [infection](https://infection.github.io/) to challenge the coverage. However, it is important not to get obssesed on getting a perfect code coverage. A good enough code coverage is good as refactor starting point
+    - Once the code has been well covered by automated tests, it is very recommendable to follow as a good practice:
+        - Do small changes
+        - Every time a change has been done, execute the automated tests
+        - Commit every change done to have a safe rollback point
+    - Here there are the main refactor highlights which deserve to be commented
+        - It has been spotted from the very beggining that it was crutial to decouple the `presentation` and the `business` logic
+        - The first steps were to focus to start to `extract methods` to reduce the `paragraph code` and identify duplications to reduce them
+        - This methods extracting were also focus on start the decoupling between `business` and `presentation` logic
+        - Once this step has been finished, it has been introduced `queries` to avoid direct access to the fields
+        - After that, an `inline anonymous class` has been introduced to start to move the `business logic` there
+        - Eventually, the `anonymous class` logic has been extracted into a new class called `GameCalculator`
+    - Possible next steps
+        - Inject `GameCalculator` to `Game` to be able to `mock` and create `unit tests` for the `Game` class
+        - Since the `players` structure contains player's name to display at the `Game` class, it can be though that it should be decoupled from `GameCalculator` class. Nevertheless, it is also used for `business` logic. It should be check whether it would be better to move all data structures to `GameCalculator` and reduce more logic from the `Game` class. Or may be the `players` structure should go back at `Game` class
+        - Kill the `2` mutants which has not been caught
+        - Introduce `unit tests` to cover the classes additionally to `approval tests`
+        - It might be that there is more design to be applied with new classes creation
+- Having said that, happy coding :)
